@@ -84,6 +84,7 @@
     isNormalUser = true;
     description = "dave";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell=pkgs.zsh;
   };
 
   programs = {
