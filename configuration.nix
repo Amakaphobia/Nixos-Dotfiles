@@ -84,20 +84,6 @@
     isNormalUser = true;
     description = "dave";
     extraGroups = [ "networkmanager" "wheel" ];
-
-
-
-#   packages = with pkgs; [
-#     kdePackages.dolphin
-#     kdePackages.kate
-#     neovim
-#     waybar
-#     kitty
-#     tmux
-#     hyprpaper
-#     hyprlock
-#     fuzzel
-#   ];
   };
 
   programs = {
@@ -132,7 +118,6 @@
     python3
     gcc
     fzf
-    nodePackages.tree-sitter-cli
     lua51Packages.luarocks
     lua5_1
     fastfetch
