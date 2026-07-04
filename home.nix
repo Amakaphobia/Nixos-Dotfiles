@@ -11,22 +11,42 @@ let
 in
 {
     home = {
-	username = "dave";
-        homeDirectory = "/home/dave";
-         stateVersion = "26.05";
+    	username = "dave";
+      homeDirectory = "/home/dave";
+      stateVersion = "26.05";
     };
 
     programs = {
-        git.enable = true;
+      git.enable = true;
 
   	#Zsh
-	zsh.enable = true;
- 	zsh = {
+  	zsh.enable = true;
+   	zsh = {
             autosuggestion.enable = true;
+            enableCompletion = true;
             syntaxHighlighting.enable = true;
+            autocd = true;
+            history = {
+              size = 10000;
+              save = 10000;
+              path = "$Home/.zsh_history";
+              };
             shellAliases = {
-                btw = "echo my config btw";
-            };
+              ll = "ls -lisa";
+              gs = "git status";
+              rebuild = "sudo nixos-rebuild switch --flake .";
+
+              };
+            initContent =''
+              rebuild(){
+                  if [ -z "$1" ]; then 
+                    echo "Usage: rebuild hostname"
+                    return 1
+                  fi
+
+                  sudo nixos-rebuild switch --flake ".#$1"
+                }
+            '';
         };
     };
 	
