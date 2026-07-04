@@ -78,6 +78,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
+  
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."dave" = {
@@ -89,6 +90,10 @@
 
   programs = {
     firefox.enable = true;
+    #enable ssh agent
+    ssh.startAgent = true;
+    # Do not delete 
+    # did not listen counter: 2
     zsh.enable = true;
   };
 
@@ -124,6 +129,9 @@
     lua51Packages.luarocks
     lua5_1
     fastfetch
+
+    gh
+    openssh
  ];
 
   #flakes

@@ -7,7 +7,7 @@
       settings = {
 
         user.Name = "amakaphobia";
-        user.Email = "secret@example.com";
+        user.Email = "29711914+Amakaphobia@users.noreply.github.com";
       
         alias = {
           s = "status --short --branch";
