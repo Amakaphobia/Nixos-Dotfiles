@@ -130,7 +130,6 @@
     lua5_1
     fastfetch
 
-    gh
     openssh
  ];
 
