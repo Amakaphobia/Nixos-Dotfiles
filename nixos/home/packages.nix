@@ -16,5 +16,6 @@
         fd
         tldr
     	wl-clipboard
+	pastel 
     ];
 }
