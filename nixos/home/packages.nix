@@ -5,7 +5,6 @@
         kdePackages.dolphin
         kdePackages.kate
         neovim
-        waybar
         kitty
         tmux
         hyprpaper

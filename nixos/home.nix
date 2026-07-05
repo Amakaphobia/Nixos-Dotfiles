@@ -15,6 +15,7 @@ in
       ./home/packages.nix
       ./home/zsh.nix
       ./home/obsidian.nix
+      ./home/waybar.nix
     ];
 
     home = {
