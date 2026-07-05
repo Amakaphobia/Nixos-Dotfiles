@@ -14,6 +14,7 @@ in
       ./home/git.nix
       ./home/packages.nix
       ./home/zsh.nix
+      ./home/obsidian.nix
     ];
 
     home = {

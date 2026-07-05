@@ -2,9 +2,9 @@
 ---- My Colors     ----
 -----------------------
 
-local pink = 0xf5c2e7ee
-local lavender = 0xb4befeee
-local grey = 0x595959aa
+local pink = 0xf5c2e7ff
+local lavender = 0xb4befeff
+local grey = 0x595959dd
 
 -----------------------
 ---- LOOK AND FEEL ----

@@ -17,6 +17,7 @@
             shellAliases = {
               ll = "ls -lisa";
               sr = "systemctl reboot";
+              sd = "systemctl poweroff";
               };
             initContent =''
               rebuild(){
