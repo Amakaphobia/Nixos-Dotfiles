@@ -8,7 +8,7 @@
     cli.enable = true;
 
 # Vault settings
-    vault = {
+    vaults = {
       main = {
         target = "todovault";
 
