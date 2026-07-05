@@ -15,5 +15,6 @@
         lazygit
         fd
         tldr
+    	wl-clipboard
     ];
 }

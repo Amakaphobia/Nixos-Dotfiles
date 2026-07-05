@@ -20,6 +20,8 @@
               sd = "systemctl poweroff";
               };
             initContent =''
+	      # rebuild the system
+
               rebuild(){
                   if [ -z "$1" ]; then 
                     echo "Usage: rebuild hostname"
@@ -27,7 +29,17 @@
                   fi
 
                   sudo nixos-rebuild switch --flake ".#$1"
-                }
+              }
+	      
+	      # do a test build of the system without switching
+	      testbuild(){
+                  if [ -z "$1" ]; then 
+                    echo "Usage: testbuild hostname"
+                    return 1
+                  fi
+
+                  sudo nixos-rebuild test --flake ".#$1"
+              }
             '';
         };
 
