@@ -4,7 +4,6 @@
     home.packages = with pkgs; [
         kdePackages.dolphin
         kdePackages.kate
-        neovim
         kitty
         tmux
         hyprpaper

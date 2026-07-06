@@ -5,7 +5,6 @@ let
     create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
     configs = {
     	kitty = "kitty";
-    	nvim = "nvim";
     	hypr = "hypr";
     };
 in
@@ -16,6 +15,7 @@ in
       ./home/zsh.nix
       ./home/obsidian.nix
       ./home/waybar.nix
+      ./home/nvim.nix
     ];
 
     home = {
