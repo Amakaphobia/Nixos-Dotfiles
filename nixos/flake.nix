@@ -8,9 +8,19 @@
 	};
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }: {
-	nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
+# @ syntax : name all of it inputs, but pull out the named variables and make them locally available
+    outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+	let
 	    system = "x86_64-linux";
+
+	    flakePath = "/home/dave/nixos-dotfiles/nixos";
+	in {
+	nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
+	    inherit system;
+
+	    specialArgs = {
+		inherit inputs self flakePath;
+	    };
 	    modules = [
 		./configuration.nix
 		home-manager.nixosModules.home-manager

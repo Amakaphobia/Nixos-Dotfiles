@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, flakePath, ... }:
 
 {
   imports =
@@ -6,12 +6,12 @@
       ./hardware-configuration.nix
     ];
 
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nyx"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -32,8 +32,20 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  # enable hardware acceleration
+  hardware.graphics = {
+    enable = true;
+
+  # VA-API driver for modern intel gpus 
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    FLAKE_PATH = flakePath;
+  };
 
   #LY
   services.displayManager.ly.enable = true;
@@ -48,11 +60,6 @@
     xwayland.enable = true;
   };
 
-  # Configure keymap in X11
-#  services.xserver.xkb = {
-#    layout = "de";
-#    variant = "";
-#  };
 
   # Configure console keymap
   console.keyMap = "de";
@@ -89,7 +96,18 @@
   };
 
   programs = {
-    firefox.enable = true;
+    # firefox
+    firefox = {
+      enable = true;
+     
+      policies = {
+        HardwareAcceleration = true;
+      };
+      
+      preferences = {
+        "media.ffmpeg.vaapi.enabled" = true;
+      };
+    };
     #enable ssh agent
     ssh.startAgent = true;
     # Do not delete 
@@ -106,6 +124,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.pathsToLink = ["/share/zsh"];
+
 
   environment.systemPackages = with pkgs; [
     vim
@@ -131,7 +150,9 @@
     fastfetch
 
     openssh
+    libva-utils
  ];
+
 
   #flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -145,11 +166,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

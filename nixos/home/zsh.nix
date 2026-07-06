@@ -18,6 +18,9 @@
               ll = "ls -lisa";
               sr = "systemctl reboot";
               sd = "systemctl poweroff";
+	      cdflake = "cd $FLAKE_PATH";
+	      cdconf = "cd ~/nixos-dotfiles/config";
+              cdnix = "cd ~/nixos-dotfiles/";
               };
             initContent =''
 	      # rebuild the system
@@ -27,8 +30,12 @@
                     echo "Usage: rebuild hostname"
                     return 1
                   fi
+		  if [ -z $FLAKE_PATH ]; then
+		    echo "No flake path set"
+		    return 1
+		  fi
 
-                  sudo nixos-rebuild switch --flake ".#$1"
+                  sudo nixos-rebuild switch --flake "$FLAKE_PATH#$1"
               }
 	      
 	      # do a test build of the system without switching
@@ -37,8 +44,12 @@
                     echo "Usage: testbuild hostname"
                     return 1
                   fi
+		  if [ -z $FLAKE_PATH ]; then
+		    echo "No flake path set"
+		    return 1
+		  fi
 
-                  sudo nixos-rebuild test --flake ".#$1"
+                  sudo nixos-rebuild test --flake "$FLAKE_PATH#$1"
               }
             '';
         };

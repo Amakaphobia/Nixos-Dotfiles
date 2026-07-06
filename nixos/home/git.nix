@@ -15,6 +15,7 @@
           a = "add --all";
           c = "commit";
           cm = "commit -m";
+          pom = "push origin main";
         };
 
         init.defaultBranch = "main";

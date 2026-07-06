@@ -5,6 +5,14 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
+-- Obsidian
+hl.window_rule({
+    name = "Obsidian Rules",
+    match = { class = "obsidian" },
+
+    workspace = "4",
+    opaque = true,
+})				
 
 -- Firefox
 hl.window_rule({
