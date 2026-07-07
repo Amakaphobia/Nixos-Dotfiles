@@ -8,7 +8,6 @@
         tmux
         hyprpaper
         hyprlock
-        hypridle
         fuzzel
       	nil
       	nixpkgs-fmt
