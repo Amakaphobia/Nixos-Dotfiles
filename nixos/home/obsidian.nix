@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   catppuccinObsidian = pkgs.stdenvNoCC.mkDerivation {
     pname = "myCatppuccin";
@@ -15,6 +15,55 @@ let
       mkdir -p $out
       cp manifest.json theme.css $out/
     '';
+  };
+  anuPpuccinObsidian = pkgs.stdenvNoCC.mkDerivation{
+    pname = "anuPpuccinObsidian";
+    version = "unstable";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "AnubisNekhet";
+      repo = "AnuPpuccin";
+      rev = "93edd678ee5f2e090479f1807dfe13c71fc22720";
+      hash = "sha256-T66bh2dTk15HbCKaruMOYPbExO150mrPfAQeNVz56bs=";
+    };
+
+    nativeBuildInputs = [ pkgs.dart-sass ];
+
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out
+      cp manifest.json theme.css $out/
+      runHook postInstall
+    '';
+  };
+
+  styleSettings = pkgs.stdenvNoCC.mkDerivation rec{
+      pname = "obsidian-style-settings";
+      version = "1.0.9";
+
+      manifest = pkgs.fetchurl {
+        url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/manifest.json";
+        hash = "sha256-nP/cIM8qoTVIIOAFC2lLD5tXZEbj1dRKNq6LAYflv7g=";
+      };
+
+      mainJs = pkgs.fetchurl {
+         url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/main.js";
+         hash = "sha256-GCirqs2rTFV4twWmJcWFswUS+O+tTHz8WhjnDMNVdGg=";
+      };
+
+      styleCss = pkgs.fetchurl {
+        url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/styles.css";
+        hash = "sha256-7nk30r5QZTqJzLMK5fBXKyNQfVt/EyjQBScaNjB1v9g="; 
+      };
+
+      dontUnpack = true;
+
+      installPhase = ''
+        mkdir -p $out
+        cp ${manifest} $out/manifest.json
+        cp ${mainJs} $out/main.js
+        cp ${styleCss} $out/styles.css
+      '';
   };
 in
 {
@@ -53,7 +102,7 @@ in
 	];
 
 	communityPlugins = [
-  	    
+          styleSettings	    
 	];
     };
 
@@ -64,7 +113,10 @@ in
       main = {
         target = "todovault";
         settings = {  
-            themes = [catppuccinObsidian];
+          themes = [
+          # catppuccinObsidian
+            anuPpuccinObsidian
+          ];
             appearance = {
                 theme = "obsidian";
             };

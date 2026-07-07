@@ -8,6 +8,7 @@
         tmux
         hyprpaper
         hyprlock
+        hypridle
         fuzzel
       	nil
       	nixpkgs-fmt
@@ -16,5 +17,15 @@
         tldr
     	wl-clipboard
 	pastel 
+        spotify-player
+        brightnessctl
+        playerctl
     ];
+
+    programs = {
+      fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+    };
 }
