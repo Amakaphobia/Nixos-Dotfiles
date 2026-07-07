@@ -16,8 +16,8 @@ in
       ./home/obsidian.nix
       ./home/waybar.nix
       ./home/nvim.nix
-#      ./home/hypr/hypridle.nix
-#      ./home/hypr/hyprlock.nix
+      ./home/hypr/hypridle.nix
+      ./home/hypr/hyprlock.nix
     ];
 
     home = {
