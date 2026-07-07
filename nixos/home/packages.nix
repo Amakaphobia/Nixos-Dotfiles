@@ -7,7 +7,6 @@
         kitty
         tmux
         hyprpaper
-        hyprlock
         fuzzel
       	nil
       	nixpkgs-fmt
@@ -16,7 +15,6 @@
         tldr
     	wl-clipboard
 	pastel 
-        spotify-player
         brightnessctl
         playerctl
     ];
