@@ -156,6 +156,8 @@
     libva-utils
  ];
 
+ #hyprlock rights
+  security.pam.services.hyprlock = {};
 
   #flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];

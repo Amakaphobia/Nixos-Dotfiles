@@ -47,5 +47,4 @@
     };
     
   };
-  security.pam.services.hyprlock = {};
 }
