@@ -4,7 +4,6 @@
     home.packages = with pkgs; [
         kdePackages.dolphin
         kdePackages.kate
-        kitty
         tmux
         hyprpaper
         fuzzel
@@ -17,6 +16,10 @@
 	pastel 
         brightnessctl
         playerctl
+        spotify
+        vlc
+        gimp
+
     ];
 
     programs = {

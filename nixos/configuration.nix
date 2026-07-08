@@ -62,7 +62,9 @@
     enable = true;
     xwayland.enable = true;
   };
-
+  
+  # Allow HomeManager to apply settings to gtk (?)
+  programs.dconf.enable = true;
 
   # Configure console keymap
   console.keyMap = "de";
