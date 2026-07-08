@@ -11,6 +11,10 @@
         package = pkgs.nerd-fonts.jetbrains-mono;
       };
 
+      # C-R search history
+      # C-T serch directory
+      # A-C cd search
+      # **<tab> fuzzy completion
       shellIntegration = {
         enableZshIntegration = true;
 
