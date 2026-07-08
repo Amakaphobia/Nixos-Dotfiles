@@ -2,13 +2,13 @@
 
 {
     home.packages = with pkgs; [
-        kdePackages.dolphin
-        kdePackages.kate
+        pcmanfm
+        notepadqq
         tmux
         hyprpaper
         fuzzel
-      	nil
-      	nixpkgs-fmt
+       	nil
+       	nixpkgs-fmt
         lazygit
         fd
         tldr
