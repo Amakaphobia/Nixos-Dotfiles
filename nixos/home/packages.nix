@@ -2,8 +2,8 @@
 
 {
     home.packages = with pkgs; [
-        pcmanfm
-        notepadqq
+        thunar
+        geany
         tmux
         hyprpaper
         fuzzel

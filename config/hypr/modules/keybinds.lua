@@ -3,7 +3,7 @@
 ---------------------
 
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu        = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
 
 ---------------------
