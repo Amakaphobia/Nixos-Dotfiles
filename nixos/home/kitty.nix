@@ -34,17 +34,17 @@
         scrollback_lines = 10000;
         enable_audio_bell = false;
         confirm_os_window_close = 0;
-  
+
         # Appearance
         window_padding_width = 8;
         hide_window_decorations = true;
-  
+
         # Mouse / URLs
         detect_urls = true;
         show_hyperlink_targets = "yes";
         underline_hyperlinks = "hover";
         open_url_with = "default";
-  
+
         # Copy / paste safety
         strip_trailing_spaces = "smart";
         paste_actions = "quote-urls-at-prompt,confirm";

@@ -1,11 +1,14 @@
-{ config, pkgs, flakePath, ... }:
+{
+  config,
+  pkgs,
+  flakePath,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -13,8 +16,7 @@
 
   networking.hostName = "nyx"; # Define your hostname.
 
-
-  # security.pam.services.hyprlock = true; 
+  # security.pam.services.hyprlock = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -39,7 +41,7 @@
   hardware.graphics = {
     enable = true;
 
-  # VA-API driver for modern intel gpus 
+    # VA-API driver for modern intel gpus
     extraPackages = with pkgs; [
       intel-media-driver
     ];
@@ -54,7 +56,7 @@
   services.displayManager.ly.enable = true;
 
   #Hyprland
-  xdg.portal ={
+  xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
@@ -65,7 +67,7 @@
     enable = true;
     xwayland.enable = true;
   };
-  
+
   # Allow HomeManager to apply settings to gtk (?)
   programs.dconf.enable = true;
 
@@ -92,15 +94,17 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-   services.libinput.enable = true;
-  
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."dave" = {
     isNormalUser = true;
     description = "dave";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell=pkgs.zsh;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
   };
 
   # file manager
@@ -114,11 +118,11 @@
     # firefox
     firefox = {
       enable = true;
-     
+
       policies = {
         HardwareAcceleration = true;
       };
-      
+
       preferences = {
         "media.ffmpeg.vaapi.enabled" = true;
       };
@@ -126,7 +130,7 @@
 
     #enable ssh agent
     ssh.startAgent = true;
-    # Do not delete 
+    # Do not delete
     # did not listen counter: 2
     zsh.enable = true;
   };
@@ -136,11 +140,9 @@
     nerd-fonts.jetbrains-mono
   ];
 
-
   nixpkgs.config.allowUnfree = true;
 
-  environment.pathsToLink = ["/share/zsh"];
-
+  environment.pathsToLink = [ "/share/zsh" ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -167,15 +169,16 @@
 
     openssh
     libva-utils
- ];
+  ];
 
- #hyprlock rights
-  security.pam.services.hyprlock = {};
+  #hyprlock rights
+  security.pam.services.hyprlock = { };
 
   #flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

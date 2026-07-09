@@ -16,7 +16,7 @@ let
       cp manifest.json theme.css $out/
     '';
   };
-  anuPpuccinObsidian = pkgs.stdenvNoCC.mkDerivation{
+  anuPpuccinObsidian = pkgs.stdenvNoCC.mkDerivation {
     pname = "anuPpuccinObsidian";
     version = "unstable";
 
@@ -37,91 +37,89 @@ let
     '';
   };
 
-  styleSettings = pkgs.stdenvNoCC.mkDerivation rec{
-      pname = "obsidian-style-settings";
-      version = "1.0.9";
+  styleSettings = pkgs.stdenvNoCC.mkDerivation rec {
+    pname = "obsidian-style-settings";
+    version = "1.0.9";
 
-      manifest = pkgs.fetchurl {
-        url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/manifest.json";
-        hash = "sha256-nP/cIM8qoTVIIOAFC2lLD5tXZEbj1dRKNq6LAYflv7g=";
-      };
+    manifest = pkgs.fetchurl {
+      url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/manifest.json";
+      hash = "sha256-nP/cIM8qoTVIIOAFC2lLD5tXZEbj1dRKNq6LAYflv7g=";
+    };
 
-      mainJs = pkgs.fetchurl {
-         url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/main.js";
-         hash = "sha256-GCirqs2rTFV4twWmJcWFswUS+O+tTHz8WhjnDMNVdGg=";
-      };
+    mainJs = pkgs.fetchurl {
+      url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/main.js";
+      hash = "sha256-GCirqs2rTFV4twWmJcWFswUS+O+tTHz8WhjnDMNVdGg=";
+    };
 
-      styleCss = pkgs.fetchurl {
-        url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/styles.css";
-        hash = "sha256-7nk30r5QZTqJzLMK5fBXKyNQfVt/EyjQBScaNjB1v9g="; 
-      };
+    styleCss = pkgs.fetchurl {
+      url = "https://github.com/obsidian-community/obsidian-style-settings/releases/download/${version}/styles.css";
+      hash = "sha256-7nk30r5QZTqJzLMK5fBXKyNQfVt/EyjQBScaNjB1v9g=";
+    };
 
-      dontUnpack = true;
+    dontUnpack = true;
 
-      installPhase = ''
-        mkdir -p $out
-        cp ${manifest} $out/manifest.json
-        cp ${mainJs} $out/main.js
-        cp ${styleCss} $out/styles.css
-      '';
+    installPhase = ''
+      mkdir -p $out
+      cp ${manifest} $out/manifest.json
+      cp ${mainJs} $out/main.js
+      cp ${styleCss} $out/styles.css
+    '';
   };
 in
 {
   programs.obsidian = {
     enable = true;
-    
-# enable command line support in obsidian
+
+    # enable command line support in obsidian
     cli.enable = true;
 
-# defaults - will be overriden by vault settings if applicable
+    # defaults - will be overriden by vault settings if applicable
     defaultSettings = {
 
-          app = {
-            alwaysUpdateLinks = true;
-	    vimMode = true;
-          };
-	corePlugins = [
-	    "backlink"
-	    "bases"
-	    "bookmarks"
-	    "canvas"
-	    "command-palette"
-	    "daily-notes"
-	    "file-explorer"
-	    "footnotes"
-	    "global-search"
-	    "graph"
-	    "note-composer"
-	    "outline"
-	    "page-preview"
-	    "properties"
-	    "slash-command"
-	    "switcher"
-	    "templates"
-	    "word-count"
-	];
+      app = {
+        alwaysUpdateLinks = true;
+        vimMode = true;
+      };
+      corePlugins = [
+        "backlink"
+        "bases"
+        "bookmarks"
+        "canvas"
+        "command-palette"
+        "daily-notes"
+        "file-explorer"
+        "footnotes"
+        "global-search"
+        "graph"
+        "note-composer"
+        "outline"
+        "page-preview"
+        "properties"
+        "slash-command"
+        "switcher"
+        "templates"
+        "word-count"
+      ];
 
-	communityPlugins = [
-          styleSettings	    
-	];
+      communityPlugins = [
+        styleSettings
+      ];
     };
 
-
-
-# Vault settings
+    # Vault settings
     vaults = {
       main = {
         target = "todovault";
-        settings = {  
+        settings = {
           themes = [
-          # catppuccinObsidian
+            # catppuccinObsidian
             anuPpuccinObsidian
           ];
-            appearance = {
-                theme = "obsidian";
-            };
+          appearance = {
+            theme = "obsidian";
+          };
         };
       };
-      };
     };
+  };
 }

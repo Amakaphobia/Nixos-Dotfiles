@@ -20,7 +20,7 @@
           bezier = "easeOutQuint";
         };
       };
-      
+
       background = [
         {
           path = "~/nixos-dotfiles/wallpapers/currentLock";
@@ -45,6 +45,6 @@
         }
       ];
     };
-    
+
   };
 }
