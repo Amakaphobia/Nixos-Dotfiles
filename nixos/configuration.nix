@@ -54,10 +54,13 @@
   services.displayManager.ly.enable = true;
 
   #Hyprland
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-hyprland
-  ];
+  xdg.portal ={
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -100,6 +103,13 @@
     shell=pkgs.zsh;
   };
 
+  # file manager
+  programs.thunar.enable = true;
+  # user level file system integration (trash mounts network locations...)
+  services.gvfs.enable = true;
+  # thumbnails
+  services.tumbler.enable = true;
+
   programs = {
     # firefox
     firefox = {
@@ -113,6 +123,7 @@
         "media.ffmpeg.vaapi.enabled" = true;
       };
     };
+
     #enable ssh agent
     ssh.startAgent = true;
     # Do not delete 
