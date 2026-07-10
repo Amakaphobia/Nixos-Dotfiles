@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     # gui editor
     geany
+    # a jason processor
+    jq
     # terminal session manager
     tmux
     # background
