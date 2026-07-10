@@ -15,6 +15,7 @@
         a = "add --all";
         c = "commit";
         cm = "commit -m";
+        ca = "git commit . --amend";
         pom = "push origin main";
       };
 
