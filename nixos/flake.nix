@@ -1,5 +1,5 @@
 {
-  description = "Fist Flake";
+  description = "First Flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     home-manager = {
