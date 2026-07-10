@@ -2,11 +2,11 @@
 
 {
 
-  #other hypr products:
+  #hypr ecosystem:
   imports = [
     ./land.nix
-    #./idle.nix
+    ./idle.nix
     ./paper.nix
-    #./lock.nix
+    ./lock.nix
   ];
 }
