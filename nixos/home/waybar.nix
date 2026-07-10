@@ -3,6 +3,8 @@
 {
   programs.waybar = {
     enable = true;
+    # autostart:
+    systemd.enable = true;
 
     settings = {
       mainbar = {
