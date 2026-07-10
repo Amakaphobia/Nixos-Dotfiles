@@ -1,5 +1,8 @@
 { config, ... }:
 
+let
+  wallpaper = ../../../wallpapers/waifu/AngelBlue.png;
+in
 {
   services.hyprpaper = {
     enable = true;
@@ -12,7 +15,7 @@
         {
           fit_mode = "cover";
           monitor = "eDP-1";
-          path = "${config.home.homeDirectory}/nixos-dotfiles/wallpapers/currentWall";
+          path = "${wallpaper}";
         }
 
       ];

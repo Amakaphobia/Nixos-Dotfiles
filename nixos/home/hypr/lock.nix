@@ -1,5 +1,8 @@
 { config, ... }:
 
+let
+  wallpaper = ../../../wallpapers/waifu/purplegirl.jpeg;
+in
 {
   programs.hyprlock = {
     enable = true;
@@ -24,7 +27,7 @@
       background = [
         {
           monitor = "";
-          path = "${config.home.homeDirectory}/nixos-dotfiles/wallpapers/waifu/purplegirl.jpeg";
+          path = "${wallpaper}";
         }
       ];
 
