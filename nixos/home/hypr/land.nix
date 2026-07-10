@@ -12,7 +12,7 @@
     configType = "lua";
 
     # read my configFile and append it to the generated one
-    extraConfig = builtins.readFile ./land/landctl.lua;
+    extraConfig = builtins.readFile ./land/init.lua;
   };
 
   xdg.configFile = {

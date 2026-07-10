@@ -20,7 +20,7 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprctl dispatch exit"))
 
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
@@ -38,7 +38,7 @@ for i = 1, 10 do
 end
 
 -- previous 
-hl.bind(mainMod .. " + TAB", hl.dsp.focus({ "previous"}))
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ "previous" }))
 
 -- next
 hl.bind(mainMod .. " + RETURN", hl.dsp.focus({ workspace = "e+1" }))
