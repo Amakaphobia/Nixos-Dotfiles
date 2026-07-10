@@ -29,7 +29,6 @@
     # hypr
     ./home/hypr/hypr.nix
 
-
   ];
 
   home = {

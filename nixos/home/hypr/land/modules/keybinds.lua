@@ -18,7 +18,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lock))
 
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 

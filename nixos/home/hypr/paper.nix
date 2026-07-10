@@ -7,7 +7,7 @@
     settings = {
 
       splash = false;
-    
+
       wallpaper = [
         {
           fit_mode = "cover";
