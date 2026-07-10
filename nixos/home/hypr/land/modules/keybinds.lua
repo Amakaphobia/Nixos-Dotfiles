@@ -16,7 +16,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lock))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
@@ -41,7 +41,7 @@ end
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ "previous"}))
 
 -- next
-hl.bind("SUPER + RETURN", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + RETURN", hl.dsp.focus({ workspace = "e+1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
