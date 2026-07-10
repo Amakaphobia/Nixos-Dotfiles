@@ -5,6 +5,7 @@
 local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
+local lock        = "pidof hyprlock > /dev/null || hyprlock"
 
 ---------------------
 ---- My Keybinds ----
@@ -12,14 +13,16 @@ local menu        = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
 
 local mainMod = "SUPER"
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lock))
+
+local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + h",  hl.dsp.focus({ direction = "left" }))
@@ -34,10 +37,12 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Scroll through existing workspaces with mainMod + scroll
+-- previous 
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ "previous"}))
--- Jump to previous workspace
+
+-- next
 hl.bind("SUPER + RETURN", hl.dsp.focus({ workspace = "e+1" }))
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
