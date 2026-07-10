@@ -38,7 +38,7 @@ for i = 1, 10 do
 end
 
 -- previous 
-hl.bind(mainMod .. " + TAB", hl.dsp.focus({ "previous" }))
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
 
 -- next
 hl.bind(mainMod .. " + RETURN", hl.dsp.focus({ workspace = "e+1" }))
