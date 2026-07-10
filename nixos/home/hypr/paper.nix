@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   services.hyprpaper = {
@@ -12,7 +12,7 @@
         {
           fit_mode = "cover";
           monitor = "eDP-1";
-          path = "../../../wallpapers/currentWall";
+          path = "${config.home.homeDirectory}/nixos-dotfiles/wallpapers/currentWall";
         }
 
       ];
