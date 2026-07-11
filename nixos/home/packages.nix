@@ -8,8 +8,6 @@
     jq
     # terminal session manager
     tmux
-    # background
-    hyprpaper
     # dmenu
     fuzzel
     # nix language server
