@@ -1,1 +1,18 @@
-@import "./style/style.css";
+@import "./style/clock.css";
+@import "./style/modules.css";
+@import "./style/tooltip.css";
+@import "./style/workspaces.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  min-height: 0px;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  color: @Mauve;
+}
+
+window#waybar {
+  background: transparent;
+}
