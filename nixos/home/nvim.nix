@@ -1,27 +1,53 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  nvimConfigDirectory = "${config.home.homeDirectory}/nixos-dotfiles/nixos/home/nvim";
+in
 {
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
 
-    # nix highlighting without treesitter might need to change later
-    ####
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
+    # Do not create ~/.config/nvim/init.lua.
+    # Load Home Manager's generated initialization through
+    # Neovim's wrapper instead.
+    sideloadInitLua = true;
+
+    # make these available to nvims exectution environment
+    extraPackages = with pkgs; [
+
+      # plugin installation
+      git
+      curl
+      unzip
+      gcc
+      gnumake
+
+      # search + navigation
+      ripgrep
+      fd
+      fzf
+
+      # utility library
+      glib
+
+      #optional integrations
+      lazygit
+      tree-sitter
+
+      #lua language support
+      lua-language-server
+      stylua
+
+      #shell formatter
+      shfmt
+
+      #nix language support
+      nil
+      nixfmt
+      statix
     ];
 
-    extraConfig = ''
-      	    syntax enable
-      	    filetype plugin indent on
-      	'';
-
-    ####
-
-    # show current line
-    # show relative line
-    initLua = ''
-      	    vim.opt.number = true
-      	    vim.opt.relativenumber = true
-      	'';
   };
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimConfigDirectory;
 }
