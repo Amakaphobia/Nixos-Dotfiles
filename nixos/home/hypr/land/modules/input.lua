@@ -3,34 +3,31 @@
 ---------------
 
 hl.config({
-    input = {
-        kb_layout  = "de",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "caps:swapescape",
-        kb_rules   = "",
+	input = {
+		kb_layout = "de",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "caps:swapescape",
+		kb_rules = "",
 
-        follow_mouse = 0,
+		-- 0 -> click to focus
+		-- 1 -> window under cursor is focused
+		-- 2 -> keyboard and mouse focus are seperate, clicking changes keyboard focus
+		-- 3 -> keyboard and mouse focus are seperate
+		follow_mouse = 2,
 
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-        touchpad = {
-            natural_scroll = false,
-        },
-    },
+		touchpad = {
+			tap_to_click = false,
+			natural_scroll = false,
+			disable_while_typing = true,
+		},
+	},
 })
 
 hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
+	fingers = 3,
+	direction = "horizontal",
+	action = "workspace",
 })
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
-
-
