@@ -162,6 +162,7 @@
     jdk
     python3
     gcc
+    gnumake
     fzf
     lua51Packages.luarocks
     lua5_1
