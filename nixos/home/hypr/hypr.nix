@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
 
@@ -8,5 +8,9 @@
     ./idle.nix
     ./paper.nix
     ./lock.nix
+  ];
+
+  home.packages = with pkgs; [
+    hyprshutdown
   ];
 }
