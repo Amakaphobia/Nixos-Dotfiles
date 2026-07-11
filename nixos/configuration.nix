@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   flakePath,
   ...
@@ -29,38 +28,30 @@
 
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
-
   # enable hardware acceleration
   hardware.graphics = {
     enable = true;
-
     # VA-API driver for modern intel gpus
     extraPackages = with pkgs; [
       intel-media-driver
     ];
   };
 
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-    FLAKE_PATH = flakePath;
-  };
-
-  #LY
-  services.displayManager.ly.enable = true;
-
-  #Hyprland
+  #Hyprland Portals
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -68,38 +59,67 @@
       xdg-desktop-portal-gtk
     ];
   };
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
-  # Allow HomeManager to apply settings to gtk (?)
-  programs.dconf.enable = true;
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
+    # Allow HomeManager to apply settings to gtk (?)
+    dconf.enable = true;
+  };
 
   # Configure console keymap
   console.keyMap = "de";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+  # enter hibernation after suspension
+  systemd.sleep.settings.Sleep = {
+    # enter hibernation after amount of time specified in suspension
+    HibernateDelaySec = "10m";
+    # keep timer on even when laptop is charging
+    HibernateOnACPower = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  services = {
+    # LY
+    displayManager.ly.enable = true;
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+
+    logind.settings.Login = {
+      # handle lid closing
+      HandleLidSwitch = "suspend-then-hibernate";
+      # handle lid closing with powercord
+      HandleLidSwitchExternalPower = "suspend-then-hibernate";
+      #ignore lid when external monitor is connected
+      HandleLidSwitchDocked = "ignore";
+    };
+
+    # user level file system integration (trash mounts network locations...)
+    gvfs.enable = true;
+    # thumbnails
+    tumbler.enable = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."dave" = {
@@ -112,13 +132,6 @@
     shell = pkgs.zsh;
   };
 
-  # file manager
-  programs.thunar.enable = true;
-  # user level file system integration (trash mounts network locations...)
-  services.gvfs.enable = true;
-  # thumbnails
-  services.tumbler.enable = true;
-
   programs = {
     # firefox
     firefox = {
@@ -127,7 +140,6 @@
       policies = {
         HardwareAcceleration = true;
       };
-
       preferences = {
         "media.ffmpeg.vaapi.enabled" = true;
       };
@@ -135,9 +147,10 @@
 
     #enable ssh agent
     ssh.startAgent = true;
-    # Do not delete
-    # did not listen counter: 2
+    # enable the cool shell
     zsh.enable = true;
+    # file manager
+    thunar.enable = true;
   };
 
   #Fonts
@@ -147,35 +160,45 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment = {
+    # setting variables
+    sessionVariables = {
+      LIBVA_DRIVER_NAME = "iHD";
+      FLAKE_PATH = flakePath;
+    };
 
-  environment.systemPackages = with pkgs; [
-    vim
+    # make /share/zsh available
+    pathsToLink = [ "/share/zsh" ];
 
-    wget
-    curl
-    unzip
-    zip
-    tree
-    ripgrep
-    gnutar
-    bat
-    procps
-    killall
+    #installing system level packages
+    systemPackages = with pkgs; [
+      vim
 
-    nodejs
-    jdk
-    python3
-    gcc
-    gnumake
-    fzf
-    lua51Packages.luarocks
-    lua5_1
-    fastfetch
+      wget
+      curl
+      unzip
+      zip
+      tree
+      ripgrep
+      gnutar
+      bat
+      procps
+      killall
 
-    openssh
-    libva-utils
-  ];
+      nodejs
+      jdk
+      python3
+      gcc
+      gnumake
+      fzf
+      lua51Packages.luarocks
+      lua5_1
+      fastfetch
+
+      openssh
+      libva-utils
+    ];
+  };
 
   #hyprlock rights
   security.pam.services.hyprlock = { };
@@ -197,19 +220,6 @@
       options = "--delete-older-than 60d";
     };
   };
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "26.05"; # No changerino!
 
