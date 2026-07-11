@@ -28,20 +28,20 @@
               echo "Usage: rebuild hostname"
               return 1
             fi
-            if [ -z $FLAKE_PATH ]; then
+            if [ -z "$FLAKE_PATH" ]; then
               echo "No flake path set"
               return 1
             fi
             sudo nixos-rebuild switch --flake "$FLAKE_PATH#$1"
         }
-      
+
       # do a test build of the system without switching
         testbuild(){
           if [ -z "$1" ]; then 
             echo "Usage: testbuild hostname"
             return 1
           fi
-          if [ -z $FLAKE_PATH ]; then
+          if [ -z "$FLAKE_PATH" ]; then
             echo "No flake path set"
             return 1
           fi

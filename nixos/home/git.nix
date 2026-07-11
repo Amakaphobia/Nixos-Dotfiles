@@ -15,8 +15,8 @@
         a = "add --all";
         c = "commit";
         cm = "commit -m";
-        ca = "commit . --amend";
-        pom = "push origin main";
+        ca = "commit --amend";
+        p = "push";
       };
 
       init.defaultBranch = "main";
