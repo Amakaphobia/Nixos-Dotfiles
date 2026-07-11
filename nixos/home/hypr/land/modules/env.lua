@@ -8,9 +8,7 @@ hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
 -- Backend Variables
-hl.env("GDK_BACKEND", "wayland,*")
-hl.env("SDL_VIDEODRIVER", "wayland")
-hl.env("CLUTTER_BACKEND", "wayland")
+hl.env("GDK_BACKEND", "wayland,X11,*")
 
 --XDG Variables
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
