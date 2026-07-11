@@ -18,7 +18,7 @@
       ll = "ls -lisa";
       sr = "systemctl reboot";
       sd = "systemctl poweroff";
-      sh = "systemctl hibernate";
+      hh = "systemctl hibernate";
       cdflake = "cd $FLAKE_PATH";
       cdnix = "cd ~/nixos-dotfiles/";
     };
