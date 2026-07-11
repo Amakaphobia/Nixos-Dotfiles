@@ -8,7 +8,7 @@ local menu = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
 local lock = "pidof hyprlock > /dev/null || hyprlock"
 local waybar = "pgrep waybar >/dev/null 2>&1 && pkill waybar || waybar"
 -- swap to ws3 open firefox if not open
-local browser = "hyprctl dispatch workspace 3; pgrep -x firefox >/dev/null || firefox"
+local browser = "sh -c 'pgrep -f \"^/run/current-system/sw/bin/firefox( |$)\" >/dev/null 2>&1 || exec firefox'"
 
 ---------------------
 ---- My Keybinds ----
@@ -39,10 +39,9 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
 -- Switch workspaces with mainMod + [0-9]
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	if i == 3 then
 		hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(browser))
-	else
-		hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	end
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
