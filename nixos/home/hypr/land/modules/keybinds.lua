@@ -6,6 +6,7 @@ local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
 local lock = "pidof hyprlock > /dev/null || hyprlock"
+local waybar = "pgrep waybar >/dev/null 2>&1 && pkill waybar || waybar"
 
 ---------------------
 ---- My Keybinds ----
@@ -17,6 +18,9 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
+
+--toggle waybar
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(waybar))
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
