@@ -26,8 +26,7 @@ hl.window_rule({
 -- keep workspaces 1-4 peristent for term shell firefox and obsidian
 hl.workspace_rule({ workspace = "1", persistent = true })
 hl.workspace_rule({ workspace = "2", persistent = true })
--- special case: open Firefox if not open, and workspace 3 is selected:
-hl.workspace_rule({ workspace = "3", persistent = true, on_created_empty = "firefox" })
+hl.workspace_rule({ workspace = "3", persistent = true })
 hl.workspace_rule({ workspace = "4", persistent = true })
 
 -- default rules follow after:
