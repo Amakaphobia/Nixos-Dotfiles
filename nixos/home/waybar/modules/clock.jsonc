@@ -1,7 +1,9 @@
 {
-  "interval" : 59,
-  "format" : "{:%A, %H:%M}",
-  "tooltip-format" : "{:%d %B %Y}",
-  "align" : 0.5,
-  "justify" : "center",
+  "clock" : {
+    "interval" : 59,
+    "format" : "{:%A, %H:%M}",
+    "tooltip-format" : "{:%d %B %Y}",
+    "align" : 0.5,
+    "justify" : "center",
+  }
 }
