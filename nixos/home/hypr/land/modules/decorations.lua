@@ -2,9 +2,9 @@
 ---- My Colors     ----
 -----------------------
 
-local pink = 0xf5c2e7ff
-local lavender = 0xb4befeff
-local grey = 0x595959dd
+local mauve = "rgba(ca9ee6ff)"
+local saphire = "rgba(85c1dcff)"
+local grey = "rgba(595959dd)"
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -12,47 +12,44 @@ local grey = 0x595959dd
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-    general = {
-        gaps_in  = 3,
-        gaps_out = 3,
+	general = {
+		gaps_in = 3,
+		gaps_out = 8,
 
-        border_size = 1,
+		border_size = 2,
 
-        col = {
-            active_border   = { colors = {pink, lavender}, angle = 45 },
-            inactive_border = grey,
-        },
+		col = {
+			active_border = { colors = { saphire, mauve }, angle = 90 },
+			inactive_border = grey,
+		},
 
-        resize_on_border = false,
+		resize_on_border = false,
+		allow_tearing = false,
+	},
 
-        -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
-        allow_tearing = false,
+	decoration = {
+		rounding = 7,
+		rounding_power = 2,
 
-    },
+		active_opacity = 0.9,
+		inactive_opacity = 0.9,
 
-    decoration = {
-        rounding       = 7,
-        rounding_power = 2,
+		shadow = {
+			enabled = false,
+			range = 4,
+			render_power = 3,
+			color = 0xee1a1a1a,
+		},
 
-	active_opacity = 0.9,
-        inactive_opacity = 0.9,
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 1,
+			vibrancy = 0.1696,
+		},
+	},
 
-        shadow = {
-            enabled      = false,
-            range        = 4,
-            render_power = 3,
-            color        = 0xee1a1a1a,
-        },
-
-        blur = {
-            enabled   = true,
-            size      = 3,
-            passes    = 1,
-            vibrancy  = 0.1696,
-        },
-    },
-
-    animations = {
-        enabled = true,
-    },
+	animations = {
+		enabled = true,
+	},
 })
