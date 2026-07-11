@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.waybar = {
@@ -9,11 +9,11 @@
     settings = {
       mainbar = {
         layer = "top";
-        position = "left";
+        position = "top";
         # height = 50;
-        width = 60;
+        width = 1720;
         spacing = 0;
-        modules-right = [
+        modules-left = [
           "hyprland/workspaces"
         ];
         modules-center = [
@@ -21,7 +21,7 @@
           # this is a active window name display I dont really need
           #   "hyprland/window"
         ];
-        modules-left = [
+        modules-right = [
           "pulseaudio"
           "network"
           "cpu"
@@ -32,40 +32,25 @@
 
         "hyprland/workspaces" = {
           format = "{icon}";
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
 
           format-icons = {
-            "1" = "1";
-            "2" = "2";
-            "3" = "3";
-            "4" = "4";
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
             "5" = "5";
             "6" = "6";
             "7" = "7";
             "8" = "8";
             "9" = "9";
-            "10" = "10";
-            urgent = "!";
-            active = "●";
-            default = "○";
+            "10" = "0";
           };
-        };
-
-        "hyprland/window" = {
-          format = "{}";
-          max-length = 60;
-          separate-outputs = true;
-          expand = true;
-
-          align = 0.5;
-          justify = "center";
         };
 
         clock = {
           interval = 60;
-          format = "{0:%d.%m}\n{0:%H:%M}";
-          tooltip-format = "{:%A, %d %B %Y}";
+          format = "{:%A, %H:%M}";
+          tooltip-format = "{:%d %B %Y}";
           align = 0.5;
           justify = "center";
         };
@@ -77,11 +62,18 @@
            font-family: "JetBrainsMono Nerd Font";
            font-size: 10px;
          }
-          
-         window#waybar {
-           background: rgba(20, 20, 28, 0.92);
-           color: #cdd6f4;
-      	   border: 1px solid yellow;
+        .modules-left,
+        .modules-center,
+        .modules-right {
+          background:transparent;
+          border-radius: 6px;
+          box-shadow:
+            inset 0 0 4px #11111b,
+            inset 0 0 10px #585b70; 
+        }
+
+        window#waybar {
+           background: transparent;
         }
 
         tooltip {
@@ -96,41 +88,35 @@
         }
           
         #clock {
-      	  border: 1px solid red;
-          padding: 3px 2px;
-      	  margin: 2px;
-      	  color: #f5c2e7;
-       }
+          background: transparent;
+          border-radius: 6px;
+          padding: 0px 10px;
+      	  margin: 5px 5px;
+        }
 
-      /* this styles the hyprland/window widget */
-      /*
+        #workspaces button {
+          min-width: 60px;
+          color: #cba6f7;
+          background: transparent;
+          border: 1px solid;
+          border-color: #cba6f7;
+          padding: 0px 0px;
+          margin: 5px 5px;
+          box-shadow: none;
+          text-shadow: none;
+        }
 
-      window#waybar.empty #window,
-      window#waybar.solo #window,
-      window#waybar:not(.solo) #window,
-      window#waybar.floating #window,
-      window#waybar.fullscreen #window,
-      window#waybar.swallowing #window {
-        color: #cdd6f4;
-        background: transparent;
-        border: 1px solid green;
-        margin: 2px 5px;
-        margin-top: 20px;
-      }
+        #workspaces button.active {
+            box-shadow:
+            inset 0 0 4px rgba(203, 166, 247, 0.9),
+            inset 0 0 10px rgba(203, 166, 247, 0.45); 
+        }
 
-      */
-
-      #workspaces button {
-        color: #cba6f7;
-        background: transparent;
-        border: 1px solid;
-        border-color: #cba6f7;
-        padding: 2px 0;
-        margin: 2px 5px;
-        box-shadow: none;
-        text-shadow: none;
-      }
-                  
+        /* force workspace icons to be centered */  
+        #workspaces button label {
+          padding: 0px;
+          margin: 0px;
+        }
     '';
   };
 }
