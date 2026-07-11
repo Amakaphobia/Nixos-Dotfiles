@@ -60,16 +60,6 @@
     ];
   };
 
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-
-    # Allow HomeManager to apply settings to gtk (?)
-    dconf.enable = true;
-  };
-
   # Configure console keymap
   console.keyMap = "de";
   security.rtkit.enable = true;
@@ -133,18 +123,25 @@
   };
 
   programs = {
+    # set hyprland as WM
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    # Allow HomeManager to apply settings to gtk (?)
+    dconf.enable = true;
     # firefox
     firefox = {
       enable = true;
 
       policies = {
         HardwareAcceleration = true;
+        SearchEngines.Default = "DuckDuckGo";
       };
       preferences = {
         "media.ffmpeg.vaapi.enabled" = true;
       };
     };
-
     #enable ssh agent
     ssh.startAgent = true;
     # enable the cool shell
