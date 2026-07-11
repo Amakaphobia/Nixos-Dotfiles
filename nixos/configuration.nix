@@ -183,7 +183,7 @@
   nix = {
     settings = {
       # Flakes
-      expiremental-features = [
+      experimental-features = [
         "nix-command"
         "flakes"
       ];
