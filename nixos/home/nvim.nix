@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  flakePath,
+  ...
+}:
 
 let
-  nvimConfigDirectory = "${config.home.homeDirectory}/nixos-dotfiles/nixos/home/nvim";
+  nvimConfigDirectory = "${flakePath}/home/nvim";
 in
 {
   programs.neovim = {

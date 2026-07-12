@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, flakePath, ... }:
 
 let
-  waybarConfigDirectory = "${config.home.homeDirectory}/nixos-dotfiles/nixos/home/waybar";
+  waybarConfigDirectory = "${flakePath}/home/waybar";
 in
 {
   programs.waybar = {
