@@ -151,9 +151,17 @@
   };
 
   #Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only
+    ];
+
+    fontconfig.defaultFonts.monospace = [
+      "JetBrainsMono Nerd Font"
+      "Symbols Nerd Font"
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
 
