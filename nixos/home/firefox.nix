@@ -25,14 +25,15 @@
           }
         }
         @-moz-document domain("chatgpt.com") {
-            pre,
-            code {
-              font-family:
-                "JetBrainsMono Nerd Font Mono",
-                "Symbols Nerd Font Mono",
-                ui-monospace,
-                monospace !important;
-            }
+          pre,
+          code {
+            font-family:
+              "JetBrainsMono Nerd Font Mono",
+              "Symbols Nerd Font Mono",
+              ui-monospace,
+              monospace !important;
+          }
+        }
       '';
     };
   };
