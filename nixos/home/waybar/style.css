@@ -1,3 +1,4 @@
+@import "./style/color.css";
 @import "./style/clock.css";
 @import "./style/modules.css";
 @import "./style/tooltip.css";
@@ -10,6 +11,7 @@
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
   color: @Mauve;
 }
 
