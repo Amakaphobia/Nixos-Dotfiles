@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     # process monitor
     ./home/btop.nix
+    # firefox user profiles
+    ./home/firefox.nix
     # git
     ./home/git.nix
     # terminal
