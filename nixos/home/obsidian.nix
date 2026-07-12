@@ -65,6 +65,36 @@ let
       cp ${styleCss} $out/styles.css
     '';
   };
+  dataview = pkgs.stdenvNoCC.mkDerivation rec {
+
+    pname = "obsidian-dataview";
+    version = "0.5.68";
+
+    manifest = pkgs.fetchurl {
+      url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/${version}/manifest.json";
+      hash = "sha256-kjXbRxEtqBuFWRx57LmuJXTl5yIHBW6XZHL5BhYoYYU=";
+    };
+
+    mainJs = pkgs.fetchurl {
+      url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/${version}/main.js";
+      hash = "sha256-eU6ert5zkgu41UsO2k9d4hgtaYzGOHdFAPJPFLzU2gs=";
+    };
+
+    stylesCss = pkgs.fetchurl {
+      url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/${version}/styles.css";
+      hash = "sha256-MwbdkDLgD5ibpyM6N/0lW8TT9DQM7mYXYulS8/aqHek=";
+    };
+
+    dontUnpack = true;
+
+    installPhase = ''
+      mkdir -p $out
+
+      cp ${manifest} $out/manifest.json
+      cp ${mainJs} $out/main.js
+      cp ${stylesCss} $out/styles.css
+    '';
+  };
 in
 {
   programs.obsidian = {
@@ -79,14 +109,64 @@ in
       app = {
         alwaysUpdateLinks = true;
         vimMode = true;
+
+        # open in editing mode
+        defaultViewMode = "source";
+        # do not use live preview
+        livePreview = false;
+
+        # Editor
+        showLineNumber = true;
+        # activate spellcheck
+        spellcheck = true;
+        spellcheckLanguages = [
+          "en-US"
+          "de-DE"
+        ];
       };
+
+      # Hotkeys
+
+      hotkeys = {
+        # Remove C-N form the command that reuses the current tab.
+        "file-explorer:new-file" = [ ];
+        # Make C-N create a note in a new tab
+        "file-explorer:new-file-in-new-pane" = [
+          {
+            modifiers = [ "Mod" ];
+            key = "N";
+          }
+        ];
+      };
+
+      # Plugins
+
       corePlugins = [
-        "backlink"
+        {
+          name = "backlink";
+          settings = {
+            backlinkInDocument = true;
+          };
+        }
         "bases"
         "bookmarks"
-        "canvas"
+        {
+          name = "canvas";
+          settings = {
+            snapToObjects = true;
+            snapToGrid = true;
+            zoomBreakpoint = 0.8;
+            defaultWheelBehavior = "zoom";
+          };
+        }
         "command-palette"
-        "daily-notes"
+        {
+          name = "daily-notes";
+          settings = {
+            folder = "05 - Journal/daily Notes";
+          };
+        }
+        "editor-status"
         "file-explorer"
         "footnotes"
         "global-search"
@@ -96,13 +176,28 @@ in
         "page-preview"
         "properties"
         "slash-command"
-        "switcher"
+        {
+          name = "switcher";
+          settings = {
+            showExistingOnly = true;
+            showAttachments = true;
+            showAllFileTypes = false;
+          };
+        }
         "templates"
         "word-count"
       ];
 
       communityPlugins = [
-        styleSettings
+        {
+          pkg = styleSettings;
+          settings = builtins.fromJSON (
+            builtins.readFile ./obsidian/plugins/obsidian-style-settings/data.json
+          );
+        }
+        {
+          pkg = dataview;
+        }
       ];
     };
 
@@ -117,6 +212,10 @@ in
           ];
           appearance = {
             theme = "obsidian";
+
+            interfaceFontFamily = "Noto Sans";
+            textFontFamily = "Noto Serif";
+            monospaceFontFamily = "JetBrainsMono Nerd Font Mono";
           };
         };
       };
