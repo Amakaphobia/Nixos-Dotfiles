@@ -37,6 +37,10 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+
+              extraSpecialArgs = {
+                inherit flakePath;
+              };
               users.dave = import ./home.nix;
               backupFileExtension = "backup";
             };
