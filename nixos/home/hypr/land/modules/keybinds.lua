@@ -6,7 +6,8 @@ local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
 local lock = "pidof hyprlock > /dev/null || hyprlock"
-local waybar = "pgrep waybar >/dev/null 2>&1 && pkill waybar || waybar"
+--local waybar = "pgrep waybar >/dev/null 2>&1 && pkill waybar || waybar"
+local waybar = "pkill -USR1 waybar"
 -- swap to ws3 open firefox if not open
 local browser = "sh -c 'pgrep -f \"^/run/current-system/sw/bin/firefox( |$)\" >/dev/null 2>&1 || exec firefox'"
 
