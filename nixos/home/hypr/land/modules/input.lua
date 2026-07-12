@@ -5,7 +5,8 @@
 hl.config({
 	input = {
 		kb_layout = "de",
-		kb_variant = "",
+		-- this disables needing to press ticks and backticks twice for on character
+		kb_variant = "nodeadkeys",
 		kb_model = "",
 		kb_options = "caps:swapescape",
 		kb_rules = "",
