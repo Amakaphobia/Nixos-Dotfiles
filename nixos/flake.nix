@@ -6,6 +6,12 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # temporarily pin this commit. It fixes waybar hyprland lua interaction
+    waybar = {
+      url = "github:Alexays/Waybar/05945748dccce28bf96d26d8f64a9e69a8dd49ba";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # @ syntax : name all of it inputs, but pull out the named variables and make them locally available
@@ -39,7 +45,7 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit flakePath;
+                inherit inputs flakePath;
               };
               users.dave = import ./home.nix;
               backupFileExtension = "backup";
