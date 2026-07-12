@@ -1,17 +1,32 @@
 {
   "hyprland/workspaces" : {
-    "format" : "{icon}",
+    "format" : "{name} :{icon}{windows}",
+    "persistent-workspaces": {
+      "*" : 4,
+    },
     "format-icons" : {
-      "1" : "",
-      "2" : "",
-      "3" : "",
-      "4" : "",
-      "5" : "5",
-      "6" : "6",
-      "7" : "7",
-      "8" : "8",
-      "9" : "9",
-      "10" : "0",
+      "active": "",
+      "empty": "",
+      "default": "",
+      "urgent": " ! ",
+      "special":"",
+    },
+    "window-rewrite-default": "󰊠",
+    "window-rewrite": {
+      // --- Work ---
+      "kitty": "󰆍",
+      "firefox": "",
+      "obsidian": "󰹕",
+      // --- Apps ---
+      "discord": "",
+      "spotify": "",
+      // --- Graphics & Visual ---
+      "xdg-desktop-portal-gtk": "",
+      "thunar": "",
+      "imv": "󰄄",
+      "vlc": "󰕼",
+      // --- System ---
+      // --- Tool ---
     },
   },
 }

@@ -24,10 +24,10 @@ hl.window_rule({
 })
 -- Workspace-Rules
 -- keep workspaces 1-4 peristent for term shell firefox and obsidian
-hl.workspace_rule({ workspace = "1", persistent = true })
-hl.workspace_rule({ workspace = "2", persistent = true })
-hl.workspace_rule({ workspace = "3", persistent = true })
-hl.workspace_rule({ workspace = "4", persistent = true })
+hl.workspace_rule({ workspace = "1", default_name = "", persistent = true })
+hl.workspace_rule({ workspace = "2", default_name = "", persistent = true })
+hl.workspace_rule({ workspace = "3", default_name = "", persistent = true })
+hl.workspace_rule({ workspace = "4", default_name = "", persistent = true })
 
 -- default rules follow after:
 hl.window_rule({
