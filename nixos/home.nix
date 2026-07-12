@@ -19,7 +19,7 @@
     # prompt
     ./home/starship.nix
     # theme
-    ./home/system-theme.nix
+    ./home/theme.nix
     # statusbar
     ./home/waybar.nix
     # how sandboxed/wayland apps ask for desktop features
@@ -32,6 +32,11 @@
     ./home/hypr/hypr.nix
 
   ];
+
+  dave.theme = {
+    wallpaper = ../wallpapers/waifu/AngelBlue.png;
+    lockscreen = ../wallpapers/waifu/purplegirl.jpeg;
+  };
 
   home = {
     username = "dave";

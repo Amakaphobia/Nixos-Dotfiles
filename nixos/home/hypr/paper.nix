@@ -1,8 +1,4 @@
 { config, ... }:
-
-let
-  wallpaper = ../../../wallpapers/waifu/AngelBlue.png;
-in
 {
   services.hyprpaper = {
     enable = true;
@@ -15,7 +11,7 @@ in
         {
           fit_mode = "cover";
           monitor = "eDP-1";
-          path = "${wallpaper}";
+          path = "${config.dave.theme.wallpaper}";
         }
 
       ];

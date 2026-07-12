@@ -1,8 +1,4 @@
 { config, ... }:
-
-let
-  wallpaper = ../../../wallpapers/waifu/purplegirl.jpeg;
-in
 {
   programs.hyprlock = {
     enable = true;
@@ -27,7 +23,7 @@ in
       background = [
         {
           monitor = "";
-          path = "${wallpaper}";
+          path = "${config.dave.theme.lockscreen}";
         }
       ];
 
