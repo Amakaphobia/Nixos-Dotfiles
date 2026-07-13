@@ -38,6 +38,8 @@
     libnotify
     # graphical sound control
     pavucontrol
+    # graphical network control
+    networkmanagerapplet
   ];
 
   programs = {

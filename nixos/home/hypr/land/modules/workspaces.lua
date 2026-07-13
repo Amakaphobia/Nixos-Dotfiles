@@ -11,7 +11,11 @@ hl.window_rule({
   match = { class = "org.pulseaudio.pavucontrol" },
   float = true,
 })
-
+hl.window_rule({
+  name = "Network-connection Editor Rules",
+  match = { class = "nm-connection-editor" },
+  float = true,
+})
 -- Obsidian
 hl.window_rule({
   name = "Obsidian Rules",

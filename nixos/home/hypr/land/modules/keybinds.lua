@@ -30,6 +30,7 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown"))
 
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
@@ -39,12 +40,12 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
 
 -- Switch workspaces with mainMod + [0-9]
 for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	if i == 3 then
-		hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(browser))
-	end
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+  local key = i % 10 -- 10 maps to key 0
+  hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  if i == 3 then
+    hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(browser))
+  end
+  hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- previous
@@ -59,42 +60,42 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Toggle between Dwindle and scrolling
 hl.bind(mainMod .. " + SHIFT + SPACE", function()
-	local currentLayout = hl.get_config("general.layout")
-	local nextLayout
+  local currentLayout = hl.get_config("general.layout")
+  local nextLayout
 
-	if currentLayout == "dwindle" then
-		nextLayout = "scrolling"
-	else
-		nextLayout = "dwindle"
-	end
+  if currentLayout == "dwindle" then
+    nextLayout = "scrolling"
+  else
+    nextLayout = "dwindle"
+  end
 
-	hl.config({
-		general = {
-			layout = nextLayout,
-		},
-	})
+  hl.config({
+    general = {
+      layout = nextLayout,
+    },
+  })
 end)
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
+  "XF86AudioRaiseVolume",
+  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
+  "XF86AudioLowerVolume",
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
+  "XF86AudioMute",
+  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
+  "XF86AudioMicMute",
+  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+  { locked = true, repeating = true }
 )
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
