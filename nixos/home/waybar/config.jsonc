@@ -7,7 +7,8 @@
 
   "include": [
     "./modules/workspaces.jsonc",
-    "./modules/clock.jsonc"
+    "./modules/clock.jsonc",
+    "./modules/battery.jsonc",
   ],
 
   "modules-left": [
@@ -19,11 +20,11 @@
   ],
 
   "modules-right": [
-    "pulseaudio",
-    "network",
-    "cpu",
-    "memory",
+//    "pulseaudio",
+//  "network",
+//  "cpu",
+//  "memory",
+//  "tray",
     "battery",
-    "tray"
   ]
 }

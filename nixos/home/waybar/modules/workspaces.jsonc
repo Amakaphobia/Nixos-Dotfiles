@@ -1,6 +1,7 @@
 {
   "hyprland/workspaces" : {
-    "format" : "{name} :{icon}{windows}",
+    "align" : 0.5,
+    "format" : "{name}|{icon}{windows}",
     "persistent-workspaces": {
       "*" : 4,
     },
