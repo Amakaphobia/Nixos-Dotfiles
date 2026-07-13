@@ -15,17 +15,12 @@
     "./modules/pulseaudio.jsonc",
     "./modules/hardware.jsonc",
     "./modules/powerprofiles.jsonc",
+    "./modules/swaync.jsonc",
   ],
 
   "modules-left": ["hyprland/workspaces"],
 
-  "modules-center": ["clock", "power-profiles-daemon"],
+  "modules-center": ["custom/notification", "clock", "power-profiles-daemon"],
 
-  "modules-right": [
-    "group/hardware",
-    "pulseaudio",
-    //  "tray",
-    "network",
-    "battery",
-  ],
+  "modules-right": ["group/hardware", "pulseaudio", "network", "battery"],
 }
