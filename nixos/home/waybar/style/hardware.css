@@ -1,16 +1,39 @@
-#battery {
+#hardware {
   background: @Surface2;
+  border: 1px solid @Blue;
   border-radius: 90px;
   padding: 0px 10px;
   margin: 2px 2px;
+  box-shadow: inset 1px 1px 1px @Blue;
 }
 
+#disk,
+#cpu,
+#memory {
+  color: @Blue;
+  margin: 2px 2px;
+  padding: 2px 5px;
+  border-radius: 200px;
+}
+
+#disk {
+  box-shadow: inset 1px 1px 1px @Blue;
+}
+
+#cpu {
+  box-shadow: inset 1px 1px 1px @Blue;
+  min-width: 60px;
+}
+
+#memory {
+  box-shadow: inset 1px 1px 1px @Blue;
+}
+/*
 #battery.charging.good,
 #battery.discharging.good,
 #battery.charging.normal,
 #battery.charging.warning {
   color: @Teal;
-  /*border: 1px solid @Teal;*/
   box-shadow: inset 1px 1px 1px @Teal;
 }
 
@@ -32,3 +55,4 @@
   border: 1px solid @Red;
   box-shadow: inset 1px 1px 1px @Red;
 }
+*/

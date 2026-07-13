@@ -103,6 +103,8 @@
       HandleLidSwitchDocked = "ignore";
     };
 
+    # ppower-profiles-daemon
+    power-profiles-daemon.enable = true;
     # user level file system integration (trash mounts network locations...)
     gvfs.enable = true;
     # thumbnails

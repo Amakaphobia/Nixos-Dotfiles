@@ -1,0 +1,6 @@
+{
+  "disk": {
+    "interval": 3600,
+    "format": "󰨣 {percentage_free}%",
+  },
+}

@@ -12,16 +12,16 @@
     "./modules/network.jsonc",
     "./modules/pulseaudio.jsonc",
     "./modules/hardware.jsonc",
+    "./modules/powerprofiles.jsonc",
   ],
 
   "modules-left": ["hyprland/workspaces"],
 
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "power-profiles-daemon"],
 
   "modules-right": [
     "group/hardware",
     "pulseaudio",
-    //  "memory",
     //  "tray",
     "network",
     "battery",

@@ -5,6 +5,7 @@
 @import "./style/workspaces.css";
 @import "./style/battery.css";
 @import "./style/network.css";
+@import "./style/hardware.css";
 @import "./style/pulseaudio.css";
 
 * {
@@ -16,5 +17,4 @@
 
 window#waybar {
   background: transparent;
-  border: 1px solid red;
 }

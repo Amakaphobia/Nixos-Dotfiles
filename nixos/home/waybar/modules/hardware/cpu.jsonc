@@ -1,7 +1,13 @@
 {
   "cpu": {
     "interval": 1,
-    "format": "{icon}{usage:>2}%",
+    "format": "󰻠 {icon}{usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "states": {
+      "high": 100,
+      "mid": 80,
+      "low": 50,
+      "sleep": 10,
+    },
   },
 }
