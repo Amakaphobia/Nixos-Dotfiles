@@ -1,7 +1,9 @@
 {
   "layer": "top",
   "position": "top",
-  "width": 1720,
+  "margin-top": 5,
+  "margin-left": 100,
+  "margin-right": 100,
   "spacing": 0,
   "reload_style_on_change": true,
 

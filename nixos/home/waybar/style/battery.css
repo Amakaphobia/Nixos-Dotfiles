@@ -1,5 +1,4 @@
 #battery {
-  background: @Surface2;
   border-radius: 90px;
   padding: 0px 10px;
   margin: 2px 2px;
@@ -10,7 +9,7 @@
 #battery.charging.normal,
 #battery.charging.warning {
   color: @Teal;
-  /*border: 1px solid @Teal;*/
+  border: 1px solid @Teal;
   box-shadow: inset 1px 1px 1px @Teal;
 }
 

@@ -4,10 +4,10 @@
     "format": "󰻠 {icon}{usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     "states": {
-      "high": 100,
-      "mid": 80,
-      "low": 50,
-      "sleep": 10,
+      "high": 90,
+      "mid": 50,
+      "low": 10,
+      "sleep": 0,
     },
   },
 }

@@ -4,7 +4,7 @@
 }
 #workspaces button {
   min-width: 60px;
-  background: @Surface2;
+  border: 1px solid @Mauve;
   border-radius: 16px;
   padding: 0px 10px;
   margin: 2px 2px;

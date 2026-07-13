@@ -34,7 +34,10 @@
     # pictures
     gimp
     imv
-
+    #enables to send notifications to deamons
+    libnotify
+    #sound control
+    pavucontrol
   ];
 
   programs = {
