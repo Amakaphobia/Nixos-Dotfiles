@@ -10,6 +10,8 @@
     "./modules/clock.jsonc",
     "./modules/battery.jsonc",
     "./modules/network.jsonc",
+    "./modules/pulseaudio.jsonc",
+    "./modules/hardware.jsonc",
   ],
 
   "modules-left": ["hyprland/workspaces"],
@@ -17,11 +19,11 @@
   "modules-center": ["clock"],
 
   "modules-right": [
-    //  "pulseaudio",
-    "network",
-    //  "cpu",
+    "group/hardware",
+    "pulseaudio",
     //  "memory",
     //  "tray",
+    "network",
     "battery",
   ],
 }

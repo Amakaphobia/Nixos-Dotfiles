@@ -1,0 +1,15 @@
+{
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      // "memory",
+      // "disk",
+    ],
+  },
+  "include": [
+    "./hardware/cpu.jsonc",
+    // "./hardware/memory.jsonc",
+    // "./hardware/disk.jsonc",
+  ],
+}

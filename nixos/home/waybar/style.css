@@ -5,6 +5,7 @@
 @import "./style/workspaces.css";
 @import "./style/battery.css";
 @import "./style/network.css";
+@import "./style/pulseaudio.css";
 
 * {
   all: unset;

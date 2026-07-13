@@ -1,0 +1,16 @@
+#pulseaudio {
+  background: @Surface2;
+  border-radius: 90px;
+  min-width: 20px;
+  padding: 0px 10px;
+  margin: 2px 0px;
+  color: @Teal;
+  border: 1px solid @Teal;
+  box-shadow: inset 1px 1px 1px @Teal;
+}
+
+#pulseaudio.muted {
+  color: @Maroon;
+  border: 1px solid @Maroon;
+  box-shadow: inset 1px 1px 1px @Maroon;
+}

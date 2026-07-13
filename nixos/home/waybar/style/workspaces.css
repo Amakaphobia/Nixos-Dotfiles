@@ -1,22 +1,21 @@
 #workspaces {
   margin: 0px 5px;
-  background:transparent;
+  background: transparent;
 }
 #workspaces button {
   min-width: 60px;
   background: @Surface2;
   border-radius: 16px;
-  padding:  0px 10px;
+  padding: 0px 10px;
   margin: 2px 2px;
   font-size: 0.4rem;
   transition: none;
-  box-shadow:
-    inset 1px 1px 1px @Mauve;
+  box-shadow: inset 1px 1px 1px @Mauve;
 }
 #workspaces button.active {
   box-shadow:
     inset 1px 1px 1px @Mauve,
-    inset 0px 0px 10px @Peach; 
+    inset 0px 0px 10px @Peach;
 }
 
 #workspaces button.active label {
@@ -29,13 +28,13 @@
     inset 1px 1px 1px @Mauve;
 }
 
-#workspaces button.active:hover{
+#workspaces button.active:hover {
   box-shadow:
     inset 1px 1px 1px @Mauve,
     inset 1px 0px 4px @Mauve,
-    inset 0px 0px 10px @Peach; 
+    inset 0px 0px 10px @Peach;
 }
 
-#workspaces button.empty label{
+#workspaces button.empty label {
   color: @Text;
 }

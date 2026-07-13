@@ -8,32 +8,27 @@
 #battery.charging.good,
 #battery.discharging.good,
 #battery.charging.normal,
-#battery.charging.warning{
+#battery.charging.warning {
   color: @Teal;
   /*border: 1px solid @Teal;*/
-  box-shadow: 
-   inset 1px 1px 1px @Teal;
+  box-shadow: inset 1px 1px 1px @Teal;
 }
 
 #battery.discharging.normal,
-#battery.charging.critical{
+#battery.charging.critical {
   color: @Blue;
   border: 1px solid @Blue;
-  box-shadow: 
-   inset 1px 1px 1px @Blue;
+  box-shadow: inset 1px 1px 1px @Blue;
 }
 
-#battery.discharging.warning{
+#battery.discharging.warning {
   color: @Peach;
   border: 1px solid @Peach;
-  box-shadow: 
-   inset 1px 1px 1px @Peach;
+  box-shadow: inset 1px 1px 1px @Peach;
 }
 
-#battery.discharging.critical{
+#battery.discharging.critical {
   color: @Red;
   border: 1px solid @Red;
-  box-shadow: 
-   inset 1px 1px 1px @Red;
+  box-shadow: inset 1px 1px 1px @Red;
 }
-

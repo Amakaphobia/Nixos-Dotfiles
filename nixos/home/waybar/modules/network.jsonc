@@ -1,6 +1,5 @@
 {
   "network": {
-    "interface": "wlp0s20f3",
     "format": "{ifname}",
     "format-wifi": "",
     "format-ethernet": "",
