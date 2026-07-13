@@ -235,7 +235,6 @@
 
       openssh
       libva-utils
-      polkit_gnome
     ];
   };
 
