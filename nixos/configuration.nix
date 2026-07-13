@@ -63,6 +63,8 @@
   # Configure console keymap
   console.keyMap = "de";
   security.rtkit.enable = true;
+  # polkit is used for auth
+  security.polkit.enable = true;
 
   # enter hibernation after suspension
   systemd.sleep.settings.Sleep = {
@@ -233,6 +235,7 @@
 
       openssh
       libva-utils
+      polkit_gnome
     ];
   };
 

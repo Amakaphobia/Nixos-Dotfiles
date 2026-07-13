@@ -16,6 +16,8 @@
     ./home/obsidian.nix
     # stuff
     ./home/packages.nix
+    # polkit
+    ./home/polkit.nix
     # prompt
     ./home/starship.nix
     # sway notification center
