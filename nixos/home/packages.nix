@@ -34,9 +34,9 @@
     # pictures
     gimp
     imv
-    #enables to send notifications to deamons
+    # enables to send desktop notifications
     libnotify
-    #sound control
+    # graphical sound control
     pavucontrol
   ];
 

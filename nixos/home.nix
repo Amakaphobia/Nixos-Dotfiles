@@ -18,6 +18,8 @@
     ./home/packages.nix
     # prompt
     ./home/starship.nix
+    # sway notification center
+    ./home/swaync.nix
     # theme
     ./home/theme.nix
     # statusbar

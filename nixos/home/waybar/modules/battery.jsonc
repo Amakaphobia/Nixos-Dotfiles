@@ -2,7 +2,8 @@
   "battery": {
     "interval": 60,
     "states": {
-      "good": 100,
+      "full": 100,
+      "good": 99,
       "normal": 80,
       "warning": 30,
       "critical": 15,
@@ -10,7 +11,7 @@
     "events": {
       "on-discharging-warning": "notify-send -u normal 'Low Battery'",
       "on-discharging-critical": "notify-send -u critical 'Very Low Battery'",
-      "on-charging-100": "notify-send -u normal 'Battery Full!'",
+      "on-charging-full": "notify-send -u normal 'Battery Full!'",
       "on-discharging": "notify-send -u normal 'Power Switch' Discharging",
       "on-charging": "notify-send -u normal 'Power Switch' 'Charging'",
     },
