@@ -1,0 +1,39 @@
+#battery {
+  background: @Surface2;
+  border-radius: 90px;
+  padding: 0px 10px;
+  margin: 2px 0px;
+}
+
+#battery.charging.good,
+#battery.discharging.good,
+#battery.charging.normal,
+#battery.charging.warning{
+  color: @Teal;
+  /*border: 1px solid @Teal;*/
+  box-shadow: 
+   inset 1px 1px 1px @Teal;
+}
+
+#battery.discharging.normal,
+#battery.charging.critical{
+  color: @Blue;
+  border: 1px solid @Blue;
+  box-shadow: 
+   inset 1px 1px 1px @Blue;
+}
+
+#battery.discharging.warning{
+  color: @Peach;
+  border: 1px solid @Peach;
+  box-shadow: 
+   inset 1px 1px 1px @Peach;
+}
+
+#battery.discharging.critical{
+  color: @Red;
+  border: 1px solid @Red;
+  box-shadow: 
+   inset 1px 1px 1px @Red;
+}
+

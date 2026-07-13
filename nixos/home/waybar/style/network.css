@@ -1,0 +1,36 @@
+#network {
+  background: @Surface2;
+  border-radius: 90px;
+  padding: 0px 10px;
+  margin: 2px 0px;
+}
+
+#network.ethernet,
+#network.wifi{
+  color: @Teal;
+  border: 1px solid @Teal;
+  box-shadow: 
+   inset 1px 1px 1px @Teal;
+}
+
+#network.disabled{
+  color: @Crust;
+  border: 1px solid @Crust;
+  box-shadow: 
+   inset 1px 1px 1px @Crust;
+}
+
+/*only physical connection exists IP has not been established*/
+#network.linked{
+  color: @Peach;
+  border: 1px solid @Peach;
+  box-shadow: 
+   inset 1px 1px 1px @Peach;
+}
+
+#network.disconnected{
+  color: @Maroon;
+  border: 1px solid @Maroon;
+  box-shadow: 
+   inset 1px 1px 1px @Maroon;
+}

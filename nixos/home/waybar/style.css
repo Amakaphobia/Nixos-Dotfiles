@@ -3,6 +3,8 @@
 @import "./style/modules.css";
 @import "./style/tooltip.css";
 @import "./style/workspaces.css";
+@import "./style/battery.css";
+@import "./style/network.css";
 
 * {
   all: unset;
@@ -13,4 +15,5 @@
 
 window#waybar {
   background: transparent;
+  border: 1px solid red;
 }
