@@ -47,6 +47,9 @@ in
       #shell formatter
       shfmt
 
+      # JSON and JSONC formatter
+      prettier
+
       #nix language support
       nil
       nixfmt
