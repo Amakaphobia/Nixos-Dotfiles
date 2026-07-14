@@ -1,11 +1,11 @@
-:
+{
   config,
   pkgs,
   ...
 }:
 
 let
-  nvimConfigDirectory = "~/nixos-dotfiles/nixos/home/modules/nvim/config";
+  nvimConfigDirectory = "/home/dave/nixos-dotfiles/nixos/home/modules/nvim/config";
 in
 {
   programs.neovim = {
