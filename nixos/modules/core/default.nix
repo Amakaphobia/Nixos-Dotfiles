@@ -3,8 +3,8 @@
   imports = [
     ./bootloader.nix
     ./locale.nix
-    ./network.nix
+    ./networking.nix
     ./nix.nix
-    ./printer.nix
+    ./printing.nix
   ];
 }

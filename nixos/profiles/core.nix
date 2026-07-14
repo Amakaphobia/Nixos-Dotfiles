@@ -2,6 +2,6 @@
 {
   imports = [
     ../modules/core
-    ../modules/programs
+    ../modules/programs/base.nix
   ];
 }
