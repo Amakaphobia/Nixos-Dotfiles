@@ -6,6 +6,6 @@
   ],
   "group/middle": {
     "orientation": "horizontal",
-    "modules": ["disk", "memory", "cpu"],
+    "modules": ["custom/notification", "clock", "power-profiles-daemon"],
   },
 }

@@ -1,25 +1,72 @@
-#middledock {
-  border: 1px solid @Blue;
+#middle {
   border-radius: 90px;
-  padding: 0px 10px;
-  margin: 2px 2px;
-  box-shadow: inset 1px 1px 1px @Blue;
-  color: @Blue;
 }
 
 #clock {
   background: transparent;
+  font-size: 1.1rem;
+  font-weight: bold;
   border-radius: 6px;
   padding: 0px 10px;
   margin: 5px 5px;
-  font-size: 1.05rem;
+}
+
+/* Power Profile Switcher */
+
+#power-profiles-daemon {
+  font-size: 1.1rem;
   font-weight: bold;
+  border-radius: 60px;
+  padding: 2px 4px;
+  margin: 5px 5px;
+}
+#power-profiles-daemon.power-saver {
+  color: @Green;
+}
+#power-profiles-daemon.balanced {
+  color: @Yellow;
+}
+#power-profiles-daemon.performance {
+  color: @Maroon;
 }
 
-#powerprofiles {
-  background: red;
+/* Notifications */
+
+#custom-notification {
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 60px;
+  padding: 2px 4px;
+  margin: 5px 5px;
 }
 
-#swaync {
-  background: yellow;
+/* No stored notifications */
+#custom-notification.none {
+  color: @Mauve;
+}
+
+/* One or more stored notifications */
+#custom-notification.notification {
+  color: @Maroon;
+}
+
+/* Do Not Disturb, no notifications */
+#custom-notification.dnd-none {
+  color: @Surface0;
+}
+
+/* Do Not Disturb, with notifications */
+#custom-notification.dnd-notification {
+  color: @Peach;
+}
+
+/* Notifications are inhibited */
+#custom-notification.inhibited-none,
+#custom-notification.dnd-inhibited-none {
+  color: @Overlay0;
+}
+
+#custom-notification.inhibited-notification,
+#custom-notification.dnd-inhibited-notification {
+  color: @Red;
 }
