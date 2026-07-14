@@ -1,6 +1,8 @@
 {
   "network": {
     "format": "{ifname}",
+    "format-linked": "",
+    "format-disabled": "󰖪",
     "format-wifi": "",
     "format-ethernet": "",
     "format-disconnected": "",

@@ -1,4 +1,4 @@
-#pulseaudio {
+#audiocontrol {
   border-radius: 90px;
   min-width: 20px;
   padding: 0px 10px;
@@ -8,7 +8,19 @@
   box-shadow: inset 1px 1px 1px @Teal;
 }
 
-#pulseaudio.muted {
+#pulseaudio.speaker {
+  padding: 0px 4px;
+}
+#pulseaudio.microphone {
+  padding: 0px 4px;
+}
+
+#pulseaudio.speaker.muted {
+  color: @Maroon;
+  border: 1px solid @Maroon;
+  box-shadow: inset 1px 1px 1px @Maroon;
+}
+#pulseaudio.microphone.muted {
   color: @Maroon;
   border: 1px solid @Maroon;
   box-shadow: inset 1px 1px 1px @Maroon;

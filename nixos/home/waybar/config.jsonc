@@ -20,5 +20,10 @@
 
   "modules-center": ["group/middle"],
 
-  "modules-right": ["group/hardware", "pulseaudio", "network", "battery"],
+  "modules-right": [
+    "group/hardware",
+    "group/audiocontrol",
+    "network",
+    "battery",
+  ],
 }

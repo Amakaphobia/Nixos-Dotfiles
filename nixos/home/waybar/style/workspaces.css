@@ -22,6 +22,17 @@
   color: @Maroon;
 }
 
+#workspaces button.urgent {
+  border-color: @Red;
+  box-shadow:
+    inset 1px 1px 1px @Red,
+    inset 0 0 10px @Maroon;
+}
+
+#workspaces button.urgent label {
+  color: @Red;
+}
+
 #workspaces button:hover {
   box-shadow:
     inset 1px 0px 4px @Mauve,

@@ -25,12 +25,12 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
 --toggle waybar
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(waybar))
 
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + W", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown"))
 
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
