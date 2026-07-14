@@ -1,3 +1,5 @@
+local mainMod = "SUPER"
+
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -25,8 +27,11 @@ local screenshotRegion = [[sh -c '
 
 -- complete screenshot
 local screenshotFull = [[sh -c '
-  mkdir -p "$HOME/Pictures/Screenshots"
-  grim "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
+  grim -t ppm - |
+    satty \
+      --filename - \
+      --copy-command wl-copy \
+      --output-filename "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
 ']]
 
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotRegion))
@@ -34,7 +39,6 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotRegion))
 ---- My Keybinds ----
 ---------------------
 
-local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
@@ -100,9 +104,9 @@ end)
 
 -- screenshot tools
 -- region
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(screenshotRegion))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshotRegion))
 -- full
-hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd(screenshotFull))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(screenshotFull))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(

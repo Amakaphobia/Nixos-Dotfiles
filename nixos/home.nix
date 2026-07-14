@@ -35,7 +35,7 @@
     # hypr
     ./home/hypr/hypr.nix
     # screenshots
-    ./home/screenshot-package.nix
+    ./home/screenshot.nix
 
   ];
 
