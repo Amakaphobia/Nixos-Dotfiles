@@ -12,14 +12,14 @@
     configType = "lua";
 
     # read my configFile and append it to the generated one
-    extraConfig = builtins.readFile ./land/init.lua;
+    extraConfig = builtins.readFile ./lua/init.lua;
   };
 
   xdg.configFile = {
     # where the files go in my .config/ folder
     "hypr/modules" = {
       # source files
-      source = ./land/modules;
+      source = ./lua/modules;
       recursive = true;
     };
   };

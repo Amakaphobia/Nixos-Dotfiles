@@ -33,7 +33,7 @@
     # shell
     ./home/zsh.nix
     # hypr
-    ./home/hypr/hypr.nix
+    ./home/hypr
     # screenshots
     ./home/screenshot.nix
 
