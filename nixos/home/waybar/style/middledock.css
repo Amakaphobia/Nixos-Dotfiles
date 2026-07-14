@@ -1,0 +1,25 @@
+#middledock {
+  border: 1px solid @Blue;
+  border-radius: 90px;
+  padding: 0px 10px;
+  margin: 2px 2px;
+  box-shadow: inset 1px 1px 1px @Blue;
+  color: @Blue;
+}
+
+#clock {
+  background: transparent;
+  border-radius: 6px;
+  padding: 0px 10px;
+  margin: 5px 5px;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+#powerprofiles {
+  background: red;
+}
+
+#swaync {
+  background: yellow;
+}

@@ -1,5 +1,4 @@
 @import "./style/color.css";
-@import "./style/clock.css";
 @import "./style/modules.css";
 @import "./style/tooltip.css";
 @import "./style/workspaces.css";
@@ -7,6 +6,7 @@
 @import "./style/network.css";
 @import "./style/hardware.css";
 @import "./style/pulseaudio.css";
+@import "./style/middledock.css";
 
 * {
   all: unset;

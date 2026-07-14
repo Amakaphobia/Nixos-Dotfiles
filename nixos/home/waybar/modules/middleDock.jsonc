@@ -1,0 +1,11 @@
+{
+  "include": [
+    "./modules/middledock/swaync.jsonc",
+    "./modules/middledock/clock.jsonc",
+    "./modules/middledock/powerprofiles.jsonc",
+  ],
+  "group/middle": {
+    "orientation": "horizontal",
+    "modules": ["disk", "memory", "cpu"],
+  },
+}

@@ -9,18 +9,16 @@
 
   "include": [
     "./modules/workspaces.jsonc",
-    "./modules/clock.jsonc",
+    "./modules/middleDock.jsonc",
     "./modules/battery.jsonc",
     "./modules/network.jsonc",
     "./modules/pulseaudio.jsonc",
     "./modules/hardware.jsonc",
-    "./modules/powerprofiles.jsonc",
-    "./modules/swaync.jsonc",
   ],
 
   "modules-left": ["hyprland/workspaces"],
 
-  "modules-center": ["custom/notification", "clock", "power-profiles-daemon"],
+  "modules-center": ["group/middle"],
 
   "modules-right": ["group/hardware", "pulseaudio", "network", "battery"],
 }
