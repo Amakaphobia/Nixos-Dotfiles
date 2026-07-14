@@ -5,7 +5,7 @@
 }:
 
 let
-  nvimConfigDirectory = "/home/dave/nixos-dotfiles/nixos/home/nvim/config";
+  nvimConfigDirectory = "/home/dave/nixos-dotfiles-refactor/nixos/home/nvim/config";
 in
 {
   programs.neovim = {
