@@ -1,17 +1,14 @@
 #audiocontrol {
   border-radius: 90px;
-  min-width: 40px;
-  padding: 0px 10px;
+  padding: 0px 2px;
   margin: 2px 2px;
   border: 1px solid @Teal;
   box-shadow: inset 1px 1px 1px @Teal;
 }
 
-#pulseaudio.speaker {
-  padding: 0px 4px;
-  color: @Teal;
-}
+#pulseaudio.speaker,
 #pulseaudio.microphone {
+  min-width: 18px;
   padding: 0px 4px;
   color: @Teal;
 }
@@ -19,6 +16,7 @@
 #pulseaudio.speaker.sink-muted {
   color: @Maroon;
 }
+
 #pulseaudio.microphone.source-muted {
   color: @Maroon;
 }
