@@ -1,5 +1,5 @@
 {
-  pkgs,
+  # pkgs,
   # flakePath,
   ...
 }:
@@ -113,15 +113,15 @@
   # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."dave" = {
-    isNormalUser = true;
-    description = "dave";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-  };
+  # users.users."dave" = {
+  #   isNormalUser = true;
+  #   description = "dave";
+  #   extraGroups = [
+  #     "networkmanager"
+  #     "wheel"
+  #   ];
+  #   shell = pkgs.zsh;
+  # };
 
   # programs = {
   # set hyprland as WM
@@ -258,6 +258,6 @@
   #   };
   # };
 
-  system.stateVersion = "26.05"; # No changerino!
+  # system.stateVersion = "26.05"; # No changerino!
 
 }

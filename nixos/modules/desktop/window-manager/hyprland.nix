@@ -7,10 +7,11 @@
 
   security = {
     # Set the rights for hyprlands hyprlock
-    security.pam.services.hyprlock = { };
+    pam.services.hyprlock = { };
     # polkit is used for auth
-    security.polkit.enable = true;
+    polkit.enable = true;
   };
+
   #Hyprland Portals
   xdg.portal = {
     enable = true;

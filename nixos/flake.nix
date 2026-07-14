@@ -27,13 +27,9 @@
 
       legacy = nixpkgs.legacyPackages.${system};
 
-      flakePath = "/home/dave/nixos-dotfiles/nixos";
-
       homeModulesPath = ./home/modules;
 
       wallpapersPath = ../wallpapers;
-
-      nixModulesPath = ./modules;
     in
     {
       nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
@@ -43,12 +39,10 @@
           inherit
             inputs
             self
-            flakePath
-            nixModulesPath
             ;
         };
         modules = [
-          ./configuration.nix
+          ./hosts/nyx
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -58,7 +52,6 @@
               extraSpecialArgs = {
                 inherit
                   inputs
-                  flakePath
                   homeModulesPath
                   wallpapersPath
                   ;
