@@ -1,47 +1,47 @@
-{ userModulePath, userWallpaperPath, ... }:
+{ modulePath, wallpaperPath, ... }:
 
 {
   imports = [
     # process monitor
-    "${userModulePath}/btop.nix"
+    (modulePath + "/btop.nix")
     # firefox user profiles
-    "${userModulePath}/firefox.nix"
+    (modulePath + "/firefox.nix")
     # git
-    "${userModulePath}/git.nix"
+    (modulePath + "/git.nix")
     # terminal
-    "${userModulePath}/kitty.nix"
+    (modulePath + "/kitty.nix")
     # editor
-    "${userModulePath}/nvim"
+    (modulePath + "/nvim")
     # knowledge
-    "${userModulePath}/obsidian"
+    (modulePath + "/obsidian")
     # stuff
-    "${userModulePath}/packages.nix"
+    (modulePath + "/packages.nix")
     # polkit
-    "${userModulePath}/polkit.nix"
+    (modulePath + "/polkit.nix")
     # prompt
-    "${userModulePath}/starship.nix"
+    (modulePath + "/starship.nix")
     # sway notification center
-    "${userModulePath}/swaync.nix"
+    (modulePath + "/swaync.nix")
     # theme
-    "${userModulePath}/theme.nix"
+    (modulePath + "/theme.nix")
     # statusbar
-    "${userModulePath}/waybar"
+    (modulePath + "/waybar")
     # how sandboxed/wayland apps ask for desktop features
-    "${userModulePath}/xdg.nix"
+    (modulePath + "/xdg.nix")
     # better cd
-    "${userModulePath}/zoxide.nix"
+    (modulePath + "/zoxide.nix")
     # shell
-    "${userModulePath}/zsh.nix"
+    (modulePath + "/zsh.nix")
     # hypr
-    "${userModulePath}/hypr"
+    (modulePath + "/hypr")
     # screenshots
-    "${userModulePath}/screenshot.nix"
+    (modulePath + "/screenshot.nix")
 
   ];
 
   dave.theme = {
-    wallpaper = "${userWallpaperPath}/waifu/AngelBlue.png";
-    lockscreen = "${userWallpaperPath}/waifu/purplegirl.jpeg";
+    wallpaper = wallpaperPath + "/waifu/AngelBlue.png";
+    lockscreen = wallpaperPath + "/waifu/purplegirl.jpeg";
   };
 
   home = {

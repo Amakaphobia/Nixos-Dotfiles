@@ -29,9 +29,9 @@
 
       flakePath = "/home/dave/nixos-dotfiles/nixos";
 
-      userModulePath = ./home/modules;
+      modulePath = ./home/modules;
 
-      userWallpaperPath = ../wallpapers;
+      wallpaperPath = ../wallpapers;
     in
     {
       nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
@@ -52,8 +52,8 @@
                 inherit
                   inputs
                   flakePath
-                  userModulePath
-                  userWallpaperPath
+                  modulePath
+                  wallpaperPath
                   ;
               };
               users.dave = import ./home/users/dave;
