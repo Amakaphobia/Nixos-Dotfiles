@@ -28,6 +28,10 @@
       legacy = nixpkgs.legacyPackages.${system};
 
       flakePath = "/home/dave/nixos-dotfiles/nixos";
+
+      userModulePath = ./home/modules;
+
+      userWallpaperPath = ../wallpapers;
     in
     {
       nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
@@ -45,9 +49,14 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit inputs flakePath;
+                inherit
+                  inputs
+                  flakePath
+                  userModulePath
+                  userWallpaperPath
+                  ;
               };
-              users.dave = import ./home.nix;
+              users.dave = import ./home/users/dave;
               backupFileExtension = "backup";
             };
           }
