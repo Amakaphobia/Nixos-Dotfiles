@@ -10,7 +10,26 @@ local lock = "pidof hyprlock > /dev/null || hyprlock"
 local waybar = "pkill -USR1 waybar"
 -- swap to ws3 open firefox if not open
 local browser = "sh -c 'pgrep -f \"^/run/current-system/sw/bin/firefox( |$)\" >/dev/null 2>&1 || exec firefox'"
+-- screenshot a region
+local screenshotRegion = [[sh -c '
+  mkdir -p "$HOME/Pictures/Screenshots"
 
+  region="$(slurp)" || exit 0
+
+  grim -g "$region" -t ppm - |
+    satty \
+      --filename - \
+      --copy-command wl-copy \
+      --output-filename "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
+']]
+
+-- complete screenshot
+local screenshotFull = [[sh -c '
+  mkdir -p "$HOME/Pictures/Screenshots"
+  grim "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
+']]
+
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotRegion))
 ---------------------
 ---- My Keybinds ----
 ---------------------
@@ -25,10 +44,13 @@ hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
 --toggle waybar
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(waybar))
 
+-- close window
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 
+-- kill hyprland
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprshutdown"))
 
+-- fullscreen and float toggle
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
@@ -75,6 +97,12 @@ hl.bind(mainMod .. " + SHIFT + SPACE", function()
     },
   })
 end)
+
+-- screenshot tools
+-- region
+hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(screenshotRegion))
+-- full
+hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd(screenshotFull))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
