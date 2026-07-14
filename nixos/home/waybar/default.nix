@@ -11,5 +11,5 @@
     package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
-  xdg.configFile."waybar".source = ./waybar;
+  xdg.configFile."waybar".source = ./config;
 }

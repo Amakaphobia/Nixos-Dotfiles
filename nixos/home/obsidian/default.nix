@@ -1,9 +1,9 @@
 { ... }:
 {
   imports = [
-    ./obsidian/core-plugins.nix
-    ./obsidian/plugins
-    ./obsidian/themes
+    ./core-plugins.nix
+    ./plugins
+    ./themes
   ];
 
   programs.obsidian = {
