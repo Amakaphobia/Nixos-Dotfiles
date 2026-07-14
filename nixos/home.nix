@@ -11,9 +11,9 @@
     # terminal
     ./home/kitty.nix
     # editor
-    ./home/nvim.nix
+    ./home/nvim
     # knowledge
-    ./home/obsidian.nix
+    ./home/obsidian
     # stuff
     ./home/packages.nix
     # polkit
@@ -25,7 +25,7 @@
     # theme
     ./home/theme.nix
     # statusbar
-    ./home/waybar.nix
+    ./home/waybar
     # how sandboxed/wayland apps ask for desktop features
     ./home/xdg.nix
     # better cd
