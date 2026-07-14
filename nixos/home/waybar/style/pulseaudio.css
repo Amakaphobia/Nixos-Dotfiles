@@ -1,27 +1,24 @@
 #audiocontrol {
   border-radius: 90px;
-  min-width: 20px;
+  min-width: 40px;
   padding: 0px 10px;
   margin: 2px 2px;
-  color: @Teal;
   border: 1px solid @Teal;
   box-shadow: inset 1px 1px 1px @Teal;
 }
 
 #pulseaudio.speaker {
   padding: 0px 4px;
+  color: @Teal;
 }
 #pulseaudio.microphone {
   padding: 0px 4px;
+  color: @Teal;
 }
 
-#pulseaudio.speaker.muted {
+#pulseaudio.speaker.sink-muted {
   color: @Maroon;
-  border: 1px solid @Maroon;
-  box-shadow: inset 1px 1px 1px @Maroon;
 }
-#pulseaudio.microphone.muted {
+#pulseaudio.microphone.source-muted {
   color: @Maroon;
-  border: 1px solid @Maroon;
-  box-shadow: inset 1px 1px 1px @Maroon;
 }
