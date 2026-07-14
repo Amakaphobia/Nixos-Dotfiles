@@ -19,8 +19,6 @@
       sr = "systemctl reboot";
       sd = "systemctl poweroff";
       hh = "systemctl hibernate";
-      cdflake = "cd $FLAKE_PATH";
-      cdnix = "cd ~/nixos-dotfiles/";
     };
     initContent = ''
       # rebuild the system
