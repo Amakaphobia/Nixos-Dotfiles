@@ -1,14 +1,8 @@
 {
   pkgs,
-  config,
   inputs,
-  flakePath,
   ...
 }:
-
-let
-  waybarConfigDirectory = "${flakePath}/home/waybar";
-in
 {
   programs.waybar = {
     enable = true;
@@ -17,5 +11,5 @@ in
     package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
-  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink waybarConfigDirectory;
+  xdg.configFile."waybar".source = ./waybar;
 }
