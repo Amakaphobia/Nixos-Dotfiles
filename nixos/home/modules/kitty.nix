@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs = {
@@ -21,11 +26,13 @@
         mode = "no-cursor";
       };
 
-      autoThemeFiles = {
-        light = "Novel";
-        dark = "Catppuccin-Mocha";
-        noPreference = "Catppuccin-Mocha";
-      };
+      # autoThemeFiles = {
+      #   light = "Novel";
+      #   dark = "Catppuccin-Mocha";
+      #   noPreference = "Catppuccin-Mocha";
+      # };
+
+      theme = lib.toKitty config.dave.theme.scheme.terminalOptions;
 
       settings = {
         background_opacity = "0.85";

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkOption types;
 
@@ -33,8 +33,39 @@ let
       description = "Semantic theme color: ${name}";
     }
   );
+
+  # generate terminal color names color0 through color15
+  terminalNames = map (number: "color${toString number}") (lib.range 0 15);
+
+
+  # make hexcolor options out of the terminal color names
+  terminalOptions = lib.genAttrs terminalNames (
+    name:
+    mkOption {
+      type = hexColor;
+      description = "ANSI terminal color ${name}.";
+    }
+  );
+
+  # get the terminal colors of the choses scheme
+  terminalColors = config.dave.theme.scheme.terminal;
+
+  # check if every name has a color and collect names without colors
+  missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
 in
 {
+  # make sure the theme is complete by asserting the collection of missing colors is empty
+  config = {
+    assertions = [
+      {
+        assertion = missingTerminalColors == [ ];
+        message = ''
+          Theme "${config.dave.theme.scheme.name}" is missing terminal colors:
+          ${lib.concatStringsSep ", " missingTerminalColors}
+        '';
+      }
+    ];
+  };
 
   options.dave.theme = {
     # create global theme option
@@ -62,7 +93,9 @@ in
           };
 
           terminal = mkOption {
-            type = types.attrsOf hexColor;
+            type = types.submodule {
+              options = terminalOptions;
+            };
             description = "ANSI terminal colors named color0 through color15.";
           };
         };
