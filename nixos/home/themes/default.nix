@@ -5,18 +5,22 @@ let
   hexColor = types.strMatching "[0-9a-fA-F]{6}";
 
   roleNames = [
-    "background"
-    "background_alt"
-    "surface"
-    "surface_alt"
+    "background1"
+    "background2"
+    "surface1"
+    "surface2"
     "foreground"
     "muted"
-    "accent"
-    "accent_alt"
-    "success"
-    "warning"
-    "error"
-    "info"
+    "accent1"
+    "accent2"
+    "success1"
+    "success2"
+    "warning1"
+    "warning2"
+    "error1"
+    "error2"
+    "info1"
+    "info2"
     "border"
   ];
 

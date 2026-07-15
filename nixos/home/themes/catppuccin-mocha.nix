@@ -34,22 +34,26 @@ in
   inherit palette;
 
   roles = {
-    background = palette.Base;
-    background_alt = palette.Mantle;
+    background1 = palette.Base;
+    background2 = palette.Mantle;
 
-    surface = palette.Surface0;
-    surface_alt = palette.Surface2;
+    surface1 = palette.Surface0;
+    surface2 = palette.Surface2;
 
     foreground = palette.Text;
     muted = palette.Subtext0;
 
-    accent = palette.Mauve;
-    accent_alt = palette.Peach;
+    accent1 = palette.Mauve;
+    accent2 = palette.Peach;
 
-    success = palette.Green;
-    warning = palette.Yellow;
-    error = palette.Maroon;
-    info = palette.Teal;
+    success1 = palette.Teal;
+    success2 = palette.green;
+    warning1 = palette.Peach;
+    warning2 = palette.Yellow;
+    error1 = palette.Maroon;
+    error2 = palette.Red;
+    info1 = palette.Sky;
+    info2 = palette.Blue;
 
     border = palette.Overlay1;
   };
