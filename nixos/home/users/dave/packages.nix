@@ -22,8 +22,6 @@
     (homeModulesPath + "/starship.nix")
     # sway notification center
     (homeModulesPath + "/swaync.nix")
-    # theme
-    (homeModulesPath + "/theme.nix")
     # statusbar
     (homeModulesPath + "/waybar")
     # how sandboxed/wayland apps ask for desktop features

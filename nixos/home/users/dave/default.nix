@@ -4,6 +4,9 @@
   imports = [
     ./packages.nix
     ./theme.nix
+
+    ../../themes
+
   ];
 
   home = {
