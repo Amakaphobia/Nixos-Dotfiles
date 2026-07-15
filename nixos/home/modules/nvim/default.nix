@@ -4,8 +4,9 @@
   ...
 }:
 
+# TODO: Change before merge back into main
 let
-  nvimConfigDirectory = "/home/dave/nixos-dotfiles/nixos/home/modules/nvim/config";
+  nvimConfigDirectory = "/home/dave/nixos-dotfiles-nvim/nixos/home/modules/nvim/config";
 in
 {
   programs.neovim = {
@@ -50,7 +51,7 @@ in
       prettier
 
       #nix language support
-      nil
+      nixd
       nixfmt
       statix
     ];
