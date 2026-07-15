@@ -12,6 +12,9 @@
 
   ];
 
+  # thermald proactively prevents overheating on Intel CPUs
+  services.themald.enable = true;
+
   networking.hostName = "nyx"; # Define your hostname.
   system.stateVersion = "26.05"; # No changerino!
 }
