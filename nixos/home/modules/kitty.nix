@@ -4,7 +4,12 @@
   pkgs,
   ...
 }:
-
+let
+  colorsLib = import ../lib/colors.nix {
+    inherit lib;
+  };
+  colors = config.dave.theme.roles;
+in
 {
   programs = {
     kitty = {
@@ -26,16 +31,24 @@
         mode = "no-cursor";
       };
 
-      # autoThemeFiles = {
-      #   light = "Novel";
-      #   dark = "Catppuccin-Mocha";
-      #   noPreference = "Catppuccin-Mocha";
-      # };
+      settings = colorsLib.toKitty config.dave.theme.terminal // {
 
-      theme = lib.toKitty config.dave.theme.scheme.terminalOptions;
-
-      settings = {
         background_opacity = "0.85";
+
+        foreground = colorsLib.hex colors.foreground;
+        background = colorsLib.hex colors.background1;
+
+        selection_foreground = colorsLib.hex colors.foreground;
+        selection_background = colorsLib.hex colors.surface2;
+
+        cursor = colorsLib.hex colors.accent1;
+        cursor_text_color = colorsLib.hex colors.background1;
+
+        url_color = colorsLib.hex colors.info2;
+
+        active_border_color = colorsLib.hex colors.accent1;
+        inactive_border_color = colorsLib.hex colors.border;
+        bell_border_color = colorsLib.hex colors.warning2;
 
         # Usability
         scrollback_lines = 10000;
