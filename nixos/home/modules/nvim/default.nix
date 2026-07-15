@@ -36,21 +36,21 @@ in
       # utility library
       glib
 
-      #optional integrations
+      # optional integrations
       lazygit
       tree-sitter
 
-      #lua language support
+      # lua language support
       lua-language-server
       stylua
 
-      #shell formatter
+      # shell formatter
       shfmt
 
       # JSON and JSONC formatter
       prettier
 
-      #nix language support
+      # nix language support
       nixd
       nixfmt
       statix
