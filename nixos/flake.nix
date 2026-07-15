@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-hardware = {
+      url = "github.com:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # temporarily pin this commit. It fixes waybar hyprland lua interaction
     waybar = {
       url = "github:Alexays/Waybar/05945748dccce28bf96d26d8f64a9e69a8dd49ba";
@@ -20,6 +25,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-hardware,
       ...
     }:
     let
@@ -42,7 +48,10 @@
             ;
         };
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-x13-intel
+
           ./hosts/nyx
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
