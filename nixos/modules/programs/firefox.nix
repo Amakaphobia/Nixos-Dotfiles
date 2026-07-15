@@ -2,10 +2,13 @@
 let
   catppuccinTheme = pkgs.nur.repos.rycee.firefox-addons.catppuccin-mocha-mauve;
 
-  catppuccinThemeXpi =
-    "${catppuccinTheme}/share/mozilla/extensions/"
-    + "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/"
-    + "${catppuccinTheme.addonId}.xpi";
+  # The NUR package stores the XPI below directories whose names contain
+  # curly braces. Copy it to a URI-safe store path before giving it to Firefox.
+  catppuccinThemeXpi = pkgs.runCommand "catppuccin-mocha-mauve.xpi" { } ''
+    cp \
+      "${catppuccinTheme}/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/${catppuccinTheme.addonId}.xpi" \
+      "$out"
+  '';
 in
 {
   programs.firefox = {
@@ -16,7 +19,7 @@ in
 
       ExtensionSettings = {
         "${catppuccinTheme.addonId}" = {
-          installation_mode = "normal_installed";
+          installation_mode = "force_installed";
           install_url = "file://${catppuccinThemeXpi}";
         };
       };
