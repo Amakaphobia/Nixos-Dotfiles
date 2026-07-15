@@ -24,6 +24,12 @@
       url = "github:Alexays/Waybar/05945748dccce28bf96d26d8f64a9e69a8dd49ba";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # load betterfox
+    betterfox = {
+      url = "github:yokoffing/Betterfox/152.0";
+      flake = false;
+    };
   };
 
   # @ syntax : name all of it inputs, but pull out the named variables and make them locally available

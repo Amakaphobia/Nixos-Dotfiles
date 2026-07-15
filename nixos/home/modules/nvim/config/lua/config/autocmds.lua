@@ -58,8 +58,14 @@ local function normalize_nix_comment_spacing(bufnr)
   end
 end
 
+local group = vim.api.nvim_create_augroup("normalize_nix_comments", {
+  clear = true,
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
+  group = group,
   pattern = "*.nix",
+  desc = "Normalize spacing after Nix line-comment markers",
   callback = function(event)
     normalize_nix_comment_spacing(event.buf)
   end,

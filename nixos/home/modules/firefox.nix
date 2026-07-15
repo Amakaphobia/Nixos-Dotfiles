@@ -1,12 +1,4 @@
-{ pkgs, lib, ... }:
-let
-  betterfox = pkgs.fetchFromGitHub {
-    owner = "yokoffing";
-    repo = "Betterfox";
-    rev = "152.0";
-    hash = lib.fakeHash;
-  };
-in
+{ ... }:
 {
   programs.firefox = {
     enable = true;
@@ -31,7 +23,7 @@ in
       };
 
       # read the following file from betterfox into userjs:
-      preConfig = builtins.readFile "${betterfox}/user.js";
+      preConfig = builtins.readFile "${inputs.betterfox}/user.js";
 
       settings = {
 
@@ -90,12 +82,6 @@ in
         catppuccin-mocha-mauve
       ];
 
-      # Tree Tabs are active
-      userChrome = ''
-        #TabsToolbar {
-          visibility: collapse !important;
-        }
-      '';
       # override githubs code views with my font stack
       userContent = ''
         @-moz-document domain("github.com") {

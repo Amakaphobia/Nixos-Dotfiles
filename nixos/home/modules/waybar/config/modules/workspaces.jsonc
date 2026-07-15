@@ -1,16 +1,16 @@
 {
-  "hyprland/workspaces" : {
-    "align" : 0.5,
-    "format" : "{name}|{icon}{windows}",
+  "hyprland/workspaces": {
+    "align": 0.5,
+    "format": "{name}|{icon}{windows}",
     "persistent-workspaces": {
-      "*" : 4,
+      "*": 4,
     },
-    "format-icons" : {
+    "format-icons": {
       "active": "",
       "empty": "",
       "default": "",
       "urgent": " ! ",
-      "special":"",
+      "special": "",
     },
     "window-rewrite-default": "󰊠",
     "window-rewrite": {
@@ -18,7 +18,7 @@
       "kitty": "󰆍",
       "firefox": "",
       "obsidian": "󰹕",
-      "geany": "󰊄"
+      "geany": "󰊄",
       // --- Apps ---
       "discord": "",
       "spotify": "",
