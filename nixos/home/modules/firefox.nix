@@ -26,9 +26,10 @@
       preConfig = builtins.readFile "${inputs.betterfox}/user.js";
 
       settings = {
-
         # preffered languages for websites in order
         "intl.accept_languages" = "en-US, en, de-DE";
+        # Always show the bookmarks toolbar
+        "browser.toolbars.bookmarks.visibility" = "always";
         # resume previous session on startup
         "browser.startup.page" = 3;
         # hide about:config warning
@@ -54,7 +55,19 @@
         # my browser dont need location either
         "geo.enabled" = false;
 
-        # Disable telemetry for privacy reasons
+        # New tab page
+        "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
+
+        # Disable Firefox Home weather completely
+        "browser.newtabpage.activity-stream.showWeather" = false;
+        "browser.newtabpage.activity-stream.system.showWeather" = false;
+
+        # Automatically deny permission requests
+        "permissions.default.geo" = 2;
+        "permissions.default.persistent-storage" = 2;
+
+        # Disable telemetry
         "extensions.webcompat-reporter.enabled" = false; # don't report compability problems to mozilla
 
         # disable features I dont use
@@ -79,7 +92,6 @@
         darkreader
         hover-zoom-plus
         reddit-enhancement-suite
-        catppuccin-mocha-mauve
       ];
 
       # override githubs code views with my font stack

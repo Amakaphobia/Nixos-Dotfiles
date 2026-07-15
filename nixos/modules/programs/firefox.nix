@@ -1,10 +1,25 @@
-{ ... }:
+{ pkgs, ... }:
+let
+  catppuccinTheme = pkgs.nur.repos.rycee.firefox-addons.catppuccin-mocha-mauve;
+
+  catppuccinThemeXpi =
+    "${catppuccinTheme}/share/mozilla/extensions/"
+    + "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/"
+    + "${catppuccinTheme.addonId}.xpi";
+in
 {
   programs.firefox = {
     enable = true;
     policies = {
       HardwareAcceleration = true;
       SearchEngines.Default = "DuckDuckGo";
+
+      ExtensionSettings = {
+        "${catppuccinTheme.addonId}" = {
+          installation_mode = "normal_installed";
+          install_url = "file://${catppuccinThemeXpi}";
+        };
+      };
     };
     preferences = {
       "media.ffmpeg.vaapi.enabled" = true;
