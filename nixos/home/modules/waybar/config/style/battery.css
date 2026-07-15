@@ -9,26 +9,26 @@
 #battery.discharging.good,
 #battery.charging.normal,
 #battery.charging.warning {
-  color: @Teal;
-  border: 1px solid @Teal;
-  box-shadow: inset 1px 1px 1px @Teal;
+  color: @success1;
+  border: 1px solid @success1;
+  box-shadow: inset 1px 1px 1px @success1;
 }
 
 #battery.discharging.normal,
 #battery.charging.critical {
-  color: @Blue;
-  border: 1px solid @Blue;
-  box-shadow: inset 1px 1px 1px @Blue;
+  color: @info2;
+  border: 1px solid @info2;
+  box-shadow: inset 1px 1px 1px @info2;
 }
 
 #battery.discharging.warning {
-  color: @Peach;
-  border: 1px solid @Peach;
-  box-shadow: inset 1px 1px 1px @Peach;
+  color: @warning1;
+  border: 1px solid @warning1;
+  box-shadow: inset 1px 1px 1px @warning1;
 }
 
 #battery.discharging.critical {
-  color: @Red;
-  border: 1px solid @Red;
-  box-shadow: inset 1px 1px 1px @Red;
+  color: @error2;
+  border: 1px solid @error2;
+  box-shadow: inset 1px 1px 1px @error2;
 }

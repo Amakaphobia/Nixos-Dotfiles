@@ -12,10 +12,7 @@ let
     inherit lib;
   };
 
-  # @Mauve,Base
-  # and:
-  # @accent,background
-  colorCss = colorsLib.toGtkCss (theme.palette // theme.roles);
+  colorCss = colorsLib.toGtkCss theme.roles;
   waybarConfig = pkgs.runCommand "waybar-config-${theme.name}" { } ''
     mkdir -p "$out"
 

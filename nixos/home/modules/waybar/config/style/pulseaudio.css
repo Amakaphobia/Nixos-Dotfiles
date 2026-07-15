@@ -2,21 +2,21 @@
   border-radius: 90px;
   padding: 0px 2px;
   margin: 2px 2px;
-  border: 1px solid @Teal;
-  box-shadow: inset 1px 1px 1px @Teal;
+  border: 1px solid @success1;
+  box-shadow: inset 1px 1px 1px @success1;
 }
 
 #pulseaudio.speaker,
 #pulseaudio.microphone {
   min-width: 18px;
   padding: 0px 4px;
-  color: @Teal;
+  color: @success1;
 }
 
 #pulseaudio.speaker.sink-muted {
-  color: @Maroon;
+  color: @error1;
 }
 
 #pulseaudio.microphone.source-muted {
-  color: @Maroon;
+  color: @error1;
 }

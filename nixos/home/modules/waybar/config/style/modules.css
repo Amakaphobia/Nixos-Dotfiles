@@ -2,7 +2,7 @@
 .modules-center,
 .modules-right {
   padding: 0px 10px;
-  border: 2px solid @Overlay1;
+  border: 2px solid @border;
   border-radius: 20px;
-  box-shadow: inset 0 0 25px @Surface1;
+  box-shadow: inset 0 0 25px @surface1;
 }

@@ -4,48 +4,48 @@
 }
 #workspaces button {
   min-width: 60px;
-  border: 1px solid @Mauve;
+  border: 1px solid @accent1;
   border-radius: 16px;
   padding: 0px 10px;
   margin: 2px 2px;
   font-size: 0.4rem;
   transition: none;
-  box-shadow: inset 1px 1px 1px @Mauve;
+  box-shadow: inset 1px 1px 1px @accent1;
 }
 #workspaces button.active {
   box-shadow:
-    inset 1px 1px 1px @Mauve,
-    inset 0px 0px 10px @Peach;
+    inset 1px 1px 1px @accent1,
+    inset 0px 0px 10px @warning1;
 }
 
 #workspaces button.active label {
-  color: @Maroon;
+  color: @error1;
 }
 
 #workspaces button.urgent {
-  border-color: @Red;
+  border-color: @error2;
   box-shadow:
-    inset 1px 1px 1px @Red,
-    inset 0 0 10px @Maroon;
+    inset 1px 1px 1px @error2,
+    inset 0 0 10px @error1;
 }
 
 #workspaces button.urgent label {
-  color: @Red;
+  color: @error2;
 }
 
 #workspaces button:hover {
   box-shadow:
-    inset 1px 0px 4px @Mauve,
-    inset 1px 1px 1px @Mauve;
+    inset 1px 0px 4px @accent1,
+    inset 1px 1px 1px @accent1;
 }
 
 #workspaces button.active:hover {
   box-shadow:
-    inset 1px 1px 1px @Mauve,
-    inset 1px 0px 4px @Mauve,
-    inset 0px 0px 10px @Peach;
+    inset 1px 1px 1px @accent1,
+    inset 1px 0px 4px @accent1,
+    inset 0px 0px 10px @warning1;
 }
 
 #workspaces button.empty label {
-  color: @Text;
+  color: @foreground;
 }

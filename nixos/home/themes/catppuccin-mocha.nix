@@ -44,10 +44,10 @@ in
     muted = palette.Subtext0;
 
     accent1 = palette.Mauve;
-    accent2 = palette.Peach;
+    accent2 = palette.Lavender;
 
     success1 = palette.Teal;
-    success2 = palette.green;
+    success2 = palette.Green;
     warning1 = palette.Peach;
     warning2 = palette.Yellow;
     error1 = palette.Maroon;

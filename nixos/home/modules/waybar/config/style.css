@@ -12,7 +12,7 @@
   all: unset;
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12px;
-  color: @Mauve;
+  color: @accent1;
 }
 
 window#waybar {

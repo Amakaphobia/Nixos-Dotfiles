@@ -1,9 +1,9 @@
 tooltip {
-  background: @Base;
-  border: 1px solid @Blue;
+  background: @background1;
+  border: 1px solid @background1;
   border-radius: 8px;
 }
 tooltip label {
-  color: @Text;
+  color: @foreground;
   padding: 6px;
 }
