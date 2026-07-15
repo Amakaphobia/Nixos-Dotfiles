@@ -31,7 +31,7 @@ in
         mode = "no-cursor";
       };
 
-      settings = colorsLib.toKitty config.dave.theme.terminal // {
+      settings = colorsLib.toKitty config.dave.theme.scheme.terminal // {
 
         background_opacity = "0.85";
 
