@@ -2,6 +2,7 @@
   description = "First Flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -9,6 +10,12 @@
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # make firefox addons available via the nur overlay
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,6 +33,7 @@
       nixpkgs,
       home-manager,
       nixos-hardware,
+      nur,
       ...
     }:
     let
@@ -69,6 +77,8 @@
               backupFileExtension = "backup";
             };
           }
+
+          nur.modules.nixos.default
         ];
       };
 
