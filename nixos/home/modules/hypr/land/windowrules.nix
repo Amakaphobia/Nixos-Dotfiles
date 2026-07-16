@@ -72,7 +72,19 @@
         default_name = "";
         persistent = true;
       }
+      {
+        workspace = "special:scratchpad";
 
+        gaps_in = 8;
+        gaps_out = 80;
+
+        no_border = false;
+        no_shadow = false;
+        no_rounding = false;
+        decorate = true;
+
+        animation = "slidevert";
+      }
     ];
   };
 }

@@ -49,6 +49,9 @@ in
           passes = 1;
           vibrancy = 0.1696;
         };
+
+        # dim when scratchpad is open
+        dim_special = 0.4;
       };
     };
   };
