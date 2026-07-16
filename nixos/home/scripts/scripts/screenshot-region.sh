@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set eou pipefail
+set -eou pipefail
 # screenshot a region
 
 mkdir -p "$HOME/Pictures/Screenshots"

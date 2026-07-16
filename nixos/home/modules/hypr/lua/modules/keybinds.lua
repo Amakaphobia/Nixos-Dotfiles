@@ -47,7 +47,7 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Toggle between Dwindle and scrolling
-hl.bind(mainMod .. " + SHIFT + SPACE", "hyprland-toggle-layout")
+hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.exec_cmd("hyprland-toggle-layout"))
 
 -- screenshot tools
 -- region
