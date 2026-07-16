@@ -2,17 +2,32 @@
 {
   wayland.windowManager.hyprland.settings = {
     # environment variables
-    home.sessionVariables = {
-
-      EDITOR = "nvim";
-      # -- Backend Variables
-      GDK_BACKEND = "wayland,X11,*";
-
-      # --XDG Variables
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-    };
+    env = [
+      {
+        _args = [
+          "GDK_BACKEND"
+          "wayland,X11,*"
+        ];
+      }
+      {
+        _args = [
+          "XDG_CURRENT_DESKTOP"
+          "Hyprland"
+        ];
+      }
+      {
+        _args = [
+          "XDG_SESSION_TYPE"
+          "wayland"
+        ];
+      }
+      {
+        _args = [
+          "XDG_SESSION_DESKTOP"
+          "Hyprland"
+        ];
+      }
+    ];
 
     # Monitor
 
