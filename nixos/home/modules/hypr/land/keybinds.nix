@@ -79,8 +79,8 @@ in
     (mkBind "${mainMod} + j" (lua ''hl.dsp.focus({ direction = "d" })''))
 
     # window swap
-    (mkBind "${mainMod} + SHIFT + h" (lua ''hl.dsp.swap({ direction = "l" })''))
-    (mkBind "${mainMod} + SHIFT + l" (lua ''hl.dsp.swap({ direction = "r" })''))
+    (mkBind "${mainMod} + SHIFT + h" (lua ''hl.dsp.window.swap({ direction = "l" })''))
+    (mkBind "${mainMod} + SHIFT + l" (lua ''hl.dsp.window.swap({ direction = "r" })''))
 
     # make new master
     (mkBind "${mainMod} + M" (lua ''hl.dsp.layout("swapwithmaster")''))
