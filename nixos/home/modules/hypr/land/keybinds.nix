@@ -2,6 +2,17 @@
 let
   mainMod = "SUPER";
 
+  # Favorite Programs
+  terminal = "kitty";
+  menu = "fuzzel-once";
+  fileManager = "thunar";
+  waybarToggle = "toggle-waybar";
+  lockscreen = "hyprlock-once";
+
+  # screenshot scripts
+  ssr = "screenshot-region";
+  ssc = "screenshot-complete";
+
   # Mark a string as executable Lua instead of an ordinary quoted string.
   lua = lib.generators.mkLuaInline;
 
@@ -41,13 +52,13 @@ in
 {
   wayland.windowManager.hyprland.settings.bind = [
     # Applications
-    (mkBind "${mainMod} + R" (exec "kitty"))
-    (mkBind "${mainMod} + SPACE" (exec "fuzzel-once"))
-    (mkBind "${mainMod} + E" (exec "thunar"))
-    (mkBind "${mainMod} + SHIFT + L" (exec "hyprlock-once"))
+    (mkBind "${mainMod} + R" (exec terminal))
+    (mkBind "${mainMod} + SPACE" (exec menu))
+    (mkBind "${mainMod} + E" (exec fileManager))
+    (mkBind "${mainMod} + SHIFT + L" (exec lockscreen))
 
     # Waybar
-    (mkBind "${mainMod} + SHIFT + W" (exec "toggle-waybar"))
+    (mkBind "${mainMod} + SHIFT + W" (exec waybarToggle))
 
     # Close the active window
     (mkBind "${mainMod} + W" (lua "hl.dsp.window.close()"))
@@ -71,6 +82,7 @@ in
   ]
   ++ workspaceBinds
   ++ [
+
     # Previous workspace
     (mkBind "${mainMod} + TAB" (lua ''hl.dsp.focus({ workspace = "previous" })''))
 
@@ -90,9 +102,9 @@ in
     (mkBind "${mainMod} + SHIFT + SPACE" (exec "hyprland-toggle-layout"))
 
     # Screenshots
-    (mkBind "${mainMod} + Print" (exec "screenshot-region"))
+    (mkBind "${mainMod} + Print" (exec ssr))
 
-    (mkBind "${mainMod} + SHIFT + Print" (exec "screenshot-complete"))
+    (mkBind "${mainMod} + SHIFT + Print" (exec ssc))
 
     # Volume
     (mkFlaggedBind "XF86AudioRaiseVolume" (exec "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") {
