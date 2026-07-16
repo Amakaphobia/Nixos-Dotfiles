@@ -1,10 +1,10 @@
 { ... }:
 let
-  mkCurve = name: type: points: {
+  mkBezier = name: points: {
     _args = [
       name
       {
-        inherit type;
+        type = "bezier";
         inherit points;
       }
     ];
@@ -17,7 +17,7 @@ in
     config.animations.enabled = true;
 
     curve = [
-      (mkCurve "easeOutQuint" "bezier" [
+      (mkBezier "easeOutQuint" [
         [
           0.23
           1
@@ -27,78 +27,46 @@ in
           1
         ]
       ])
-      {
-        _args = [
-          "easeInOutCubic"
-          {
-            type = "bezier";
-            points = [
-              [
-                0.65
-                0.05
-              ]
-              [
-                0.36
-                1
-              ]
-            ];
-          }
-        ];
-      }
-      {
-        _args = [
-          "linear"
-          {
-            type = "bezier";
-            points = [
-              [
-                0
-                0
-              ]
-              [
-                1
-                1
-              ]
-            ];
-          }
-        ];
-      }
-      {
-        _args = [
-          "almostLinear"
-          {
-            type = "bezier";
-            points = [
-              [
-                0.5
-                0.5
-              ]
-              [
-                0.75
-                1
-              ]
-            ];
-          }
-        ];
-      }
-      {
-        _args = [
-          "quick"
-          {
-            type = "bezier";
-            points = [
-              [
-                0.15
-                0
-              ]
-              [
-                0.1
-                1
-              ]
-            ];
-          }
-        ];
-      }
+      (mkBezier "easeInOutCubic"
+        [
+          0.65
+          0.05
+        ]
+        [
+          0.36
+          1
+        ]
+      )
+      (mkBezier "linear" [
+        [
+          0
+          0
+        ]
+        [
+          1
+          1
+        ]
+      ])
+      (mkBezier "almostLinear" [
+        [
+          0.5
+          0.5
+        ]
+        [
+          0.75
+          1
+        ]
+      ])
+      (mkBezier "quick" [
+        [
+          0.15
+          0
+        ]
+        [
+          0.1
+          1
+        ]
+      ])
       {
         _args = [
           "easy"
