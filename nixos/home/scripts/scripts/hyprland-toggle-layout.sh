@@ -10,10 +10,10 @@ current_layout="$(
 )"
 
 # set next_layout based on the string
-if [[ "$current_layout" == "dwindle" ]]; then
+if [[ "$current_layout" == "master" ]]; then
   next_layout="scrolling"
 else
-  next_layout="dwindle"
+  next_layout="master"
 fi
 
 # request hyprctl to change layout to the previously decided upon layout
