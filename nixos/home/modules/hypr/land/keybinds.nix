@@ -13,6 +13,8 @@ let
   ssr = "screenshot-region";
   ssc = "screenshot-complete";
 
+  # layout toggler
+  layoutToggle = "hyprland-toggle-layout";
   # Mark a string as executable Lua instead of an ordinary quoted string.
   lua = lib.generators.mkLuaInline;
 
@@ -99,7 +101,7 @@ in
     })
 
     # Toggle between scrolling and master
-    (mkBind "${mainMod} + SHIFT + SPACE" (exec "hyprland-toggle-layout"))
+    (mkBind "${mainMod} + SHIFT + SPACE" (exec layoutToggle))
 
     # Screenshots
     (mkBind "${mainMod} + Print" (exec ssr))
