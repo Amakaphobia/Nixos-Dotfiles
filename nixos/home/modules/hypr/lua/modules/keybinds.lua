@@ -6,47 +6,19 @@ local mainMod = "SUPER"
 
 local terminal = "kitty"
 local fileManager = "thunar"
-local menu = "pgrep fuzzel >/dev/null 2>&1 && pkill fuzzel || fuzzel"
-local lock = "pidof hyprlock > /dev/null || hyprlock"
---local waybar = "pgrep waybar >/dev/null 2>&1 && pkill waybar || waybar"
-local waybar = "pkill -USR1 waybar"
--- swap to ws3 open firefox if not open
-local browser = "sh -c 'pgrep -f \"^/run/current-system/sw/bin/firefox( |$)\" >/dev/null 2>&1 || exec firefox'"
--- screenshot a region
-local screenshotRegion = [[sh -c '
-  mkdir -p "$HOME/Pictures/Screenshots"
-
-  region="$(slurp)" || exit 0
-
-  grim -g "$region" -t ppm - |
-    satty \
-      --filename - \
-      --copy-command wl-copy \
-      --output-filename "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
-']]
-
--- complete screenshot
-local screenshotFull = [[sh -c '
-  grim -t ppm - |
-    satty \
-      --filename - \
-      --copy-command wl-copy \
-      --output-filename "$HOME/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"
-']]
-
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotRegion))
+---
 ---------------------
 ---- My Keybinds ----
 ---------------------
 
 
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("fuzzel-once"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock-once"))
 
 --toggle waybar
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(waybar))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("toggle-waybar"))
 
 -- close window
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
@@ -69,7 +41,7 @@ for i = 1, 10 do
   local key = i % 10 -- 10 maps to key 0
   hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
   if i == 3 then
-    hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd(browser))
+    hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd("browser-once"))
   end
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
@@ -104,9 +76,9 @@ end)
 
 -- screenshot tools
 -- region
-hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshotRegion))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("screenshot-region"))
 -- full
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(screenshotFull))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("screenshot-complete"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
