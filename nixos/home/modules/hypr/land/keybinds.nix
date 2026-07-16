@@ -52,78 +52,100 @@ let
   ) (lib.range 1 10);
 in
 {
-  wayland.windowManager.hyprland.settings.bind = [
+  wayland.windowManager.hyprland.settings.bind = workspaceBinds ++ [
     # Applications
     (mkBind "${mainMod} + R" (exec terminal))
     (mkBind "${mainMod} + SPACE" (exec menu))
     (mkBind "${mainMod} + E" (exec fileManager))
-    (mkBind "${mainMod} + SHIFT + L" (exec lockscreen))
+
+    # Lockscreen
+    (mkBind "${mainMod} + CTRL + L" (exec lockscreen))
 
     # Waybar
     (mkBind "${mainMod} + SHIFT + W" (exec waybarToggle))
 
-    # Close the active window
-    (mkBind "${mainMod} + W" (lua "hl.dsp.window.close()"))
+    # Screenshots
+    (mkBind "${mainMod} + Print" (exec ssr))
+    (mkBind "${mainMod} + SHIFT + Print" (exec ssc))
 
-    # Exit Hyprland
-    (mkBind "${mainMod} + SHIFT + M" (exec "hyprshutdown"))
-
-    # Floating and fullscreen
-    (mkBind "${mainMod} + SHIFT + F" (lua ''hl.dsp.window.float({ action = "toggle" })''))
-
-    (mkBind "${mainMod} + F" (lua ''hl.dsp.window.fullscreen({ action = "toggle" })''))
+    #
+    # Window Management
+    #
 
     # Focus movement
     (mkBind "${mainMod} + h" (lua ''hl.dsp.focus({ direction = "l" })''))
-
     (mkBind "${mainMod} + l" (lua ''hl.dsp.focus({ direction = "r" })''))
-
     (mkBind "${mainMod} + k" (lua ''hl.dsp.focus({ direction = "u" })''))
-
     (mkBind "${mainMod} + j" (lua ''hl.dsp.focus({ direction = "d" })''))
-  ]
-  ++ workspaceBinds
-  ++ [
 
-    # Previous workspace
-    (mkBind "${mainMod} + TAB" (lua ''hl.dsp.focus({ workspace = "previous" })''))
+    # window swap
+    (mkBind "${mainMod} + SHIFT + h" (lua ''hl.dsp.swap({ direction = "l" })''))
+    (mkBind "${mainMod} + SHIFT + l" (lua ''hl.dsp.swap({ direction = "r" })''))
 
-    # Next workspace
-    (mkBind "${mainMod} + RETURN" (lua ''hl.dsp.focus({ workspace = "e+1" })''))
+    # make new master
+    (mkBind "${mainMod} + M" (lua ''hl.dsp.layout("swapwithmaster")''))
+    # Close the active window
+    (mkBind "${mainMod} + W" (lua "hl.dsp.window.close()"))
+
+    # Floating and fullscreen
+    (mkBind "${mainMod} + SHIFT + F" (lua ''hl.dsp.window.float({ action = "toggle" })''))
+    (mkBind "${mainMod} + F" (lua ''hl.dsp.window.fullscreen({ action = "toggle" })''))
+
+    #
+    # Mouse
+    #
 
     # Move and resize with the mouse
     (mkFlaggedBind "${mainMod} + mouse:272" (lua "hl.dsp.window.drag()") {
       mouse = true;
     })
-
     (mkFlaggedBind "${mainMod} + mouse:273" (lua "hl.dsp.window.resize()") {
       mouse = true;
     })
 
+    #
+    # Workspace Management
+    #
+
+    # Previous workspace
+    (mkBind "${mainMod} + TAB" (lua ''hl.dsp.focus({ workspace = "previous" })''))
+    # Next workspace
+    (mkBind "${mainMod} + RETURN" (lua ''hl.dsp.focus({ workspace = "e+1" })''))
     # Toggle between scrolling and master
     (mkBind "${mainMod} + SHIFT + SPACE" (exec layoutToggle))
 
-    # Screenshots
-    (mkBind "${mainMod} + Print" (exec ssr))
+    #
+    # Scratchpad
+    #
 
-    (mkBind "${mainMod} + SHIFT + Print" (exec ssc))
+    # Toggle scratchpad
+    (mkBind "${mainMod} + S" (lua ''hl.dsp.workspace.toggle_special("scratchpad")''))
+
+    # Send active to scratchpad without following
+    (mkBind "${mainMod} + SHIFT + S" (lua ''
+      hl.dsp.window.move({
+        workspace = "special:scratchpad",
+        follow = false,
+      })
+    ''))
+
+    #
+    # Special Keys
+    #
 
     # Volume
     (mkFlaggedBind "XF86AudioRaiseVolume" (exec "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") {
       locked = true;
       repeating = true;
     })
-
     (mkFlaggedBind "XF86AudioLowerVolume" (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") {
       locked = true;
       repeating = true;
     })
-
     (mkFlaggedBind "XF86AudioMute" (exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") {
       locked = true;
       repeating = true;
     })
-
     (mkFlaggedBind "XF86AudioMicMute" (exec "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") {
       locked = true;
       repeating = true;
@@ -134,7 +156,6 @@ in
       locked = true;
       repeating = true;
     })
-
     (mkFlaggedBind "XF86MonBrightnessDown" (exec "brightnessctl -e4 -n2 set 5%-") {
       locked = true;
       repeating = true;
@@ -144,15 +165,12 @@ in
     (mkFlaggedBind "XF86AudioNext" (exec "playerctl next") {
       locked = true;
     })
-
     (mkFlaggedBind "XF86AudioPause" (exec "playerctl play-pause") {
       locked = true;
     })
-
     (mkFlaggedBind "XF86AudioPlay" (exec "playerctl play-pause") {
       locked = true;
     })
-
     (mkFlaggedBind "XF86AudioPrev" (exec "playerctl previous") {
       locked = true;
     })
