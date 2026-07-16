@@ -1,20 +1,13 @@
 local mainMod = "SUPER"
 
 ---------------------
----- MY PROGRAMS ----
----------------------
-
-local terminal = "kitty"
-local fileManager = "thunar"
----
----------------------
 ---- My Keybinds ----
 ---------------------
 
 
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("fuzzel-once"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("thunar"))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock-once"))
 
 --toggle waybar
@@ -40,9 +33,6 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
 for i = 1, 10 do
   local key = i % 10 -- 10 maps to key 0
   hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-  if i == 3 then
-    hl.bind(mainMod .. " + " .. key, hl.dsp.exec_cmd("browser-once"))
-  end
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
@@ -57,22 +47,7 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Toggle between Dwindle and scrolling
-hl.bind(mainMod .. " + SHIFT + SPACE", function()
-  local currentLayout = hl.get_config("general.layout")
-  local nextLayout
-
-  if currentLayout == "dwindle" then
-    nextLayout = "scrolling"
-  else
-    nextLayout = "dwindle"
-  end
-
-  hl.config({
-    general = {
-      layout = nextLayout,
-    },
-  })
-end)
+hl.bind(mainMod .. " + SHIFT + SPACE", "hyprland-toggle-layout")
 
 -- screenshot tools
 -- region
