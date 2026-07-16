@@ -8,7 +8,7 @@ let
   colorsLib = import ../lib/colors.nix {
     inherit lib;
   };
-  colors = config.dave.theme.roles;
+  colors = config.dave.theme.scheme.roles;
 in
 {
   programs = {
