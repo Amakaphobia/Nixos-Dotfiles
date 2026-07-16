@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  imports = [
+    ./land
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true; # Enable home manager module for hyprland
 
