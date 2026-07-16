@@ -4,7 +4,7 @@
 
 require("modules.monitors")
 require("modules.keybinds")
-require("modules.input")
+-- require("modules.input")
 -- require("modules.autostart")
 require("modules.env")
 --require("modules.permissions")
