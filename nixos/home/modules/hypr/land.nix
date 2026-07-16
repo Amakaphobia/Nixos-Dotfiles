@@ -15,13 +15,4 @@
     # remove ambiguity
     configType = "lua";
   };
-
-  xdg.configFile = {
-    # where the files go in my .config/ folder
-    "hypr/modules" = {
-      # source files
-      source = ./lua/modules;
-      recursive = true;
-    };
-  };
 }
