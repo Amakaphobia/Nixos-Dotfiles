@@ -32,6 +32,24 @@ in
         resize_on_border = false;
         allow_tearing = false;
       };
+
+      decoration = {
+
+        # make edges round
+        rounding = 7;
+        rounding_power = 2;
+
+        # set opacity (can be overridden by window Rules)
+        active_opacity = 0.9;
+        inactive_opacity = 0.9;
+
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+          vibrancy = 0.1696;
+        };
+      };
     };
   };
 }

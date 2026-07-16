@@ -34,6 +34,7 @@
     (homeModulesPath + "/hypr")
     # screenshots
     (homeModulesPath + "/screenshot.nix")
-
+    # custom Scripts
+    ../../scripts
   ];
 }
