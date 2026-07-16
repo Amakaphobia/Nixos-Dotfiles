@@ -27,7 +27,7 @@ in
           1
         ]
       ])
-      (mkBezier "easeInOutCubic"
+      (mkBezier "easeInOutCubic" [
         [
           0.65
           0.05
@@ -36,7 +36,7 @@ in
           0.36
           1
         ]
-      )
+      ])
       (mkBezier "linear" [
         [
           0
