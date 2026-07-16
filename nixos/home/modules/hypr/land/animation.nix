@@ -1,4 +1,15 @@
 { ... }:
+let
+  mkCurve = name: type: points: {
+    _args = [
+      name
+      {
+        inherit type;
+        inherit points;
+      }
+    ];
+  };
+in
 {
   wayland.windowManager.hyprland.settings = {
 
@@ -6,24 +17,16 @@
     config.animations.enabled = true;
 
     curve = [
-      {
-        _args = [
-          "easeOutQuint"
-          {
-            type = "bezier";
-            points = [
-              [
-                0.23
-                1
-              ]
-              [
-                0.32
-                1
-              ]
-            ];
-          }
-        ];
-      }
+      (mkCurve "easeOutQuint" "bezier" [
+        [
+          0.23
+          1
+        ]
+        [
+          0.32
+          1
+        ]
+      ])
       {
         _args = [
           "easeInOutCubic"
