@@ -3,11 +3,11 @@ let
   colorsLib = import ../../../lib/colors.nix {
     inherit lib;
   };
-  colors = config.dave.theme.roles;
+  colors = config.dave.theme.scheme.roles;
 
-  border1 = ( colorsLib.hyprrgba colors.accent1 "ff" );
-  border2 = ( colorsLib.hyprrgba colors.info1 "ff" );
-  borderInactive = ( colorsLib.hyprrgba colors.background2 "dd" );
+  border1 = ( colorsLib.hyprRgba colors.accent1 "ff" );
+  border2 = ( colorsLib.hyprRgba colors.info1 "ff" );
+  borderInactive = ( colorsLib.hyprRgba colors.background2 "dd" );
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -17,7 +17,7 @@ in
       gaps_out = 8;
 
       # border
-      border_size = 2;
+        border_size = 2;
       col = {
         active_border = {
           colors = [
