@@ -3,10 +3,8 @@
 --- -----------------
 
 hl.config({
-  general = {
-    animations = {
-      enabled = true,
-    },
+  animations = {
+    enabled = true,
   },
 })
 
