@@ -14,9 +14,6 @@
 
     # remove ambiguity
     configType = "lua";
-
-    # read my configFile and append it to the generated one
-    extraConfig = builtins.readFile ./lua/init.lua;
   };
 
   xdg.configFile = {

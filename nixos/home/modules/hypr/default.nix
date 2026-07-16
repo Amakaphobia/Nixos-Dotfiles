@@ -2,7 +2,7 @@
 
 {
 
-  #hypr ecosystem:
+  # hypr ecosystem:
   imports = [
     ./land.nix
     ./idle.nix
