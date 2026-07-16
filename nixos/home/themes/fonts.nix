@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-  #Fonts
-  fonts = {
+  # Fonts
+  fonts.fontconfig = {
     packages = with pkgs; [
       noto-fonts
       noto-fonts-color-emoji
@@ -10,7 +10,7 @@
       liberation_ttf
     ];
 
-    fontconfig.defaultFonts = {
+    defaultFonts = {
       sansSerif = [
         "Noto Sans"
         "Symbols Nerd Font"
