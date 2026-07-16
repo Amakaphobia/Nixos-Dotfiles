@@ -1,16 +1,47 @@
 { ... }:
 {
   wayland.windowManager.hyprland.settings = {
+    # environment variables
+    home.sessionVariables = {
+
+      EDITOR = "nvim";
+      # -- Backend Variables
+      GDK_BACKEND = "wayland,X11,*";
+
+      # --XDG Variables
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+    };
+
+    # Monitor
+
+    monitor = {
+      output = "";
+      mode = "preferred";
+      position = "0x0";
+      scale = 1;
+    };
+
+    # Layout
     config = {
-      # defalt layout is scrolling
+      # default layout is scrolling
       general.layout = "scrolling";
 
+      # define available layouts
       master = {
         orientation = "left";
       };
 
       scrolling = {
         fullscreen_on_one_column = true;
+      };
+
+      # disable the default things
+      misc = {
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
     };
   };
