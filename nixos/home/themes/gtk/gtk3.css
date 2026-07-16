@@ -1,0 +1,100 @@
+/*
+ * Compatibility names expected by some GTK 3 applications.
+ */
+@define-color theme_bg_color @background1;
+@define-color theme_fg_color @foreground;
+@define-color theme_base_color @background2;
+@define-color theme_text_color @foreground;
+@define-color theme_selected_bg_color @accent1;
+@define-color theme_selected_fg_color @background1;
+@define-color insensitive_bg_color @background2;
+@define-color insensitive_fg_color @muted;
+@define-color borders @border;
+
+/* General application surfaces */
+
+window,
+.background {
+  background-color: @background1;
+  color: @foreground;
+}
+
+/* Window header */
+
+headerbar,
+.titlebar {
+  background-color: @background2;
+  color: @foreground;
+
+  border-bottom: 1px solid @border;
+}
+
+/* Buttons */
+/*
+button {
+  background-image: none;
+  background-color: @surface1;
+  color: @foreground;
+
+  border: 1px solid @border;
+  border-radius: 8px;
+
+  padding: 6px 10px;
+}
+
+button:hover {
+  background-color: @surface2;
+}
+
+button:active,
+button:checked {
+  background-color: @accent1;
+  color: @background1;
+}
+
+button:disabled {
+  background-color: @background2;
+  color: @muted;
+}
+*/
+/* Text inputs */
+
+/*
+entry {
+  background-color: @background2;
+  color: @foreground;
+
+  border: 1px solid @border;
+  border-radius: 8px;
+
+  padding: 6px;
+}
+
+entry:focus {
+  border-color: @accent1;
+  box-shadow: 0 0 0 1px @accent1;
+}
+
+*/
+
+/* Selected text and list items */
+
+/*
+selection,
+*:selected {
+  background-color: @accent1;
+  color: @background1;
+}
+*/
+
+/* Tooltips */
+
+/*
+tooltip {
+  background-color: @surface2;
+  color: @foreground;
+
+  border: 1px solid @border;
+  border-radius: 8px;
+}
+*/
