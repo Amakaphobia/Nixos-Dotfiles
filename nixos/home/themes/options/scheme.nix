@@ -12,10 +12,10 @@ let
     background = "default background for applications";
     surface = "default background for containers";
     surfaceRaised = "visually elevated containers";
-    overlay = "highlights and selection background";
+    overlay = "Background for floating content such as menus, popovers and tooltips.";
 
     # Foreground content
-    foregroundDisabled = "very muted foreground tone";
+    foregroundDisabled = "very muted forground tone";
     foregroundMuted = "muted forground tone";
     foreground = "default tone for text";
 

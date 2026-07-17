@@ -4,9 +4,9 @@ let
 in
 {
   # create user options for wallpaper and lockscreen
-  options.dave.themeimages = mkOption {
+  options.dave.theme.images = mkOption {
     description = "images used by the theme";
-    types = types.submodule {
+    type = types.submodule {
 
       options = {
         wallpaper = mkOption {

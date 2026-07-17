@@ -21,7 +21,7 @@ let
   sizeOptions = lib.genAttrs [ "desktop" "applications" "terminal" "popups" ] (
     name:
     mkOption {
-      type = types.number;
+      type = types.ints.positive;
       description = "default size for ${name}";
     }
   );

@@ -11,7 +11,6 @@ in
         package = mkOption {
           description = "Icon theme package";
           type = types.package;
-          default = null;
         };
         name = mkOption {
           type = types.str;

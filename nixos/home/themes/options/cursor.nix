@@ -18,7 +18,7 @@ in
           description = "the name of the cursor";
         };
         size = mkOption {
-          type = types.int;
+          type = types.ints.positive;
           description = "the cursor size";
         };
       };
