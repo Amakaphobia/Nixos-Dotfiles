@@ -4,46 +4,46 @@
 }
 #workspaces button {
   min-width: 60px;
-  border: 1px solid @accent1;
+  border: 1px solid @accent;
   border-radius: 16px;
   padding: 0px 10px;
   margin: 2px 2px;
   font-size: 0.4rem;
   transition: none;
-  box-shadow: inset 1px 1px 1px @accent1;
+  box-shadow: inset 1px 1px 1px @accent;
 }
 #workspaces button.active {
   box-shadow:
-    inset 1px 1px 1px @accent1,
-    inset 0px 0px 10px @warning1;
+    inset 1px 1px 1px @accent,
+    inset 0px 0px 10px @accentAlt;
 }
 
 #workspaces button.active label {
-  color: @error1;
+  color: @error;
 }
 
 #workspaces button.urgent {
-  border-color: @error2;
+  border-color: @error;
   box-shadow:
-    inset 1px 1px 1px @error2,
-    inset 0 0 10px @error1;
+    inset 1px 1px 1px @error,
+    inset 0 0 10px @error;
 }
 
 #workspaces button.urgent label {
-  color: @error2;
+  color: @error;
 }
 
 #workspaces button:hover {
   box-shadow:
-    inset 1px 0px 4px @accent1,
-    inset 1px 1px 1px @accent1;
+    inset 1px 0px 4px @accent,
+    inset 1px 1px 1px @accent;
 }
 
 #workspaces button.active:hover {
   box-shadow:
-    inset 1px 1px 1px @accent1,
-    inset 1px 0px 4px @accent1,
-    inset 0px 0px 10px @warning1;
+    inset 1px 1px 1px @accent,
+    inset 1px 0px 4px @accent,
+    inset 0px 0px 10px @accentAlt;
 }
 
 #workspaces button.empty label {

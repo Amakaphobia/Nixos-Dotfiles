@@ -23,7 +23,7 @@
       background = [
         {
           monitor = "";
-          path = "${config.dave.theme.lockscreen}";
+          path = "${config.dave.theme.images.lockscreen}";
         }
       ];
 

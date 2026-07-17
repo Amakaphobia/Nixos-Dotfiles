@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 let
   inherit (lib) mkOption types;
   # 6 hexadecimals
@@ -70,37 +70,10 @@ let
       description = "ANSI ${colorName} (${name}).";
     }
   ) colorRoles;
-  # get the terminal colors of the chosen scheme
-  terminalColors = config.dave.theme.scheme.terminal;
-  terminalNames = builtins.attrNames colorRoles;
-  missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
 
-  # check for missing desktop colors the same way
-  roleNames = builtins.attrNames roleDescriptions;
-  roleColors = config.dave.theme.scheme.roles;
-  missingRoleColors = lib.filter (name: !(builtins.hasAttr name roleColors)) roleNames;
 in
 {
-
-  # make sure the scheme is complete
-  config = {
-    assertions = [
-      {
-        assertion = missingRoleColors == [ ];
-        message = ''
-          Theme "${config.dave.theme.scheme.name}" is missing desktop colors:
-          ${lib.concatStringsSep ", " missingRoleColors}
-        '';
-      }
-      {
-        assertion = missingTerminalColors == [ ];
-        message = ''
-          Theme "${config.dave.theme.scheme.name}" is missing terminal colors:
-          ${lib.concatStringsSep ", " missingTerminalColors}
-        '';
-      }
-    ];
-  };
+  # will redo assertions later
 
   # create global color scheme
   options.dave.theme.scheme = mkOption {

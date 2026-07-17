@@ -2,8 +2,11 @@
 {
 
   dave.theme = {
+    polarity = "dark";
     scheme = import ../../themes/palettes/catppuccin-mocha.nix;
-    wallpaper = wallpapersPath + "/waifu/AngelBlue.png";
-    lockscreen = wallpapersPath + "/waifu/purplegirl.jpeg";
+    images = {
+      wallpaper = wallpapersPath + "/waifu/AngelBlue.png";
+      lockscreen = wallpapersPath + "/waifu/purplegirl.jpeg";
+    };
   };
 }

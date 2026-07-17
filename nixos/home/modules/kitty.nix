@@ -15,6 +15,7 @@ in
     kitty = {
       enable = true;
 
+      # TODO: remove and let stylix take this
       font = {
         name = "JetBrainsMono Nerd Font Mono";
         size = 12;
@@ -31,24 +32,22 @@ in
         mode = "no-cursor";
       };
 
-      settings = colorsLib.toKitty config.dave.theme.scheme.terminal // {
-
-        background_opacity = "0.85";
-
+      # keep manual control of colors because stylix doesnt map as well
+      settings = config.dave.theme.scheme.terminal // {
         foreground = colorsLib.hex colors.foreground;
-        background = colorsLib.hex colors.background1;
+        background = colorsLib.hex colors.background;
 
         selection_foreground = colorsLib.hex colors.foreground;
-        selection_background = colorsLib.hex colors.surface2;
+        selection_background = colorsLib.hex colors.surface;
 
-        cursor = colorsLib.hex colors.accent1;
-        cursor_text_color = colorsLib.hex colors.background1;
+        cursor = colorsLib.hex colors.accent;
+        cursor_text_color = colorsLib.hex colors.background;
 
-        url_color = colorsLib.hex colors.info2;
+        url_color = colorsLib.hex colors.info;
 
-        active_border_color = colorsLib.hex colors.accent1;
+        active_border_color = colorsLib.hex colors.accent;
         inactive_border_color = colorsLib.hex colors.border;
-        bell_border_color = colorsLib.hex colors.warning2;
+        bell_border_color = colorsLib.hex colors.warning;
 
         # Usability
         scrollback_lines = 10000;

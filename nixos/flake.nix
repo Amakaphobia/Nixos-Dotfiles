@@ -77,7 +77,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-
+              sharedModules = [
+                stylix.homeModules.stylix
+              ];
               extraSpecialArgs = {
                 inherit
                   inputs
@@ -89,7 +91,6 @@
               backupFileExtension = "backup";
             };
           }
-          stylix.nixosModules.stylix
           nur.modules.nixos.default
         ];
       };

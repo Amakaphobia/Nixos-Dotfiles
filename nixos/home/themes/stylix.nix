@@ -9,7 +9,16 @@ in
     enable = true;
     autoEnable = false;
 
-    targets.kitty.enable = true;
+    polarity = config.dave.theme.polarity;
+
+    targets.kitty = {
+      enable = true;
+
+      fonts.enable = false;
+      colors.enable = false;
+      opacity.enable = true;
+    };
+    opacity.terminal = 0.85;
 
     base16Scheme = {
       scheme = theme.scheme.name;

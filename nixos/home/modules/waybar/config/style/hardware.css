@@ -1,10 +1,10 @@
 #hardware {
-  border: 1px solid @info2;
+  border: 1px solid @info;
   border-radius: 90px;
   padding: 0px 10px;
   margin: 2px 2px;
-  box-shadow: inset 1px 1px 1px @info2;
-  color: @info2;
+  box-shadow: inset 1px 1px 1px @info;
+  color: @info;
 }
 
 #disk,
@@ -12,21 +12,21 @@
 #memory {
   margin: 2px 2px;
   padding: 2px 5px;
-  color: @info2;
+  color: @info;
 }
 
 #cpu.sleep {
-  color: @info2;
+  color: @info;
 }
 
 #cpu.low {
-  color: @success1;
+  color: @success;
 }
 
 #cpu.mid {
-  color: @warning1;
+  color: @accentAlt;
 }
 
 #cpu.high {
-  color: @error1;
+  color: @error;
 }

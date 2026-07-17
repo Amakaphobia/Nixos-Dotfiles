@@ -21,13 +21,13 @@
   margin: 5px 5px;
 }
 #power-profiles-daemon.power-saver {
-  color: @success2;
+  color: @success;
 }
 #power-profiles-daemon.balanced {
-  color: @warning2;
+  color: @accentAlt;
 }
 #power-profiles-daemon.performance {
-  color: @error1;
+  color: @error;
 }
 
 /* Notifications */
@@ -42,22 +42,22 @@
 
 /* No stored notifications */
 #custom-notification.none {
-  color: @accent1;
+  color: @accent;
 }
 
 /* One or more stored notifications */
 #custom-notification.notification {
-  color: @error1;
+  color: @error;
 }
 
 /* Do Not Disturb, no notifications */
 #custom-notification.dnd-none {
-  color: @surface1;
+  color: @surface;
 }
 
 /* Do Not Disturb, with notifications */
 #custom-notification.dnd-notification {
-  color: @warning1;
+  color: @accentAlt;
 }
 
 /* Notifications are inhibited */
@@ -68,5 +68,5 @@
 
 #custom-notification.inhibited-notification,
 #custom-notification.dnd-inhibited-notification {
-  color: @error2;
+  color: @error;
 }
