@@ -3,24 +3,22 @@ let
   theme = config.dave.theme;
   colors = theme.scheme.roles;
   terminal = theme.scheme.terminal;
+  polarity = theme.polarity;
+  fonts = theme.typography.fonts;
 in
 {
+  imports = [ ./targets.nix ];
+
   config.stylix = {
     enable = true;
     autoEnable = false;
 
-    polarity = theme.polarity;
+    inherit polarity fonts;
 
-    targets = {
-      font-packages.enable = true;
-      fontconfig.enable = true;
-      kitty = {
-        enable = true;
-
-        colors.enable = false;
-      };
+    icons = {
+      enable = true;
+      inherit (theme.icons) package dark light;
     };
-    opacity.terminal = 0.85;
 
     base16Scheme = {
       scheme = theme.scheme.name;
@@ -44,6 +42,5 @@ in
       base0E = colors.accent;
       base0F = terminal.color1;
     };
-    fonts = theme.typography.fonts;
   };
 }

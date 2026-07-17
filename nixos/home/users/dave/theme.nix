@@ -41,5 +41,17 @@
       };
 
     };
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Ice";
+      size = 24;
+    };
+
+    icons = {
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+    };
   };
 }

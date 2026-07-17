@@ -6,15 +6,21 @@ in
   options.dave.theme.icons = mkOption {
     description = "Desktop icon theme.";
 
-    type = types.submodule {
-      options = {
+    options = {
+      type = types.submodule {
         package = mkOption {
-          description = "Icon theme package";
+          description = "Icon Package";
           type = types.package;
         };
-        name = mkOption {
+
+        dark = mkOption {
+          description = "Dark Theme";
           type = types.str;
-          description = "Icon theme name";
+        };
+
+        light = mkOption {
+          description = "Light Theme";
+          type = types.str;
         };
       };
     };
