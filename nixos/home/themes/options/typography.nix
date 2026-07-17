@@ -28,27 +28,20 @@ let
 in
 {
   # create font options
-  options.dave.theme.typography = mkOption {
-    description = "Typograhpy settings";
+  options.dave.theme.fonts = mkOption {
+    description = "Font families used by the desktop.";
+
     type = types.submodule {
-      options = {
-        fonts = mkOption {
-          description = "Font families used by the desktop.";
+      options = fontOptions // {
+        sizes = mkOption {
+          description = "Semantic font sizes.";
 
           type = types.submodule {
-            options = fontOptions // {
-              sizes = mkOption {
-                description = "Semantic font sizes.";
-
-                type = types.submodule {
-                  options = sizeOptions;
-                };
-              };
-            };
+            options = sizeOptions;
           };
         };
-
       };
     };
   };
+
 }

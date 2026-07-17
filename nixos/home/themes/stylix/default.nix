@@ -3,8 +3,6 @@ let
   theme = config.dave.theme;
   colors = theme.scheme.roles;
   terminal = theme.scheme.terminal;
-  polarity = theme.polarity;
-  fonts = theme.typography.fonts;
 in
 {
   imports = [ ./targets.nix ];
@@ -13,7 +11,7 @@ in
     enable = true;
     autoEnable = false;
 
-    inherit polarity fonts;
+    inherit (theme) polarity fonts cursor;
 
     icons = {
       enable = true;

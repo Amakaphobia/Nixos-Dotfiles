@@ -6,8 +6,8 @@ in
   options.dave.theme.icons = mkOption {
     description = "Desktop icon theme.";
 
-    options = {
-      type = types.submodule {
+    type = {
+      options = types.submodule {
         package = mkOption {
           description = "Icon Package";
           type = types.package;
