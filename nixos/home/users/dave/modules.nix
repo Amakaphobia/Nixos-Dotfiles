@@ -8,6 +8,8 @@
     (homeModulesPath + "/firefox.nix")
     # git
     (homeModulesPath + "/git.nix")
+    # hypr
+    (homeModulesPath + "/hypr")
     # terminal
     (homeModulesPath + "/kitty.nix")
     # editor
@@ -18,10 +20,16 @@
     (homeModulesPath + "/packages.nix")
     # polkit
     (homeModulesPath + "/polkit.nix")
+    # screenshots
+    (homeModulesPath + "/screenshot.nix")
+    # custom Scripts
+    ../../scripts
     # prompt
     (homeModulesPath + "/starship.nix")
     # sway notification center
     (homeModulesPath + "/swaync.nix")
+    # thunar settings
+    (homeModulesPath + "/thunar.nix")
     # statusbar
     (homeModulesPath + "/waybar")
     # how sandboxed/wayland apps ask for desktop features
@@ -30,11 +38,5 @@
     (homeModulesPath + "/zoxide.nix")
     # shell
     (homeModulesPath + "/zsh.nix")
-    # hypr
-    (homeModulesPath + "/hypr")
-    # screenshots
-    (homeModulesPath + "/screenshot.nix")
-    # custom Scripts
-    ../../scripts
   ];
 }
