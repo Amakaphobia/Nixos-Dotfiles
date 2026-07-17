@@ -4,7 +4,7 @@
 
 #clock {
   background: transparent;
-  font: Maple Mono NF;
+  font-family: Maple Mono NF;
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 6px;

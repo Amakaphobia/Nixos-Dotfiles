@@ -36,12 +36,13 @@ in
           description = "Font families used by the desktop.";
 
           type = types.submodule {
-            options = fontOptions;
-            sizes = mkOption {
-              description = "Semantic font sizes.";
+            options = fontOptions // {
+              sizes = mkOption {
+                description = "Semantic font sizes.";
 
-              type = types.submodule {
-                options = sizeOptions;
+                type = types.submodule {
+                  options = sizeOptions;
+                };
               };
             };
           };

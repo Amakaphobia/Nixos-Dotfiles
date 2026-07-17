@@ -13,12 +13,9 @@
 
     defaultFonts = {
       sansSerif = [
-        "Noto Sans"
         "Symbols Nerd Font"
       ];
-
       serif = [
-        "Noto Serif"
         "Symbols Nerd Font"
       ];
     };
