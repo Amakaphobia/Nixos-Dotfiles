@@ -6,6 +6,6 @@
     ./images.nix
     ./polarity.nix
     ./scheme.nix
-    ./typography.nix
+    ./fonts.nix
   ];
 }

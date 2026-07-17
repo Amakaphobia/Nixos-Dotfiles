@@ -3,7 +3,7 @@
 
   config.stylix = {
     targets = {
-      # allow fints to be configured
+      # allow fonts to be configured
       font-packages.enable = true;
       fontconfig.enable = true;
 
