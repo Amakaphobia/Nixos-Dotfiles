@@ -4,5 +4,6 @@
     ./cursor/bibata-original-ice.nix
     ./fonts.nix
     ./options
+    ./stylix.nix
   ];
 }

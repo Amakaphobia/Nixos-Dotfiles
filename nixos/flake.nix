@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # make firefox addons available via the nur overlay
     nur = {
       url = "github:nix-community/NUR";
@@ -40,6 +45,7 @@
       home-manager,
       nixos-hardware,
       nur,
+      stylix,
       ...
     }:
     let
@@ -83,7 +89,7 @@
               backupFileExtension = "backup";
             };
           }
-
+          stylix.nixosModules.stylix
           nur.modules.nixos.default
         ];
       };

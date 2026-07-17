@@ -38,8 +38,8 @@ in
     # Neutral surfaces
     background = Crust;
     surface = Base;
-    surfaceRaised = Surface1;
-    overlay = Overlay0;
+    surfaceRaised = Surface0;
+    overlay = Surface1;
 
     # Foreground content
     foregroundDisabled = Overlay1;
@@ -79,8 +79,8 @@ in
     color10 = Teal;
     color11 = Yellow;
     color12 = Lavender;
-    color13 = Sky;
-    color14 = Rosewater;
+    color13 = Pink;
+    color14 = Sky;
     color15 = Subtext0;
   };
 }

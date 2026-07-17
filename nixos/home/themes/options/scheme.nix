@@ -70,7 +70,7 @@ let
       description = "ANSI ${colorName} (${name}).";
     }
   ) colorRoles;
-  # get the terminal colors of the choses scheme
+  # get the terminal colors of the chosen scheme
   terminalColors = config.dave.theme.scheme.terminal;
   terminalNames = builtins.attrNames colorRoles;
   missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
