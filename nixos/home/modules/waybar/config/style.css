@@ -10,9 +10,9 @@
 
 * {
   all: unset;
-  font-family: "JetBrainsMono Nerd Font Propo";
+  font-family: "Maple Mono Nerd Font";
   font-size: 12px;
-  color: @accent1;
+  color: @accent;
 }
 
 window#waybar {

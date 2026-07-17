@@ -33,7 +33,7 @@ in
       };
 
       # keep manual control of colors because stylix doesnt map as well
-      settings = config.dave.theme.scheme.terminal // {
+      settings = colorsLib.toKitty config.dave.theme.scheme.terminal // {
         foreground = colorsLib.hex colors.foreground;
         background = colorsLib.hex colors.background;
 
