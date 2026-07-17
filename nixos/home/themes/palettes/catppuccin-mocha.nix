@@ -31,51 +31,54 @@ in
 {
   name = "catppuccin-mocha";
 
-  inherit palette;
+  roles = with palette; {
 
-  roles = {
-    background1 = palette.Base;
-    background2 = palette.Mantle;
+    # Neutral surfaces
+    background = Curst;
+    surface = Base;
+    surfaceRaised = Surface1;
+    overlay = Overlay0;
 
-    surface1 = palette.Surface0;
-    surface2 = palette.Surface2;
+    # Foreground content
+    foregroundDisabled = Overlay1;
+    foregroundMuted = subtext0;
+    foreground = Text;
 
-    foreground = palette.Text;
-    muted = palette.Subtext0;
+    # Structure and focus
+    border = Overlay2;
+    focus = Lavender;
 
-    accent1 = palette.Mauve;
-    accent2 = palette.Lavender;
+    # Interactive colors
+    accent = Mauve;
+    accentAlt = Peach;
+    accentForeground = Maroon;
+    selection = Sky;
+    selectionForeground = Mantle;
 
-    success1 = palette.Teal;
-    success2 = palette.Green;
-    warning1 = palette.Peach;
-    warning2 = palette.Yellow;
-    error1 = palette.Maroon;
-    error2 = palette.Red;
-    info1 = palette.Sky;
-    info2 = palette.Blue;
-
-    border = palette.Overlay1;
+    # Semantic status colors
+    success = Green;
+    warning = Yellow;
+    error = Red;
+    info = Blue;
   };
 
   # ANSI terminal palette. These names map directly to Kitty settings.
-  terminal = {
-    color0 = palette.Surface1;
-    color1 = palette.Red;
-    color2 = palette.Green;
-    color3 = palette.Yellow;
-    color4 = palette.Blue;
-    color5 = palette.Pink;
-    color6 = palette.Teal;
-    color7 = palette.Subtext1;
-
-    color8 = palette.Surface2;
-    color9 = palette.Red;
-    color10 = palette.Green;
-    color11 = palette.Yellow;
-    color12 = palette.Blue;
-    color13 = palette.Pink;
-    color14 = palette.Teal;
-    color15 = palette.Subtext0;
+  terminal = with palette; {
+    color0 = Base;
+    color1 = Maroon;
+    color2 = Green;
+    color3 = Peach;
+    color4 = Blue;
+    color5 = Mauve;
+    color6 = Sapphire;
+    color7 = Overlay1;
+    color8 = Surface2;
+    color9 = Red;
+    color10 = Teal;
+    color11 = Yellow;
+    color12 = Lavender;
+    color13 = Pink;
+    color14 = Rosewater;
+    color15 = Subtext0;
   };
 }

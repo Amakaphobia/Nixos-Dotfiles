@@ -45,23 +45,36 @@ let
     }
   ) roleDescriptions;
 
-  # generate terminal color names color0 through color15
-  terminalNames = map (number: "color${toString number}") (lib.range 0 15);
-
-  # make hexcolor options out of the terminal color names
-  terminalOptions = lib.genAttrs terminalNames (
-    name:
+  colorRoles = {
+    color0 = "black";
+    color1 = "red";
+    color2 = "green";
+    color3 = "yellow";
+    color4 = "blue";
+    color5 = "magenta";
+    color6 = "cyan";
+    color7 = "light-grey";
+    color8 = "dark-grey";
+    color9 = "bright-red";
+    color10 = "bright-green";
+    color11 = "bright-yellow";
+    color12 = "bright-blue";
+    color13 = "bright-magenta";
+    color14 = "bright-cyan";
+    color15 = "bright-white";
+  };
+  terminalOptions = lib.mapAttrs (
+    name: description:
     mkOption {
+      inherit name description;
       type = hexColor;
-      description = "ANSI terminal color ${name}.";
     }
-  );
-
+  ) roleDescriptions;
   # get the terminal colors of the choses scheme
   terminalColors = config.dave.theme.scheme.terminal;
 
   # check if every name has a color and collect names without colors
-  missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
+  missingTerminalColors = lib.filter (name: _: !(builtins.hasAttr name terminalColors)) colorRoles;
 
   # check for missing desktop colors the same way
   roleNames = builtins.attrNames roleDescriptions;
