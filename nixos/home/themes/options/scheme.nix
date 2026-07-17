@@ -64,17 +64,16 @@ let
     color15 = "bright-white";
   };
   terminalOptions = lib.mapAttrs (
-    name: description:
+    name: colorName:
     mkOption {
-      inherit name description;
       type = hexColor;
+      description = "ANSI ${colorName} (${name}).";
     }
-  ) roleDescriptions;
+  ) colorRoles;
   # get the terminal colors of the choses scheme
   terminalColors = config.dave.theme.scheme.terminal;
-
-  # check if every name has a color and collect names without colors
-  missingTerminalColors = lib.filter (name: _: !(builtins.hasAttr name terminalColors)) colorRoles;
+  terminalNames = builtins.attrNames colorRoles;
+  missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
 
   # check for missing desktop colors the same way
   roleNames = builtins.attrNames roleDescriptions;

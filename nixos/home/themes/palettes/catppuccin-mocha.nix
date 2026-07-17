@@ -31,17 +31,19 @@ in
 {
   name = "catppuccin-mocha";
 
+  inherit palette;
+
   roles = with palette; {
 
     # Neutral surfaces
-    background = Curst;
+    background = Crust;
     surface = Base;
     surfaceRaised = Surface1;
     overlay = Overlay0;
 
     # Foreground content
     foregroundDisabled = Overlay1;
-    foregroundMuted = subtext0;
+    foregroundMuted = Subtext0;
     foreground = Text;
 
     # Structure and focus
@@ -51,7 +53,7 @@ in
     # Interactive colors
     accent = Mauve;
     accentAlt = Peach;
-    accentForeground = Maroon;
+    accentForeground = Mantle;
     selection = Sky;
     selectionForeground = Mantle;
 
@@ -70,14 +72,14 @@ in
     color3 = Peach;
     color4 = Blue;
     color5 = Mauve;
-    color6 = Sapphire;
+    color6 = Teal;
     color7 = Overlay1;
     color8 = Surface2;
     color9 = Red;
     color10 = Teal;
     color11 = Yellow;
     color12 = Lavender;
-    color13 = Pink;
+    color13 = Sky;
     color14 = Rosewater;
     color15 = Subtext0;
   };
