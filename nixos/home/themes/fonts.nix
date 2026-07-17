@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     nerd-fonts.symbols-only
     liberation_ttf
+    maple-mono.NF
   ];
 
   # default fonts

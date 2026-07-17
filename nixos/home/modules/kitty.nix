@@ -15,13 +15,6 @@ in
     kitty = {
       enable = true;
 
-      # TODO: remove and let stylix take this
-      font = {
-        name = "JetBrainsMono Nerd Font Mono";
-        size = 12;
-        package = pkgs.nerd-fonts.jetbrains-mono;
-      };
-
       # C-R search history
       # C-T serch directory
       # A-C cd search
@@ -37,8 +30,8 @@ in
         foreground = colorsLib.hex colors.foreground;
         background = colorsLib.hex colors.background;
 
-        selection_foreground = colorsLib.hex colors.foreground;
-        selection_background = colorsLib.hex colors.surface;
+        selection_foreground = colorsLib.hex colors.background;
+        selection_background = colorsLib.hex colors.foreground;
 
         cursor = colorsLib.hex colors.accent;
         cursor_text_color = colorsLib.hex colors.background;

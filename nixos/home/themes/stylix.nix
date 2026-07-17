@@ -9,14 +9,16 @@ in
     enable = true;
     autoEnable = false;
 
-    polarity = config.dave.theme.polarity;
+    polarity = theme.polarity;
 
-    targets.kitty = {
-      enable = true;
+    targets = {
+      font-packages.enable = true;
+      fontconfig.enable = true;
+      kitty = {
+        enable = true;
 
-      fonts.enable = false;
-      colors.enable = false;
-      opacity.enable = true;
+        colors.enable = false;
+      };
     };
     opacity.terminal = 0.85;
 
@@ -42,5 +44,6 @@ in
       base0E = colors.accent;
       base0F = terminal.color1;
     };
+    fonts = theme.typography.fonts;
   };
 }

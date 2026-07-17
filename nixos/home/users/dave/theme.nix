@@ -11,11 +11,34 @@
     };
 
     typography = {
-      fonts = with pkgs; {
-        sansSerif = maple-mono.NF;
-        serif = noto-fonts;
-        monospace = nerd-fonts.jetbrains-mono;
-        emoji = noto-fonts-color-emoji;
+      fonts = {
+        sansSerif = {
+          package = pkgs.noto-fonts;
+          name = "Noto Sans";
+        };
+
+        serif = {
+          package = pkgs.noto-fonts;
+          name = "Noto Serif";
+        };
+
+        monospace = {
+          package = pkgs.nerd-fonts.jetbrains-mono;
+          name = "JetBrainsMono Nerd Font Mono";
+        };
+
+        emoji = {
+          package = pkgs.noto-fonts-color-emoji;
+          name = "Noto Color Emoji";
+        };
+      };
+
+      sizes = {
+        desktop = "10";
+        applications = "12";
+        terminal = "12";
+        popups = "10";
+
       };
     };
   };
