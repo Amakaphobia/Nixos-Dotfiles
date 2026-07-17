@@ -7,23 +7,34 @@ let
 
   # create roles for colors 1 is more muted than 2
   roleNames = [
-    "background1"
-    "background2"
-    "surface1"
-    "surface2"
+
+    # Neutral surfaces
+    "background"
+    "surfaceDark"
+    "surfaceLight"
+    "overlay"
+
+    # Foreground content
+    "foregroundDisabled"
+    "foregroundMuted"
     "foreground"
-    "muted"
-    "accent1"
-    "accent2"
-    "success1"
-    "success2"
-    "warning1"
-    "warning2"
-    "error1"
-    "error2"
-    "info1"
-    "info2"
+
+    # Structure and focus
     "border"
+    "focus"
+
+    # Interactive colors
+    "accent"
+    "accentAlt"
+    "accentForeground"
+    "selection"
+    "selectionForeground"
+
+    # Semantic status colors
+    "success"
+    "warning"
+    "error"
+    "info"
   ];
 
   roleOptions = lib.genAttrs roleNames (
@@ -36,7 +47,6 @@ let
 
   # generate terminal color names color0 through color15
   terminalNames = map (number: "color${toString number}") (lib.range 0 15);
-
 
   # make hexcolor options out of the terminal color names
   terminalOptions = lib.genAttrs terminalNames (
@@ -52,6 +62,31 @@ let
 
   # check if every name has a color and collect names without colors
   missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
+
+  fontOptions = lib.genAttrs [ "serif" "sansSerif" "monospace" "emoji" ] (
+    name:
+    mkOption {
+      type = types.submodule {
+        options = {
+          package = mkOption {
+            type = types.package;
+          };
+          name = mkOption {
+            type = types.str;
+          };
+          descriptions = "Default font for: ${name}";
+        };
+      };
+    }
+  );
+
+  sizeOptions = lib.genAttrs [ "desktop" "applications" "terminal" "popups" ] (
+    name:
+    mkOption {
+      type = types.number;
+      description = "default size for ${name}";
+    }
+  );
 in
 {
   # make sure the theme is complete by asserting the collection of missing colors is empty
@@ -68,7 +103,65 @@ in
   };
 
   options.dave.theme = {
-    # create global theme option
+    # light or dark
+    polarity = mkOption {
+      type = types.enum [
+        "light"
+        "dark"
+      ];
+      description = "is the selected theme light or dark";
+    };
+
+    # create font options
+    fonts = mkOption {
+      descriptions = "Desktop Fonts";
+      type = types.submodule {
+        options = fontOptions;
+      };
+      sizes = mkOption {
+        type = types.submodule {
+          options = sizeOptions;
+        };
+      };
+    };
+
+    # cursor
+    cursor = mkOption {
+      description = "Desktop cursor theme.";
+
+      type = types.submodule {
+        options = {
+          package = mkOption {
+            type = types.package;
+          };
+          name = mkOption {
+            type = types.str;
+          };
+          size = mkOption {
+            type = types.int;
+          };
+        };
+      };
+    };
+
+    icons = mkOption {
+      description = "Desktop icon theme.";
+
+      type = types.submodule {
+        options = {
+          enable = mkOption {
+            type = types.bool;
+            default = false;
+          };
+          package = mkOption {
+            type = types.nullOr types.package;
+            default = null;
+          };
+        };
+      };
+    };
+
+    # create global color scheme
     scheme = mkOption {
       description = "Global desktop color scheme.";
 
