@@ -10,7 +10,7 @@
 
 * {
   all: unset;
-  font-family: "Maple Mono NF";
+  font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 12px;
   color: @accent;
 }

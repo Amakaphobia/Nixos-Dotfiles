@@ -37,16 +37,16 @@ in
 
           type = types.submodule {
             options = fontOptions;
+            sizes = mkOption {
+              description = "Semantic font sizes.";
+
+              type = types.submodule {
+                options = sizeOptions;
+              };
+            };
           };
         };
 
-        sizes = mkOption {
-          description = "Semantic font sizes.";
-
-          type = types.submodule {
-            options = sizeOptions;
-          };
-        };
       };
     };
   };
