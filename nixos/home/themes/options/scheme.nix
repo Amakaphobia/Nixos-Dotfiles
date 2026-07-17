@@ -10,8 +10,8 @@ let
 
     # Neutral surfaces
     background = "default background for applications";
-    surfaceDark = "default background for containers";
-    surfaceLight = "visually elevated containers";
+    surface = "default background for containers";
+    surfaceRaised = "visually elevated containers";
     overlay = "highlights and selection background";
 
     # Foreground content
@@ -37,13 +37,13 @@ let
     info = "indicates noteworthy information";
   };
 
-  roleOptions = lib.mapAttrs roleDescriptions (
+  roleOptions = lib.mapAttrs (
     _: description:
     mkOption {
       inherit description;
       type = hexColor;
     }
-  );
+  ) roleDescriptions;
 
   # generate terminal color names color0 through color15
   terminalNames = map (number: "color${toString number}") (lib.range 0 15);
@@ -62,12 +62,24 @@ let
 
   # check if every name has a color and collect names without colors
   missingTerminalColors = lib.filter (name: !(builtins.hasAttr name terminalColors)) terminalNames;
+
+  # check for missing desktop colors the same way
+  roleNames = builtins.attrNames roleDescriptions;
+  roleColors = config.dave.theme.scheme.roles;
+  missingRoleColors = lib.filter (name: !(builtins.hasAttr name roleColors)) roleNames;
 in
 {
 
-  # make sure the scheme is atleast terminal-complete
+  # make sure the scheme is complete
   config = {
     assertions = [
+      {
+        assertion = missingRoleColors == [ ];
+        message = ''
+          Theme "${config.dave.theme.scheme.name}" is missing desktop colors:
+          ${lib.concatStringsSep ", " missingRoleColors}
+        '';
+      }
       {
         assertion = missingTerminalColors == [ ];
         message = ''
@@ -77,6 +89,7 @@ in
       }
     ];
   };
+
   # create global color scheme
   options.dave.theme.scheme = mkOption {
     description = "Global desktop color scheme.";

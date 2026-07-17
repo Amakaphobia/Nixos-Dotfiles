@@ -9,12 +9,13 @@ in
     type = types.submodule {
       options = {
         package = mkOption {
-          type = types.nullOr types.package;
+          description = "Icon theme package";
+          type = types.package;
           default = null;
         };
         name = mkOption {
           type = types.str;
-          description = "Icon theme name exposed by the package.";
+          description = "Icon theme name";
         };
       };
     };

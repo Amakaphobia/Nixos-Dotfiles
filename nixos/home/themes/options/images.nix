@@ -4,15 +4,21 @@ let
 in
 {
   # create user options for wallpaper and lockscreen
-  options.dave.theme = {
-    wallpaper = mkOption {
-      type = types.path;
-      description = "Wallpaper";
-    };
+  options.dave.themeimages = mkOption {
+    description = "images used by the theme";
+    types = types.submodule {
 
-    lockscreen = mkOption {
-      type = types.path;
-      description = "Lockscreen";
+      options = {
+        wallpaper = mkOption {
+          type = types.path;
+          description = "Wallpaper";
+        };
+
+        lockscreen = mkOption {
+          type = types.path;
+          description = "Lockscreen";
+        };
+      };
     };
   };
 }

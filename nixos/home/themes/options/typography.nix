@@ -4,7 +4,7 @@ let
   fontOptions = lib.genAttrs [ "serif" "sansSerif" "monospace" "emoji" ] (
     name:
     mkOption {
-      descriptions = "Default font for: ${name}";
+      description = "Default font for: ${name}";
       type = types.submodule {
         options = {
           package = mkOption {
@@ -30,7 +30,24 @@ in
   # create font options
   options.dave.theme.typography = mkOption {
     description = "Typograhpy settings";
-    fonts = fontOptions;
-    sizes = sizeOptions;
+    type = types.submodule {
+      options = {
+        fonts = mkOption {
+          description = "Font families used by the desktop.";
+
+          type = types.submodule {
+            options = fontOptions;
+          };
+        };
+
+        sizes = mkOption {
+          description = "Semantic font sizes.";
+
+          type = types.submodule {
+            options = sizeOptions;
+          };
+        };
+      };
+    };
   };
 }
