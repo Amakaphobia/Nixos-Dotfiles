@@ -22,6 +22,9 @@
         colors.enable = false;
       };
     };
-    opacity.terminal = 0.85;
+    opacity = {
+      terminal = 0.8;
+      popups = 0.8;
+    };
   };
 }
