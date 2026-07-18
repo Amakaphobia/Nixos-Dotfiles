@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # make firefox addons available via the nur overlay
     nur = {
       url = "github:nix-community/NUR";
@@ -40,6 +45,7 @@
       home-manager,
       nixos-hardware,
       nur,
+      stylix,
       ...
     }:
     let
@@ -49,7 +55,7 @@
 
       homeModulesPath = ./home/modules;
 
-      wallpapersPath = ../wallpapers;
+      wallpapersPath = ./assets/wallpapers;
     in
     {
       nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
@@ -71,7 +77,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-
+              sharedModules = [
+                stylix.homeModules.stylix
+              ];
               extraSpecialArgs = {
                 inherit
                   inputs
@@ -83,7 +91,6 @@
               backupFileExtension = "backup";
             };
           }
-
           nur.modules.nixos.default
         ];
       };

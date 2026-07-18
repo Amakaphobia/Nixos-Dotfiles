@@ -8,8 +8,6 @@
     jq
     # terminal session manager
     tmux
-    # dmenu
-    fuzzel
     # nix language server
     nil
     # nix formatter

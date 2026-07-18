@@ -11,7 +11,7 @@
         {
           fit_mode = "cover";
           monitor = "eDP-1";
-          path = "${config.dave.theme.wallpaper}";
+          path = "${config.dave.theme.images.wallpaper}";
         }
 
       ];

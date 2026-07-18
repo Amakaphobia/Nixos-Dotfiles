@@ -4,7 +4,8 @@
 
 #clock {
   background: transparent;
-  font-size: 1.1rem;
+  font-family: Maple Mono NF;
+  font-size: 12px;
   font-weight: bold;
   border-radius: 6px;
   padding: 0px 10px;
@@ -14,26 +15,26 @@
 /* Power Profile Switcher */
 
 #power-profiles-daemon {
-  font-size: 1.1rem;
+  font-size: 11px;
   font-weight: bold;
   border-radius: 60px;
   padding: 2px 4px;
   margin: 5px 5px;
 }
 #power-profiles-daemon.power-saver {
-  color: @success2;
+  color: @success;
 }
 #power-profiles-daemon.balanced {
-  color: @warning2;
+  color: @accentAlt;
 }
 #power-profiles-daemon.performance {
-  color: @error1;
+  color: @error;
 }
 
 /* Notifications */
 
 #custom-notification {
-  font-size: 1.1rem;
+  font-size: 11px;
   font-weight: bold;
   border-radius: 60px;
   padding: 2px 4px;
@@ -42,22 +43,22 @@
 
 /* No stored notifications */
 #custom-notification.none {
-  color: @accent1;
+  color: @accent;
 }
 
 /* One or more stored notifications */
 #custom-notification.notification {
-  color: @error1;
+  color: @error;
 }
 
 /* Do Not Disturb, no notifications */
 #custom-notification.dnd-none {
-  color: @surface1;
+  color: @surface;
 }
 
 /* Do Not Disturb, with notifications */
 #custom-notification.dnd-notification {
-  color: @warning1;
+  color: @accentAlt;
 }
 
 /* Notifications are inhibited */
@@ -68,5 +69,5 @@
 
 #custom-notification.inhibited-notification,
 #custom-notification.dnd-inhibited-notification {
-  color: @error2;
+  color: @error;
 }

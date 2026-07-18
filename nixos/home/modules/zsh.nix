@@ -2,7 +2,7 @@
 
 {
 
-  #Zsh
+  # Zsh
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -19,6 +19,7 @@
       sr = "systemctl reboot";
       sd = "systemctl poweroff";
       hh = "systemctl hibernate";
+      chelp = "cat ~/color-info.txt";
     };
   };
 

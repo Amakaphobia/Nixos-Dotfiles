@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   imports = [
     ./core-plugins.nix
@@ -58,9 +58,9 @@
           appearance = {
             theme = "obsidian";
 
-            interfaceFontFamily = "Noto Sans";
-            textFontFamily = "Noto Serif";
-            monospaceFontFamily = "JetBrainsMono Nerd Font Mono";
+            interfaceFontFamily = config.dave.theme.fonts.sansSerif.name;
+            textFontFamily = config.dave.theme.fonts.serif.name;
+            monospaceFontFamily = config.dave.theme.fonts.monospace.name;
           };
         };
       };

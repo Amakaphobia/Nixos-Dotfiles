@@ -5,9 +5,9 @@ let
   };
   colors = config.dave.theme.scheme.roles;
 
-  border1 = (colorsLib.hyprRgba colors.accent1 "ff");
-  border2 = (colorsLib.hyprRgba colors.info1 "ff");
-  borderInactive = (colorsLib.hyprRgba colors.background2 "dd");
+  border1 = (colorsLib.hyprRgba colors.accent "ff");
+  border2 = (colorsLib.hyprRgba colors.info "ff");
+  borderInactive = (colorsLib.hyprRgba colors.surface "dd");
 in
 {
   wayland.windowManager.hyprland.settings = {
