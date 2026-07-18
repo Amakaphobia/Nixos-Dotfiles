@@ -7,10 +7,16 @@
       font-packages.enable = true;
       fontconfig.enable = true;
 
-      # style gtk
+      # gtk
       gtk.enable = true;
 
-      # style kitty but keep colors on manual
+      # notifs
+      swaync.enable = true;
+
+      # menu
+      fuzzel.enable = true;
+
+      # kitty - keep colors on manual
       kitty = {
         enable = true;
         colors.enable = false;
