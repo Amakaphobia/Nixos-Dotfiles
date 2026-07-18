@@ -80,10 +80,10 @@ let
   # map over roles, get hex from scheme.role
   # join both with a :
   # gather into list
-  listOfInfoLinesOrdered = map (
+  listOfInfoLinesOrdered = builtins.mapAttrs (
     roleName:
     let
-      hex = theme.scheme.${roleName};
+      hex = theme.scheme.roles.${roleName};
     in
     "${roleName} : ${hex}"
   ) config.dave.theme.scheme.roles;
@@ -127,5 +127,5 @@ in
   };
 
   # link the file to home directory
-  home.file."color-info.txt".text = infoText;
+  config.home.file."color-info.txt".text = infoText;
 }
