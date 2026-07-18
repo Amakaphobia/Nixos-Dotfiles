@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+mkdir -p "$HOME/Pictures/Screenshots"
 # complete screenshot
 grim -t ppm - |
   satty \

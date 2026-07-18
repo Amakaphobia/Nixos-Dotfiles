@@ -1,11 +1,22 @@
 { pkgs, ... }:
+let
+  fonts = import ../lib/fontCatalog.nix { inherit pkgs; };
+  notoComplete = [
+    fonts.notoSans.package
+    fonts.notoEmoji
+  ];
+in
 {
   # Install fonts into home manager profile
-  home.packages = with pkgs; [
-    nerd-fonts.symbols-only
-    liberation_ttf
-    maple-mono.NF
-  ];
+  home.packages =
+    with pkgs;
+    [
+      nerd-fonts.symbols-only
+      liberation_ttf
+      # make sure maple is installed regardless of theme choices
+      maple-mono.NF
+    ]
+    ++ notoComplete;
 
   # default fonts
   fonts.fontconfig = {

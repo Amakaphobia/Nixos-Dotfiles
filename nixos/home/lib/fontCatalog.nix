@@ -28,4 +28,13 @@ in
     package = pkgs.nerd-fonts.jetbrains-mono;
     name = "JetBrainsMono Nerd Font Mono";
   };
+  liberation = {
+    package = pkgs.liberation_ttf;
+    name = "";
+  };
+  nf_symbol = {
+    package = pkgs.nerd-fonts.symbols-only;
+    name = "Symboles Nerd Font";
+
+  };
 }
