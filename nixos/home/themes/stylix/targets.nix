@@ -10,12 +10,18 @@
       # gtk
       gtk.enable = true;
 
-      # notifs
+      # qt
       swaync.enable = true;
 
       # menu
       fuzzel.enable = true;
 
+      # firefox
+      firefox = {
+        enable = true;
+        profileNames = [ "default" ];
+      };
+      
       # kitty - keep colors on manual
       kitty = {
         enable = true;

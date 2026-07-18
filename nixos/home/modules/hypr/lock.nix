@@ -1,4 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  colorsLib = import ../../lib/colors.nix {
+    inherit lib;
+  };
+  colors = config.dave.theme.scheme.roles;
+in
 {
   programs.hyprlock = {
     enable = true;
@@ -39,9 +45,9 @@
           dots_center = true;
           fade_on_empty = false;
 
-          font_color = "rgb(36,39,58)";
-          inner_color = "rgb(194,157,241)";
-          outer_color = "rgb(26, 24, 35)";
+          font_color = colorsLib.hyprRgb colors.foreground;
+          inner_color = colorsLib.hyprRgb colors.background;
+          outer_color = colorsLib.hyprRgb colors.accent;
 
           outline_thickness = 5;
           placeholder_text = "Speak Friend and enter";
