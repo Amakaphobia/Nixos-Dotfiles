@@ -1,4 +1,9 @@
-{ lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkOption types;
   # 6 hexadecimals
@@ -6,7 +11,7 @@ let
 
   # List all semantic colors and their descriptions
 
-  roleDescriptions = {
+  semanticRoleDescriptions = {
 
     # Neutral surfaces
     background = "default background for applications";
@@ -37,15 +42,20 @@ let
     info = "indicates noteworthy information";
   };
 
-  roleOptions = lib.mapAttrs (
-    _: description:
+  colorBySemanticRole = lib.mapAttrs (
+    name: description:
     mkOption {
-      inherit description;
-      type = hexColor;
+      type = types.submodule {
+        inherit description;
+        hex = mkOption {
+          description = "Hex representation of color";
+          type = hexColor;
+        };
+      };
     }
-  ) roleDescriptions;
+  ) semanticRoleDescriptions;
 
-  colorRoles = {
+  terminalColorRoles = {
     color0 = "black";
     color1 = "red";
     color2 = "green";
@@ -63,21 +73,23 @@ let
     color14 = "bright-cyan";
     color15 = "bright-white";
   };
-  terminalOptions = lib.mapAttrs (
+  terminalColorOptions = lib.mapAttrs (
     name: colorName:
     mkOption {
       type = hexColor;
       description = "ANSI ${colorName} (${name}).";
     }
-  ) colorRoles;
+  ) terminalColorRoles;
+
+  myText = pkgs.writeTextFile "colorinfo.txt" lib.strings.join "/n" lib.mapAttrs (
+    name: colorHex: "${name} set to ${colorHex}"
+  ) config.dave.theme.scheme;
 
 in
 {
-  # will redo assertions later
-
   # create global color scheme
   options.dave.theme.scheme = mkOption {
-    description = "Global desktop color scheme.";
+    description = "global desktop color scheme.";
 
     type = types.submodule {
       options = {
@@ -95,17 +107,19 @@ in
           description = "Application-independent semantic colors.";
 
           type = types.submodule {
-            options = roleOptions;
+            options = colorBySemanticRole;
           };
         };
 
         terminal = mkOption {
           type = types.submodule {
-            options = terminalOptions;
+            options = terminalColorOptions;
           };
           description = "ANSI terminal colors named color0 through color15.";
         };
       };
     };
   };
+
+  myText = config.lib.file.mkOutOfStoreSymlink "/home/dave/";
 }
