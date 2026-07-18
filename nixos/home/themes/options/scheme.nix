@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -8,6 +7,8 @@ let
   inherit (lib) mkOption types;
   # 6 hexadecimals
   hexColor = types.strMatching "[0-9a-fA-F]{6}";
+
+  theme = config.dave.theme;
 
   # List all semantic colors and their descriptions
 
@@ -76,12 +77,19 @@ let
     }
   ) terminalColorRoles;
 
-  # lib.mapAttrsToList map a set of attributes into a list
-  listOfInfoLines = lib.mapAttrsToList (
-    roleName: hex: "${roleName}: ${hex}"
+  # map over roles, get hex from scheme.role
+  # join both with a :
+  # gather into list
+  listOfInfoLinesOrdered = map (
+    roleName:
+    let
+      hex = theme.scheme.${roleName};
+    in
+    "${roleName} : ${hex}"
   ) config.dave.theme.scheme.roles;
 
-  infoText = lib.strings.join "\n" listOfInfoLines;
+  # join the list with newlines
+  infoText = lib.strings.join "\n" listOfInfoLinesOrdered;
 in
 {
   # create global color scheme
@@ -118,5 +126,6 @@ in
     };
   };
 
+  # link the file to home directory
   home.file."color-info.txt".text = infoText;
 }
