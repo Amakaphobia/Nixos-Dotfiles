@@ -11,7 +11,8 @@ let
 
   theme = config.dave.theme;
 
-  inherit (../palettes/palette-layout.nix) terminalColorRoles semanticColorRoles;
+  layout = import ../palettes/palette-layout.nix;
+  inherit (layout) terminalColorRoles semanticColorRoles;
 
   # List all semantic colors and their descriptions
 
@@ -80,15 +81,23 @@ let
     }
   ) terminalColorRoles;
 
-  # map over roles, get hex from scheme.role
+  # map over user.theme.scheme.terminal, get hex
   # join both with a :
   # gather into list
-  listOfInfoLinesOrdered = lib.mapAttrsToList (
+  listOfInfoLinesTerminal = lib.mapAttrsToList (
+    roleName: hex: "${roleName} : ${hex}"
+  ) theme.scheme.terminal;
+  terminalList = lib.strings.join "\n" listOfInfoLinesTerminal;
+
+  # map over user.theme.scheme.roles, get hex
+  # join both with a :
+  # gather into list
+  listOfInfoLinesSemantic = lib.mapAttrsToList (
     roleName: hex: "${roleName} : ${hex}"
   ) theme.scheme.roles;
+  semanticList = lib.strings.join "\n" listOfInfoLinesSemantic;
 
-  # join the list with newlines
-  infoText = lib.strings.join "\n" listOfInfoLinesOrdered;
+  infoText = semanticList + "\n\n" + terminalList;
 in
 {
   # create global color scheme
