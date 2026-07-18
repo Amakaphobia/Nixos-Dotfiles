@@ -14,87 +14,40 @@ let
   layout = import ../palettes/palette-layout.nix;
   inherit (layout) terminalColorRoles semanticColorRoles;
 
-  # List all semantic colors and their descriptions
+  semanticColorOptions = lib.listToAttrs (
+    map (role: {
+      name = "${role.name}";
+      value = mkOption {
+        type = hexColor;
+        description = "${role.description}";
+      };
+    }) semanticColorRoles
+  );
 
-  # semanticRoleDescriptions = {
-  #
-  #   # Neutral surfaces
-  #   background = "default background for applications";
-  #   surface = "default background for containers";
-  #   surfaceRaised = "visually elevated containers";
-  #   overlay = "Background for floating content such as menus, popovers and tooltips.";
-  #
-  #   # Foreground content
-  #   foregroundDisabled = "very muted forground tone";
-  #   foregroundMuted = "muted forground tone";
-  #   foreground = "default tone for text";
-  #
-  #   # Structure and focus
-  #   border = "default border tone";
-  #   focus = "default border tone for focused objects";
-  #
-  #   # Interactive colors
-  #   accent = "default accent color";
-  #   accentAlt = "alternative accent color";
-  #   accentForeground = "foreground accent color";
-  #   selection = "default selection color";
-  #   selectionForeground = "default selection foreground";
-  #
-  #   # Semantic status colors
-  #   success = "indicates success";
-  #   warning = "indicates a non critical problem";
-  #   error = "indicates a critical problem";
-  #   info = "indicates noteworthy information";
-  # };
+  terminalColorOptions = lib.listToAttrs (
+    map (role: {
+      name = "${role.name}";
+      value = mkOption {
+        type = hexColor;
+        description = "${role.description}";
+      };
+    }) terminalColorRoles
+  );
 
-  colorBySemanticRole = lib.mapAttrs (
-    name: description:
-    mkOption {
-      inherit description;
-      type = hexColor;
-    }
-  ) semanticColorRoles;
-
-  # terminalColorRoles = {
-  #   color0 = "black";
-  #   color1 = "red";
-  #   color2 = "green";
-  #   color3 = "yellow";
-  #   color4 = "blue";
-  #   color5 = "magenta";
-  #   color6 = "cyan";
-  #   color7 = "light-grey";
-  #   color8 = "dark-grey";
-  #   color9 = "bright-red";
-  #   color10 = "bright-green";
-  #   color11 = "bright-yellow";
-  #   color12 = "bright-blue";
-  #   color13 = "bright-magenta";
-  #   color14 = "bright-cyan";
-  #   color15 = "bright-white";
-  # };
-  terminalColorOptions = lib.mapAttrs (
-    name: colorName:
-    mkOption {
-      type = hexColor;
-      description = "ANSI ${colorName} (${name}).";
-    }
-  ) terminalColorRoles;
-
-  # map over user.theme.scheme.terminal, get hex
+  # map over list of ordered roles and join the role name from that list with the color from the users theme
   # join both with a :
   # gather into list
-  listOfInfoLinesTerminal = lib.mapAttrsToList (
-    roleName: hex: "${roleName} : ${hex}"
-  ) theme.scheme.terminal;
+  listOfInfoLinesTerminal = map (
+    role: "${role.name} : ${theme.scheme.terminal.${role.name}}"
+  ) terminalColorRoles;
   terminalList = lib.strings.join "\n" listOfInfoLinesTerminal;
 
-  # map over user.theme.scheme.roles, get hex
+  # map over list of ordered roles and join the role name from that list with the color from the users theme
   # join both with a :
   # gather into list
-  listOfInfoLinesSemantic = lib.mapAttrsToList (
-    roleName: hex: "${roleName} : ${hex}"
-  ) theme.scheme.roles;
+  listOfInfoLinesSemantic = map (
+    role: "${role.name} : ${theme.scheme.roles.${role.name}}"
+  ) semanticColorRoles;
   semanticList = lib.strings.join "\n" listOfInfoLinesSemantic;
 
   infoText = semanticList + "\n\n" + terminalList;
@@ -120,7 +73,7 @@ in
           description = "Application-independent semantic colors.";
 
           type = types.submodule {
-            options = colorBySemanticRole;
+            options = semanticColorOptions;
           };
         };
 

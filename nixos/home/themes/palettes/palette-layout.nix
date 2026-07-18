@@ -1,54 +1,148 @@
 let
-  semanticColorRoles = {
-    # background
-    background = "default background for applications";
-    surface = "default background for containers";
-    surfaceRaised = "visually elevated containers";
-    overlay = "Background for floating content such as menus; popovers and tooltips.";
+  semanticColorRoles = [
+    {
+      name = "background";
+      description = "default background for applications";
+    }
+    {
+      name = "surface";
+      description = "default background for containers";
+    }
+    {
+      name = "surfaceRaised";
+      description = "visually elevated containers";
+    }
+    {
+      name = "overlay";
+      description = "Background for floating content such as menus; popovers and tooltips.";
+    }
+    {
+      name = "foregroundDisabled";
+      description = "very muted forground tone";
+    }
+    {
+      name = "foregroundMuted";
+      description = "muted forground tone";
+    }
+    {
+      name = "foreground";
+      description = "default tone for text";
+    }
+    {
+      name = "border";
+      description = "default border tone";
+    }
+    {
+      name = "focus";
+      description = "default border tone for focused objects";
+    }
+    {
+      name = "accent";
+      description = "default accent color";
+    }
+    {
+      name = "accentAlt";
+      description = "alternative accent color";
+    }
+    {
+      name = "accentForeground";
+      description = "foreground accent color";
+    }
+    {
+      name = "selection";
+      description = "default selection color";
+    }
+    {
+      name = "selectionForeground";
+      description = "default selection foreground";
+    }
+    {
+      name = "success";
+      description = "indicates success";
+    }
+    {
+      name = "warning";
+      description = "indicates a non critical problem";
+    }
+    {
+      name = "error";
+      description = "indicates a critical problem";
+    }
+    {
+      name = "info";
+      description = "indicates noteworthy information";
+    }
 
-    #  Foreground content
-    foregroundDisabled = "very muted forground tone";
-    foregroundMuted = "muted forground tone";
-    foreground = "default tone for text";
+  ];
 
-    #  Structure and focus
-    border = "default border tone";
-    focus = "default border tone for focused objects";
-
-    #  Interactive colors
-    accent = "default accent color";
-    accentAlt = "alternative accent color";
-    accentForeground = "foreground accent color";
-    selection = "default selection color";
-    selectionForeground = "default selection foreground";
-
-    #  Semantic status colors
-    success = "indicates success";
-    warning = "indicates a non critical problem";
-    error = "indicates a critical problem";
-    info = "indicates noteworthy information";
-  };
-
-  terminalColorRoles = {
+  terminalColorRoles = [
     #  normal
-    color0 = "black";
-    color1 = "red";
-    color2 = "green";
-    color3 = "yellow";
-    color4 = "blue";
-    color5 = "magenta";
-    color6 = "cyan";
-    color7 = "light-grey";
+    {
+      name = "color0";
+      description = "black";
+    }
+    {
+      name = "color1";
+      description = "red";
+    }
+    {
+      name = "color2";
+      description = "green";
+    }
+    {
+      name = "color3";
+      description = "yellow";
+    }
+    {
+      name = "color4";
+      description = "blue";
+    }
+    {
+      name = "color5";
+      description = "magenta";
+    }
+    {
+      name = "color6";
+      description = "cyan";
+    }
+    {
+      name = "color7";
+      description = "light-grey";
+    }
     #  bright
-    color8 = "dark-grey";
-    color9 = "bright-red";
-    color10 = "bright-green";
-    color11 = "bright-yellow";
-    color12 = "bright-blue";
-    color13 = "bright-magenta";
-    color14 = "bright-cyan";
-    color15 = "bright-white";
-  };
+    {
+      name = "color8";
+      description = "dark-grey";
+    }
+    {
+      name = "color9";
+      description = "bright-red";
+    }
+    {
+      name = "color10";
+      description = "bright-green";
+    }
+    {
+      name = "color11";
+      description = "bright-yellow";
+    }
+    {
+      name = "color12";
+      description = "bright-blue";
+    }
+    {
+      name = "color13";
+      description = "bright-magenta";
+    }
+    {
+      name = "color14";
+      description = "bright-cyan";
+    }
+    {
+      name = "color15";
+      description = "bright-white";
+    }
+  ];
 in
 {
   inherit semanticColorRoles terminalColorRoles;
