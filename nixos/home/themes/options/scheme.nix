@@ -45,13 +45,8 @@ let
   colorBySemanticRole = lib.mapAttrs (
     name: description:
     mkOption {
-      type = types.submodule {
-        inherit description;
-        hex = mkOption {
-          description = "Hex representation of color";
-          type = hexColor;
-        };
-      };
+      inherit description;
+      type = hexColor;
     }
   ) semanticRoleDescriptions;
 
@@ -81,10 +76,12 @@ let
     }
   ) terminalColorRoles;
 
-  myText = pkgs.writeTextFile "colorinfo.txt" lib.strings.join "/n" lib.mapAttrs (
-    name: colorHex: "${name} set to ${colorHex}"
-  ) config.dave.theme.scheme;
+  # lib.mapAttrsToList map a set of attributes into a list
+  listOfInfoLines = lib.mapAttrsToList (
+    roleName: hex: "${roleName}: ${hex}"
+  ) config.dave.theme.scheme.roles;
 
+  infoText = lib.strings.join "\n" listOfInfoLines;
 in
 {
   # create global color scheme
@@ -121,5 +118,5 @@ in
     };
   };
 
-  myText = config.lib.file.mkOutOfStoreSymlink "/home/dave/";
+  home.file."color-info.txt".text = infoText;
 }
