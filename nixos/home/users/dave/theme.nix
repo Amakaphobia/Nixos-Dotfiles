@@ -1,30 +1,10 @@
 { pkgs, wallpapersPath, ... }:
 let
-  # notoSans = {
-  #       package = pkgs.noto-fonts;
-  #       name = "Noto Sans";
-  #     };
-
-  mapleMono = {
-    package = pkgs.maple-mono.NF;
-    name = "Maple Mono NF";
-  };
-  lora = {
-    package = pkgs.lora;
-    name = "Lora";
-  };
-  # notoSerif = {
-  #   package = pkgs.noto-fonts;
-  #   name = "Noto Serif";
-  # };
-  jetBrainsMono = {
-    package = pkgs.nerd-fonts.jetbrains-mono;
-    name = "JetBrainsMono Nerd Font Mono";
-  };
-  notoEmoji = {
-    package = pkgs.noto-fonts-color-emoji;
-    name = "Noto Color Emoji";
-  };
+  fonts = import ../../lib/fontCatalog.nix { inherit pkgs; };
+  interfaceSans = fonts.mapleMono;
+  interfaceSerif = fonts.lora;
+  interfaceMono = fonts.jetBrainsMono;
+  interfaceEmoji = fonts.notoEmoji;
 in
 {
 
@@ -38,10 +18,11 @@ in
     };
 
     fonts = {
-      sansSerif = mapleMono;
-      serif = lora;
-      monospace = jetBrainsMono;
-      emoji = notoEmoji;
+      sansSerif = interfaceSans;
+      serif = interfaceSerif;
+      monospace = interfaceMono;
+      emoji = interfaceEmoji;
+
       sizes = {
         desktop = 10;
         applications = 10;

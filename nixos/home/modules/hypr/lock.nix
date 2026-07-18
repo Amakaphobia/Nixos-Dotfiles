@@ -45,6 +45,7 @@ in
           dots_center = true;
           fade_on_empty = false;
 
+          font_family = config.dave.theme.fonts.sansSerif.name;
           font_color = colorsLib.hyprRgb colors.foreground;
           inner_color = colorsLib.hyprRgb colors.background;
           outer_color = colorsLib.hyprRgb colors.accent;
