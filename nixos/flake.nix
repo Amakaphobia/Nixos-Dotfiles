@@ -55,7 +55,7 @@
 
       homeModulesPath = ./home/modules;
 
-      wallpapersPath = ../wallpapers;
+      wallpapersPath = ./assets/wallpapers;
     in
     {
       nixosConfigurations.nyx = nixpkgs.lib.nixosSystem {
