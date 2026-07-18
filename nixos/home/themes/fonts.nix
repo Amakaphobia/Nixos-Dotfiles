@@ -3,7 +3,7 @@ let
   fonts = import ../lib/fontCatalog.nix { inherit pkgs; };
   notoComplete = [
     fonts.notoSans.package
-    fonts.notoEmoji
+    fonts.notoEmoji.package
   ];
 in
 {

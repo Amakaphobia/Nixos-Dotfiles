@@ -9,7 +9,7 @@ let
   theme = config.dave.theme.scheme;
 
   fonts = import ../../lib/fontCatalog.nix { inherit pkgs; };
-  clockFont = fonts.mapleMono;
+  clockFont = fonts.mapleMono.package;
 
   colorsLib = import ../../lib/colors.nix {
     inherit lib;
