@@ -1,14 +1,8 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 let
   inherit (lib) mkOption types;
   # 6 hexadecimals
   hexColor = types.strMatching "[0-9a-fA-F]{6}";
-
-  theme = config.dave.theme;
 
   # List all semantic colors and their descriptions
 
@@ -46,8 +40,18 @@ let
   colorBySemanticRole = lib.mapAttrs (
     name: description:
     mkOption {
-      inherit description;
-      type = hexColor;
+      type = types.submodule {
+          inherit description;
+        hex = mkOption {
+          description = "Hex representation of color";
+          type = hexColor;
+        };
+        infoString = mkOption {
+          description = "Contains the role and the hex of this color as a string";
+          type = types.str;
+          apply = semanticColorAsText name;
+        };
+      };
     }
   ) semanticRoleDescriptions;
 
@@ -77,19 +81,8 @@ let
     }
   ) terminalColorRoles;
 
-  # map over roles, get hex from scheme.role
-  # join both with a :
-  # gather into list
-  listOfInfoLinesOrdered = builtins.mapAttrs (
-    roleName:
-    let
-      hex = theme.scheme.roles.${roleName};
-    in
-    "${roleName} : ${hex}"
-  ) config.dave.theme.scheme.roles;
+  semanticColorAsText = lib.mapAttrs (name: colorHex: "${name} set to ${colorHex}");
 
-  # join the list with newlines
-  infoText = lib.strings.join "\n" listOfInfoLinesOrdered;
 in
 {
   # create global color scheme
@@ -116,6 +109,12 @@ in
           };
         };
 
+        home.packages = pkgs.writeTextFile {
+          name = "colornames";
+          destination = ./.;
+          text = concatMapStrings 
+        };
+
         terminal = mkOption {
           type = types.submodule {
             options = terminalColorOptions;
@@ -125,7 +124,4 @@ in
       };
     };
   };
-
-  # link the file to home directory
-  config.home.file."color-info.txt".text = infoText;
 }

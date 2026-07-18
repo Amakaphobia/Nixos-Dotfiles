@@ -1,4 +1,8 @@
 { config, lib, ... }:
+let
+  theme = config.dave.theme;
+  colors = theme.scheme.roles;
+in
 {
   programs.fuzzel = {
     enable = true;
@@ -11,7 +15,7 @@
         font = lib.mkForce "Maple Mono NF:size=12";
       };
 
-      colors.selection = lib.mkForce "${config.dave.theme.scheme.roles.selection}ff";
+      colors.selection = lib.mkForce "${colors.background}ff";
 
       border = {
         width = 2;
