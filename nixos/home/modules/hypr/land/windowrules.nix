@@ -1,8 +1,67 @@
 { ... }:
+let
+  lua = lib.generators.mkLuaInline;
+
+  firstEmptyWorkspace = lua "
+	local function firstEmptyWorkspaceFrom(startId, ignoredWindow)
+	  local occupied = {}
+
+	  for _, workspace in ipairs(hl.get_workspaces()) do
+	    if workspace.id >= startId and not workspace.special then
+	      local windowCount = workspace.windows
+
+	      -- window.open fires after the new window has been assigned to a
+	      -- workspace. Do not count Spotify itself when deciding whether that
+	      -- workspace was previously empty.
+	      if ignoredWindow.workspace == workspace then
+		windowCount = windowCount - 1
+	      end
+
+	      occupied[workspace.id] = windowCount > 0
+	    end
+	  end
+
+	  local workspaceId = startId
+
+	  while occupied[workspaceId] do
+	    workspaceId = workspaceId + 1
+	  end
+
+	  return workspaceId
+	end";
+  spotifyOnWindowOpen = lua "
+	hl.on("window.open", function(window)
+	  local class = window.initial_class
+
+	  if class == nil or class == "" then
+	    class = window.class
+	  end
+
+	  if string.lower(class or "") ~= "spotify" then
+	    return
+	  end
+
+	  local targetWorkspace = firstEmptyWorkspaceFrom(5, window)
+
+	  hl.dispatch(hl.dsp.window.move({
+	    workspace = tostring(targetWorkspace),
+	    follow = true,
+	    window = window,
+	  }))
+	end)";
+in
 {
   wayland.windowManager.hyprland.settings = {
     window_rule = [
-      {
+    	{
+	  name = "float-modal-windows";
+	  match = {
+            modal = true;
+	  }
+	  float = true;
+	  center = true;
+	}
+      	{
         name = "PavuControl Rules";
         match.class = "org.pulseaudio.pavucontrol";
 
