@@ -5,6 +5,7 @@
   programs.ssh = {
     # generate SSH client configuration
     enable = true;
+    enableDefaultConfig = false;
     settings."github.com" = {
       # git@github.com:owner/repo
       User = "git";
