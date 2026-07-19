@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  #installing system level packages
+  # installing system level packages
   environment.systemPackages = with pkgs; [
 
     wget
@@ -31,8 +31,6 @@
   programs = {
     # Allows for homemamager to set gtk settings
     dconf.enable = true;
-    #enable ssh agent
-    ssh.startAgent = true;
     # enable the cool shell
     zsh.enable = true;
   };

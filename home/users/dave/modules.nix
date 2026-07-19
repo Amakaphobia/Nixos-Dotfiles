@@ -24,6 +24,8 @@
     (homeModulesPath + "/polkit.nix")
     # screenshots
     (homeModulesPath + "/screenshot.nix")
+    # ssh
+    (homeModulesPath + "/ssh.nix")
     # custom Scripts
     ../../scripts
     # sway notification center
