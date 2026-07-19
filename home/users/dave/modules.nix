@@ -36,7 +36,7 @@
     (homeModulesPath + "/waybar")
     # how sandboxed/wayland apps ask for desktop features
     (homeModulesPath + "/xdg.nix")
-    # zsh configuration
-    (homeModulesPath + "/shell/zsh")
+    # shell configuration
+    (homeModulesPath + "/shell")
   ];
 }

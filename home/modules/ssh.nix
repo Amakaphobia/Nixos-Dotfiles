@@ -1,7 +1,7 @@
 { ... }:
 {
   # enable ssh agent
-  ssh.startAgent = true;
+  services.ssh-agent.enable = true;
   programs.ssh = {
     # generate SSH client configuration
     enable = true;
