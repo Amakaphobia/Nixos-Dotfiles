@@ -1,3 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
-pgrep -x firefox >/dev/null 2>&1 || exec firefox
+if hyprctl clients -j |
+  jq -e '
+    any(.[];
+      (((.class // "") | ascii_downcase) == "firefox")
+      or
+      (((.initialClass // "") | ascii_downcase) == "firefox")
+    )
+  ' >/dev/null
+then
+  exit 0
+fi
+exec firefox
