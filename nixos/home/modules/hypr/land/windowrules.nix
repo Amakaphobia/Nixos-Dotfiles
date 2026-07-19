@@ -1,20 +1,17 @@
 { lib, ... }:
 let
   lua = lib.generators.mkLuaInline;
-
 in
 {
   wayland.windowManager.hyprland.settings = {
     window_rule = [
-    	{
-	  name = "float-modal-windows";
-	  match = {
-            modal = true;
-	  };
-	  float = true;
-	  center = true;
-	}
-      	{
+      {
+        name = "float-modal-windows";
+        match.modal = true;
+        float = true;
+        center = true;
+      }
+      {
         name = "PavuControl Rules";
         match.class = "org.pulseaudio.pavucontrol";
 
@@ -62,69 +59,69 @@ in
         no_focus = true;
       }
     ];
-on = [
-  {
-    _args = [
-      "workspace.active"
-      (lua ''
-	function(workspace)
-	  if workspace.id == 3 then
-	    hl.exec_cmd("browser-once")
-	  end
-	end
-      '')
+    on = [
+      {
+        _args = [
+          "workspace.active"
+          (lua ''
+            	function(workspace)
+            	  if workspace.id == 3 then
+            	    hl.exec_cmd("browser-once")
+            	  end
+            	end
+          '')
+        ];
+      }
+
+      {
+        _args = [
+          "window.open"
+          (lua ''
+            	function(window)
+            	  local class = window.initial_class
+
+            	  if class == nil or class == "" then
+            	    class = window.class
+            	  end
+
+            	  if string.lower(class or "") ~= "spotify" then
+            	    return
+            	  end
+
+            	  local occupied = {}
+            	  local ignoredWorkspaceId =
+            	    window.workspace ~= nil and window.workspace.id or nil
+
+            	  for _, workspace in ipairs(hl.get_workspaces()) do
+            	    if workspace.id >= 5 and not workspace.special then
+            	      local windowCount = workspace.windows
+
+            	      -- window.open runs after Spotify has already been placed on
+            	      -- a workspace, so exclude the newly opened window itself.
+            	      if workspace.id == ignoredWorkspaceId then
+            		windowCount = windowCount - 1
+            	      end
+
+            	      occupied[workspace.id] = windowCount > 0
+            	    end
+            	  end
+
+            	  local targetWorkspace = 5
+
+            	  while occupied[targetWorkspace] do
+            	    targetWorkspace = targetWorkspace + 1
+            	  end
+
+            	  hl.dispatch(hl.dsp.window.move({
+            	    workspace = tostring(targetWorkspace),
+            	    follow = true,
+            	    window = window,
+            	  }))
+            	end
+          '')
+        ];
+      }
     ];
-  }
-
-  {
-    _args = [
-      "window.open"
-      (lua ''
-	function(window)
-	  local class = window.initial_class
-
-	  if class == nil or class == "" then
-	    class = window.class
-	  end
-
-	  if string.lower(class or "") ~= "spotify" then
-	    return
-	  end
-
-	  local occupied = {}
-	  local ignoredWorkspaceId =
-	    window.workspace ~= nil and window.workspace.id or nil
-
-	  for _, workspace in ipairs(hl.get_workspaces()) do
-	    if workspace.id >= 5 and not workspace.special then
-	      local windowCount = workspace.windows
-
-	      -- window.open runs after Spotify has already been placed on
-	      -- a workspace, so exclude the newly opened window itself.
-	      if workspace.id == ignoredWorkspaceId then
-		windowCount = windowCount - 1
-	      end
-
-	      occupied[workspace.id] = windowCount > 0
-	    end
-	  end
-
-	  local targetWorkspace = 5
-
-	  while occupied[targetWorkspace] do
-	    targetWorkspace = targetWorkspace + 1
-	  end
-
-	  hl.dispatch(hl.dsp.window.move({
-	    workspace = tostring(targetWorkspace),
-	    follow = true,
-	    window = window,
-	  }))
-	end
-      '')
-    ];
-  }
-];
     workspace_rule = [
       {
         workspace = "1";
