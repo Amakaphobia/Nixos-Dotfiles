@@ -6,8 +6,6 @@
     geany
     # a jason processor
     jq
-    # terminal session manager
-    tmux
     # nix language server
     nil
     # nix formatter
@@ -40,11 +38,4 @@
     networkmanagerapplet
   ];
 
-  programs = {
-    # terminal fuzzy search
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-  };
 }

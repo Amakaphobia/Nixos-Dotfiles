@@ -26,8 +26,6 @@
     (homeModulesPath + "/screenshot.nix")
     # custom Scripts
     ../../scripts
-    # prompt
-    (homeModulesPath + "/starship.nix")
     # sway notification center
     (homeModulesPath + "/swaync.nix")
     # thunar settings
@@ -36,9 +34,7 @@
     (homeModulesPath + "/waybar")
     # how sandboxed/wayland apps ask for desktop features
     (homeModulesPath + "/xdg.nix")
-    # better cd
-    (homeModulesPath + "/zoxide.nix")
-    # shell
-    (homeModulesPath + "/zsh.nix")
+    # zsh configuration
+    (homeModulesPath + "/shell/zsh")
   ];
 }
