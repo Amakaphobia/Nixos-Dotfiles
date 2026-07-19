@@ -10,7 +10,7 @@ in
 	  name = "float-modal-windows";
 	  match = {
             modal = true;
-	  }
+	  };
 	  float = true;
 	  center = true;
 	}
